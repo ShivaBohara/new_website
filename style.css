@@ -1,27 +1,33 @@
-/*
-    Jigu Store premium vending theme
-    Color palette is preserved from your current brand/PDF direction.
-*/
+/* =========================================================
+   JIGU STORE PREMIUM HOMEPAGE
+   Simple note:
+   This CSS is organized from top to bottom like the webpage.
+   If you want to edit something, first find the matching section name.
+   ========================================================= */
+
 :root {
-    --primary-color: #332c2b;
-    --background-color: #fffdf6;
-    --surface-color: #ffffff;
-    --text-color: #332c2b;
-    --muted-text: #6f6663;
-    --secondary-background: #f6efe8;
-    --accent-color: #ff5757;
-    --accent-hover: #e64545;
-    --border-color: #eadfd8;
-    --dark-panel: #171313;
-    --card-shadow: 0 26px 70px rgba(51, 44, 43, 0.14);
-    --soft-shadow: 0 14px 34px rgba(51, 44, 43, 0.08);
-    --radius-sm: 10px;
-    --radius-md: 18px;
-    --radius-lg: 30px;
-    --container: 1180px;
-    --section-space: clamp(58px, 8vw, 112px);
+    /* Main colors: change these variables to update the whole website theme. */
+    --bg: #f6f2ea;
+    --bg-soft: #fbf7ef;
+    --text: #151515;
+    --muted: #6c675f;
+    --line: rgba(21, 21, 21, 0.12);
+    --white: #ffffff;
+    --black: #050505;
+    --accent: #ff5e57;
+    --accent-dark: #d94842;
+    --glass: rgba(255, 255, 255, 0.72);
+    --dark-glass: rgba(5, 5, 5, 0.5);
+
+    /* Layout variables: these keep spacing consistent on every section. */
+    --container: 1280px;
+    --page-pad: clamp(18px, 4vw, 72px);
+    --section-space: clamp(72px, 9vw, 132px);
+    --radius: 28px;
+    --shadow: 0 24px 80px rgba(0, 0, 0, 0.12);
 }
 
+/* Reset: removes default browser spacing so layout is easier to control. */
 * {
     box-sizing: border-box;
     margin: 0;
@@ -33,16 +39,17 @@ html {
 }
 
 body {
-    width: 100%;
     overflow-x: hidden;
-    background: var(--background-color);
-    color: var(--text-color);
-    font-family: "Inter", Arial, sans-serif;
-    line-height: 1.6;
+    background: var(--bg);
+    color: var(--text);
+    font-family: "Inter Tight", Inter, Arial, sans-serif;
+    line-height: 1.5;
+    text-rendering: geometricPrecision;
 }
 
 img {
     display: block;
+    width: 100%;
     max-width: 100%;
 }
 
@@ -51,1159 +58,833 @@ a {
     text-decoration: none;
 }
 
-button,
-input {
+button {
+    border: 0;
     font: inherit;
-}
-
-.section-p1 {
-    width: min(100% - 32px, var(--container));
-    margin-inline: auto;
-    padding-block: var(--section-space);
-}
-
-section[id] {
-    scroll-margin-top: 92px;
-}
-
-.eyebrow {
-    margin: 0 0 12px;
-    color: var(--accent-color);
-    font-size: 0.72rem;
-    font-weight: 900;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-}
-
-.button {
-    display: inline-flex;
-    min-height: 50px;
-    align-items: center;
-    justify-content: center;
-    border: 1px solid transparent;
-    border-radius: 999px;
-    padding: 0 24px;
     cursor: pointer;
-    font-size: 0.9rem;
-    font-weight: 900;
-    transition: transform 240ms ease, background 240ms ease, border-color 240ms ease, color 240ms ease, box-shadow 240ms ease;
 }
 
-.button:hover {
-    transform: translateY(-3px);
+/* This makes anchor links stop below the fixed header. */
+section[id] {
+    scroll-margin-top: 138px;
 }
 
-.button-primary {
-    background: var(--accent-color);
-    color: #ffffff;
-    box-shadow: 0 18px 38px rgba(255, 87, 87, 0.25);
+/* Page background: warm and clean, but not flat. */
+.site-shell {
+    min-height: 100vh;
+    background:
+        radial-gradient(circle at 50% 0%, rgba(255, 94, 87, 0.12), transparent 28rem),
+        linear-gradient(180deg, #fbf7ef 0%, #f6f2ea 44%, #fbf7ef 100%);
 }
 
-.button-primary:hover {
-    background: var(--accent-hover);
-}
-
-.button-secondary {
-    border-color: rgba(51, 44, 43, 0.22);
-    background: rgba(255, 255, 255, 0.74);
-    color: var(--primary-color);
-}
+/* =========================================================
+   HEADER
+   The reference site has a serious ecommerce/tech header.
+   This version keeps that feeling but uses Jigu Store content.
+   ========================================================= */
 
 .site-header {
     position: fixed;
     z-index: 1000;
-    top: 0;
-    right: 0;
-    left: 0;
-    display: block;
-    border-bottom: 1px solid transparent;
-    background: transparent;
-    padding: 10px clamp(16px, 5vw, 64px) 14px;
-    transition: background 260ms ease, border-color 260ms ease, box-shadow 260ms ease, padding 260ms ease, backdrop-filter 260ms ease;
+    inset: 0 0 auto;
+    color: var(--white);
+    transition: background 260ms ease, color 260ms ease, box-shadow 260ms ease, backdrop-filter 260ms ease;
 }
 
+/* Header after scroll: glass effect improves readability on light sections. */
 .site-header.is-scrolled,
 .site-header:focus-within {
-    border-bottom-color: rgba(234, 223, 216, 0.9);
-    background: rgba(255, 253, 246, 0.86);
-    box-shadow: 0 18px 45px rgba(51, 44, 43, 0.08);
-    padding-block: 8px 10px;
+    background: rgba(246, 242, 234, 0.9);
+    color: var(--text);
+    box-shadow: 0 14px 42px rgba(0, 0, 0, 0.08);
     backdrop-filter: blur(18px);
 }
 
-.utility-bar {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    gap: 18px;
-    min-height: 24px;
-    color: rgba(51, 44, 43, 0.7);
-    font-size: 0.74rem;
-    font-weight: 800;
-    text-transform: uppercase;
+.top-strip,
+.nav-bar {
+    padding-inline: var(--page-pad);
 }
 
-.utility-bar a {
-    transition: color 180ms ease;
-}
-
-.utility-bar a:hover {
-    color: var(--accent-color);
-}
-
-.header-main {
+/* Top strip: small professional details, like a real brand website. */
+.top-strip {
+    min-height: 34px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 24px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    opacity: 0.92;
 }
 
-.brand {
+.site-header.is-scrolled .top-strip {
+    border-color: rgba(21, 21, 21, 0.08);
+}
+
+.top-links {
+    display: flex;
+    gap: 22px;
+}
+
+.top-links a,
+.site-nav a {
+    transition: color 180ms ease, opacity 180ms ease;
+}
+
+.top-links a:hover,
+.site-nav a:hover {
+    color: var(--accent);
+}
+
+/* Main nav: logo left, menu right, same clean technology layout. */
+.nav-bar {
+    min-height: 72px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 28px;
+}
+
+.brand,
+.footer-brand {
     display: inline-flex;
-    flex: 0 0 auto;
     align-items: center;
     gap: 12px;
+    font-weight: 800;
+    letter-spacing: -0.01em;
 }
 
-.logo,
-.footer-logo {
-    width: 52px;
-    height: 52px;
-    border: 2px solid #ffffff;
+.brand-logo,
+.footer-brand img {
+    width: 42px;
+    height: 42px;
     border-radius: 50%;
     object-fit: cover;
-    box-shadow: var(--soft-shadow);
-}
-
-.store-name {
-    color: var(--primary-color);
-    font-size: 1.05rem;
-    font-weight: 900;
+    box-shadow: 0 12px 34px rgba(0, 0, 0, 0.18);
 }
 
 .site-nav {
     display: flex;
-    flex: 1;
     align-items: center;
     justify-content: flex-end;
-    gap: 18px;
+    gap: clamp(18px, 3vw, 42px);
+    font-size: 0.88rem;
+    font-weight: 700;
 }
 
-.nav-links {
-    display: flex;
-    align-items: center;
-    gap: 4px;
-    list-style: none;
-}
-
-.nav-links > li {
+.nav-group {
     position: relative;
 }
 
-.nav-links a,
-.header-cta {
-    position: relative;
-    display: inline-flex;
-    min-height: 40px;
-    align-items: center;
-    border-radius: 999px;
-    padding: 0 13px;
-    color: var(--primary-color);
-    font-size: 0.9rem;
-    font-weight: 800;
-    transition: color 200ms ease;
-}
-
-.nav-links a::after {
+/* Mega menu: small dropdown like a premium ecommerce navigation. */
+.mega-menu {
     position: absolute;
-    right: 14px;
-    bottom: 4px;
-    left: 14px;
-    height: 2px;
-    border-radius: 999px;
-    background: var(--accent-color);
-    content: "";
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 220ms ease;
-}
-
-.nav-links a:hover,
-.nav-links a.active {
-    color: var(--accent-color);
-}
-
-.nav-links a:hover::after,
-.nav-links a.active::after {
-    transform: scaleX(1);
-}
-
-.header-cta {
-    background: var(--primary-color);
-    color: #ffffff;
-    padding-inline: 18px;
-}
-
-.header-cta:hover {
-    background: var(--accent-color);
-}
-
-#arrow {
-    margin-left: 5px;
-    font-size: 0.72rem;
-}
-
-.dropdown-menu {
-    position: absolute;
-    top: calc(100% + 12px);
-    left: 0;
+    top: calc(100% + 22px);
+    left: 50%;
     min-width: 220px;
-    border: 1px solid rgba(234, 223, 216, 0.9);
-    border-radius: var(--radius-md);
-    background: rgba(255, 255, 255, 0.94);
-    box-shadow: var(--card-shadow);
-    list-style: none;
-    opacity: 0;
-    padding: 8px;
-    pointer-events: none;
-    transform: translateY(8px);
-    transition: opacity 180ms ease, transform 180ms ease;
-    backdrop-filter: blur(16px);
-}
-
-.dropdown-menu.is-open {
-    opacity: 1;
-    pointer-events: auto;
-    transform: translateY(0);
-}
-
-.dropdown-menu a {
-    width: 100%;
-    justify-content: flex-start;
-    border-radius: var(--radius-sm);
-}
-
-.mobile-menu-toggle {
-    display: none;
-    width: 46px;
-    height: 46px;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    gap: 5px;
-    border: 1px solid rgba(234, 223, 216, 0.9);
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.72);
-    transition: background 200ms ease;
-}
-
-.mobile-menu-toggle span {
-    width: 20px;
-    height: 2px;
-    border-radius: 999px;
-    background: var(--primary-color);
-    transition: transform 220ms ease, opacity 220ms ease;
-}
-
-.mobile-menu-toggle.is-open span:nth-child(1) {
-    transform: translateY(7px) rotate(45deg);
-}
-
-.mobile-menu-toggle.is-open span:nth-child(2) {
-    opacity: 0;
-}
-
-.mobile-menu-toggle.is-open span:nth-child(3) {
-    transform: translateY(-7px) rotate(-45deg);
-}
-
-.hero {
-    position: relative;
-    min-height: 100svh;
     display: grid;
-    grid-template-columns: minmax(0, 1.02fr) minmax(320px, 0.98fr);
-    align-items: center;
-    gap: clamp(36px, 7vw, 90px);
-    overflow: hidden;
-    background:
-        radial-gradient(circle at 76% 22%, rgba(255, 87, 87, 0.22), transparent 28%),
-        linear-gradient(135deg, #fffdf6 0%, #f7ece2 60%, #332c2b 60%, #171313 100%);
-    padding: clamp(96px, 10vw, 138px) clamp(16px, 6vw, 80px) clamp(54px, 7vw, 90px);
-}
-
-.hero::after {
-    position: absolute;
-    inset: auto -12% -30% 38%;
-    height: 58%;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.08);
-    content: "";
-    filter: blur(6px);
-}
-
-.hero-copy {
-    position: relative;
-    z-index: 2;
-    max-width: 690px;
-}
-
-.hero h1 {
-    max-width: 800px;
-    color: var(--primary-color);
-    font-size: clamp(2.3rem, 4vw, 3.8rem);
-    line-height: 0.94;
-    letter-spacing: 0;
-    text-transform: uppercase;
-}
-
-.hero p:not(.eyebrow) {
-    max-width: 590px;
-    margin: 20px 0 28px;
-    color: #514846;
-    font-size: clamp(1rem, 1.8vw, 1.18rem);
-}
-
-.hero-actions {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
-}
-
-.hero-showcase {
-    position: relative;
-    z-index: 2;
-    justify-self: center;
-    width: min(480px, 100%);
-}
-
-.showcase-card {
-    border: 1px solid rgba(255, 255, 255, 0.18);
-    border-radius: 38px;
-    background: rgba(255, 255, 255, 0.12);
-    box-shadow: 0 30px 90px rgba(0, 0, 0, 0.34);
-    padding: clamp(16px, 3vw, 26px);
+    gap: 4px;
+    border: 1px solid rgba(255, 255, 255, 0.24);
+    border-radius: 18px;
+    background: rgba(9, 9, 9, 0.78);
+    opacity: 0;
+    padding: 12px;
+    pointer-events: none;
+    transform: translate(-50%, 10px);
+    transition: opacity 200ms ease, transform 200ms ease;
     backdrop-filter: blur(18px);
 }
 
-.showcase-label,
-.showcase-meta {
-    color: #fff9f5;
-    font-size: 0.78rem;
-    font-weight: 900;
-    letter-spacing: 0.12em;
+.site-header.is-scrolled .mega-menu {
+    border-color: var(--line);
+    background: rgba(255, 255, 255, 0.92);
+}
+
+.mega-menu a {
+    border-radius: 12px;
+    padding: 10px 12px;
+    white-space: nowrap;
+}
+
+.mega-menu a:hover {
+    background: rgba(255, 94, 87, 0.12);
+}
+
+.nav-group:hover .mega-menu {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translate(-50%, 0);
+}
+
+/* Mobile hamburger button. */
+.menu-toggle {
+    position: relative;
+    width: 46px;
+    height: 46px;
+    display: none;
+    place-items: center;
+    border: 1px solid rgba(255, 255, 255, 0.24);
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(16px);
+}
+
+.site-header.is-scrolled .menu-toggle {
+    border-color: var(--line);
+    background: rgba(255, 255, 255, 0.66);
+}
+
+.menu-toggle span {
+    position: absolute;
+    width: 20px;
+    height: 2px;
+    border-radius: 999px;
+    background: currentColor;
+    transition: transform 220ms ease;
+}
+
+.menu-toggle span:first-child {
+    transform: translateY(-4px);
+}
+
+.menu-toggle span:last-child {
+    transform: translateY(4px);
+}
+
+.menu-toggle.is-open span:first-child {
+    transform: rotate(45deg);
+}
+
+.menu-toggle.is-open span:last-child {
+    transform: rotate(-45deg);
+}
+
+/* =========================================================
+   HERO SLIDER
+   Large background images, centered text, and simple controls.
+   This gives the page the Yangda-like first impression.
+   ========================================================= */
+
+.hero-slider {
+    position: relative;
+    min-height: 100svh;
+    overflow: hidden;
+    background: var(--black);
+}
+
+.hero-slide {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    opacity: 0;
+    isolation: isolate;
+    padding: 140px var(--page-pad) 88px;
+    text-align: center;
+    transition: opacity 900ms ease;
+}
+
+.hero-slide::before {
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    background-image: var(--slide-image);
+    background-position: center;
+    background-size: cover;
+    content: "";
+    transform: scale(1.05);
+    transition: transform 7200ms ease;
+}
+
+.hero-slide.is-active {
+    opacity: 1;
+}
+
+.hero-slide.is-active::before {
+    transform: scale(1);
+}
+
+/* Overlay: keeps white text readable on any image. */
+.slide-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background:
+        linear-gradient(180deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.22) 42%, rgba(0, 0, 0, 0.62)),
+        radial-gradient(circle at 50% 42%, rgba(255, 94, 87, 0.18), transparent 28rem);
+}
+
+.slide-content {
+    width: min(100%, 980px);
+    color: var(--white);
+}
+
+.eyebrow {
+    color: var(--accent);
+    font-size: clamp(0.68rem, 0.8vw, 0.78rem);
+    font-weight: 800;
+    letter-spacing: 0.18em;
     text-transform: uppercase;
 }
 
-.showcase-meta {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    gap: 10px;
+.slide-content h1 {
     margin-top: 16px;
-}
-
-.vending-visual {
-    width: 100%;
-    margin-top: 14px;
-    border: 10px solid #241f1e;
-    border-radius: 34px;
-    background: linear-gradient(145deg, #fffdf6, #f1e6dc);
-    padding: 22px;
-    animation: floatMachine 5.5s ease-in-out infinite;
-}
-
-.machine-top {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    border-radius: 18px;
-    background: var(--primary-color);
-    color: #ffffff;
-    padding: 18px;
-}
-
-.machine-top span {
+    font-size: clamp(3.6rem, 8vw, 8.8rem);
     font-weight: 900;
+    line-height: 0.86;
+    letter-spacing: -0.06em;
+    text-transform: uppercase;
+    text-wrap: balance;
 }
 
-.machine-top small {
-    color: #ffd8d8;
-    font-size: 0.68rem;
+.slide-content p:not(.eyebrow) {
+    max-width: 660px;
+    margin: 24px auto 0;
+    color: rgba(255, 255, 255, 0.84);
+    font-size: clamp(1rem, 1.35vw, 1.22rem);
+    line-height: 1.55;
+}
+
+.text-button,
+.outline-button {
+    min-height: 46px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 999px;
+    margin-top: 30px;
+    padding: 0 24px;
+    font-size: 0.82rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    transition: transform 220ms ease, background 220ms ease, color 220ms ease, border-color 220ms ease;
+}
+
+.text-button {
+    border: 1px solid rgba(255, 255, 255, 0.72);
+    color: var(--white);
+}
+
+.text-button:hover {
+    background: var(--white);
+    color: var(--text);
+    transform: translateY(-3px);
+}
+
+.hero-dots {
+    position: absolute;
+    z-index: 4;
+    right: var(--page-pad);
+    bottom: clamp(28px, 5vw, 58px);
+    display: flex;
+    gap: 10px;
+}
+
+.hero-dots button {
+    width: 34px;
+    height: 3px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.42);
+    transition: width 220ms ease, background 220ms ease;
+}
+
+.hero-dots button.is-active {
+    width: 64px;
+    background: var(--accent);
+}
+
+/* =========================================================
+   SHARED SECTION STYLES
+   These reusable styles keep all sections aligned.
+   ========================================================= */
+
+.section {
+    width: min(calc(100% - (var(--page-pad) * 2)), var(--container));
+    margin-inline: auto;
+    padding-block: var(--section-space);
+}
+
+.section-heading {
+    max-width: 920px;
+    margin: 0 auto clamp(34px, 5vw, 64px);
+    text-align: center;
+}
+
+.section-heading h2,
+.solution-content h2,
+.machine-copy h2 {
+    margin-top: 12px;
+    color: var(--text);
+    font-size: clamp(2.25rem, 4.8vw, 5.2rem);
+    font-weight: 900;
+    line-height: 0.92;
+    letter-spacing: -0.055em;
+    text-wrap: balance;
+}
+
+.section-heading > p:not(.eyebrow),
+.split-heading > p,
+.solution-content > p:not(.eyebrow),
+.machine-copy > p {
+    color: var(--muted);
+    font-size: clamp(0.98rem, 1.2vw, 1.08rem);
+}
+
+.split-heading {
+    max-width: none;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(260px, 380px);
+    gap: 36px;
+    align-items: end;
+    text-align: left;
+}
+
+/* =========================================================
+   SYSTEM CARDS
+   Big image cards feel more premium than small ecommerce product cards.
+   ========================================================= */
+
+.system-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: clamp(18px, 2vw, 26px);
+}
+
+.system-card {
+    position: relative;
+    min-height: clamp(520px, 46vw, 660px);
+    display: flex;
+    align-items: flex-end;
+    overflow: hidden;
+    border-radius: var(--radius);
+    background: var(--black);
+    box-shadow: var(--shadow);
+}
+
+.system-card img {
+    position: absolute;
+    inset: 0;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.82;
+    transition: transform 700ms ease, opacity 300ms ease;
+}
+
+.system-card::after {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.08), rgba(0, 0, 0, 0.82));
+    content: "";
+}
+
+.system-card:hover img {
+    opacity: 0.94;
+    transform: scale(1.06);
+}
+
+.system-card > div {
+    position: relative;
+    z-index: 2;
+    max-width: 520px;
+    padding: clamp(24px, 4vw, 48px);
+    color: var(--white);
+}
+
+.system-card span,
+.support-card span {
+    color: var(--accent);
+    font-size: 0.78rem;
     font-weight: 900;
     letter-spacing: 0.18em;
 }
 
-.machine-screen {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin: 18px 0;
-    border: 2px solid rgba(255, 87, 87, 0.25);
-    border-radius: 18px;
-    background: #ffffff;
-    padding: 18px;
-    color: var(--primary-color);
-    font-weight: 900;
+.system-card h3 {
+    margin-top: 16px;
+    font-size: clamp(2rem, 4vw, 4.2rem);
+    line-height: 0.92;
+    letter-spacing: -0.05em;
 }
 
-.machine-screen i {
-    color: var(--accent-color);
-    font-size: 2.5rem;
+.system-card p {
+    margin-top: 18px;
+    color: rgba(255, 255, 255, 0.82);
 }
 
-.machine-grid {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 12px;
-}
-
-.machine-grid span {
-    min-height: 78px;
-    display: grid;
-    place-items: center;
-    border: 1px solid var(--border-color);
-    border-radius: 16px;
-    background: #ffffff;
-    color: var(--primary-color);
-    font-weight: 900;
-    transition: transform 180ms ease, background 180ms ease;
-}
-
-.machine-grid span:hover {
-    background: #fff5f2;
-    transform: translateY(-3px);
-}
-
-.machine-slot {
-    width: 72%;
-    height: 24px;
-    margin: 20px auto 0;
-    border-radius: 999px;
-    background: var(--dark-panel);
-}
-
-.ambient-field {
-    position: absolute;
-    inset: 0;
-    z-index: 1;
-    overflow: hidden;
-    pointer-events: none;
-}
-
-.particle {
-    position: absolute;
-    width: 9px;
-    height: 9px;
-    border: 1px solid rgba(255, 87, 87, 0.42);
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.28);
-    opacity: 0.55;
-    animation: particleDrift 12s linear infinite;
-}
-
-.particle-one { left: 9%; top: 18%; animation-duration: 11s; }
-.particle-two { left: 22%; top: 72%; animation-duration: 14s; animation-delay: -3s; }
-.particle-three { left: 47%; top: 28%; animation-duration: 16s; animation-delay: -7s; }
-.particle-four { right: 18%; top: 18%; animation-duration: 13s; animation-delay: -5s; }
-.particle-five { right: 8%; bottom: 18%; animation-duration: 18s; animation-delay: -9s; }
-
-.intro-strip {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 1px;
-    padding-block: 0;
-    transform: translateY(-36px);
-}
-
-.intro-strip article {
-    min-height: 128px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    border: 1px solid var(--border-color);
-    background: rgba(255, 255, 255, 0.9);
-    padding: clamp(18px, 3vw, 30px);
-    box-shadow: var(--soft-shadow);
-    backdrop-filter: blur(16px);
-}
-
-.intro-strip article:first-child {
-    border-radius: var(--radius-lg) 0 0 var(--radius-lg);
-}
-
-.intro-strip article:last-child {
-    border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
-}
-
-.intro-strip strong {
-    color: var(--accent-color);
-    font-size: 0.82rem;
-}
-
-.intro-strip span {
-    color: var(--primary-color);
-    font-weight: 900;
-}
-
-.category-showcase {
-    display: grid;
-    grid-template-columns: 1.35fr 0.9fr;
-    gap: 24px;
-    padding-top: 22px;
-}
-
-.category-tile {
-    position: relative;
-    min-height: 420px;
-    display: flex;
-    align-items: flex-end;
-    overflow: hidden;
-    border-radius: var(--radius-lg);
-    background: var(--dark-panel);
-    box-shadow: var(--soft-shadow);
-    padding: clamp(24px, 4vw, 42px);
-}
-
-.category-tile::after {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(180deg, transparent 20%, rgba(0, 0, 0, 0.7));
-    content: "";
-}
-
-.category-tile img {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    opacity: 0.9;
-    transition: transform 500ms ease;
-}
-
-.category-tile:hover img {
-    transform: scale(1.06);
-}
-
-.category-tile div {
-    position: relative;
-    z-index: 2;
-    max-width: 520px;
-    color: #ffffff;
-}
-
-.category-tile h2 {
-    margin-bottom: 18px;
-    font-size: clamp(1.8rem, 4vw, 4rem);
-    line-height: 1;
-}
-
-.category-tile a,
+.system-card a,
 .application-card a {
     display: inline-flex;
-    align-items: center;
-    color: #ffffff;
-    font-size: 0.82rem;
-    font-weight: 900;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
+    margin-top: 22px;
+    color: var(--accent);
+    font-weight: 800;
 }
 
-.category-tile a::after,
-.application-card a::after {
-    width: 34px;
-    height: 1px;
-    display: inline-block;
-    margin-left: 12px;
-    background: currentColor;
-    content: "";
-    transition: width 180ms ease;
-}
+/* =========================================================
+   WIDE SHOWCASE
+   Two simple image blocks, like a premium tech category preview.
+   ========================================================= */
 
-.category-tile a:hover::after,
-.application-card a:hover::after {
-    width: 52px;
-}
-
-.section-heading {
-    max-width: 760px;
-    margin: 0 auto 40px;
-    text-align: center;
-}
-
-.section-heading h2 {
-    color: var(--primary-color);
-    font-size: clamp(2rem, 4.5vw, 4rem);
-    line-height: 1;
-}
-
-.section-heading p:not(.eyebrow) {
-    margin-top: 16px;
-    color: var(--muted-text);
-}
-
-.solution-grid {
+.wide-showcase {
+    width: min(calc(100% - (var(--page-pad) * 2)), var(--container));
     display: grid;
-    grid-template-columns: 1.2fr repeat(3, 1fr);
-    gap: 18px;
-}
-
-.solution-card {
-    min-height: 280px;
-    border: 1px solid var(--border-color);
-    border-radius: var(--radius-lg);
-    background: rgba(255, 255, 255, 0.88);
-    box-shadow: var(--soft-shadow);
-    padding: 28px;
-    transition: transform 240ms ease, box-shadow 240ms ease, border-color 240ms ease;
-}
-
-.solution-card:hover,
-.pro:hover,
-.fe-box:hover,
-.market-card:hover {
-    transform: translateY(-7px);
-    box-shadow: var(--card-shadow);
-}
-
-.solution-card.featured {
-    background: var(--primary-color);
-    color: #ffffff;
-}
-
-.solution-card i {
-    width: 54px;
-    height: 54px;
-    display: grid;
-    place-items: center;
-    margin-bottom: 22px;
-    border-radius: 50%;
-    background: rgba(255, 87, 87, 0.14);
-    color: var(--accent-color);
-    font-size: 1.35rem;
-}
-
-.solution-card.featured i {
-    background: rgba(255, 255, 255, 0.12);
-    color: #ffffff;
-}
-
-.solution-card h3 {
-    margin-bottom: 12px;
-    font-size: 1.24rem;
-    line-height: 1.18;
-}
-
-.solution-card p {
-    color: var(--muted-text);
-}
-
-.solution-card.featured p {
-    color: #e7dddd;
-}
-
-.impact-band {
-    position: relative;
-    overflow: hidden;
-    background: var(--primary-color);
-    color: #ffffff;
-    padding: var(--section-space) clamp(16px, 6vw, 80px);
-}
-
-.impact-inner {
-    position: relative;
-    z-index: 2;
-    width: min(100%, var(--container));
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    align-items: start;
-    gap: clamp(28px, 6vw, 80px);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: clamp(18px, 2vw, 26px);
     margin-inline: auto;
 }
 
-.impact-inner h2 {
-    font-size: clamp(2rem, 4.5vw, 4.4rem);
-    line-height: 0.98;
+.showcase-tile {
+    position: relative;
+    min-height: clamp(300px, 30vw, 420px);
+    display: flex;
+    align-items: flex-end;
+    overflow: hidden;
+    border-radius: var(--radius);
+    background: var(--black);
 }
 
-.impact-points {
+.showcase-tile img {
+    position: absolute;
+    inset: 0;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.76;
+    transition: transform 650ms ease, opacity 260ms ease;
+}
+
+.showcase-tile:hover img {
+    opacity: 0.94;
+    transform: scale(1.05);
+}
+
+.showcase-tile::after {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.72));
+    content: "";
+}
+
+.showcase-tile span {
+    position: relative;
+    z-index: 2;
+    padding: 34px;
+    color: var(--white);
+    font-size: clamp(1.6rem, 3vw, 3.2rem);
+    font-weight: 850;
+    line-height: 0.96;
+    letter-spacing: -0.04em;
+}
+
+/* =========================================================
+   SOLUTION BANNER
+   Full-width cinematic strip for the "one-stop provider" message.
+   ========================================================= */
+
+.solution-banner {
+    position: relative;
+    min-height: clamp(520px, 58vw, 760px);
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+    margin-top: var(--section-space);
+    padding: var(--section-space) var(--page-pad);
+    text-align: center;
+    color: var(--white);
+}
+
+.solution-bg {
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(180deg, rgba(0, 0, 0, 0.52), rgba(0, 0, 0, 0.72)),
+        url("Lower Banner/Lbanner1.jpg") center / cover;
+    transform: scale(1.04);
+}
+
+.solution-content {
+    position: relative;
+    z-index: 2;
+    width: min(100%, 940px);
+}
+
+.solution-content h2 {
+    color: var(--white);
+}
+
+.solution-content > p:not(.eyebrow) {
+    max-width: 690px;
+    margin: 24px auto 0;
+    color: rgba(255, 255, 255, 0.82);
+}
+
+/* =========================================================
+   APPLICATION CARDS
+   These explain use cases without becoming product cards.
+   ========================================================= */
+
+.application-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: clamp(14px, 1.5vw, 20px);
+}
+
+.application-card,
+.support-card,
+.event-card {
+    min-height: 270px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: rgba(255, 255, 255, 0.62);
+    padding: clamp(22px, 3vw, 34px);
+    transition: transform 260ms ease, background 260ms ease, border-color 260ms ease;
+}
+
+.application-card:hover,
+.support-card:hover,
+.event-card:hover {
+    border-color: rgba(255, 94, 87, 0.34);
+    background: rgba(255, 255, 255, 0.9);
+    transform: translateY(-6px);
+}
+
+.application-card span {
+    font-size: clamp(1.5rem, 2.2vw, 2.2rem);
+    font-weight: 850;
+    letter-spacing: -0.03em;
+}
+
+.application-card p,
+.support-card p,
+.event-card p {
+    margin-top: 18px;
+    color: var(--muted);
+}
+
+/* =========================================================
+   MACHINE STORY
+   This area explains the vending machine theme visually.
+   ========================================================= */
+
+.machine-story {
+    display: grid;
+    grid-template-columns: minmax(0, 0.95fr) minmax(320px, 1.05fr);
+    gap: clamp(36px, 7vw, 96px);
+    align-items: center;
+}
+
+.machine-copy {
+    max-width: 620px;
+}
+
+.outline-button {
+    border: 1px solid var(--line);
+    color: var(--text);
+}
+
+.outline-button:hover {
+    border-color: var(--accent);
+    background: var(--accent);
+    color: var(--white);
+    transform: translateY(-3px);
+}
+
+.machine-frame {
+    min-height: clamp(520px, 52vw, 680px);
+    display: grid;
+    place-items: center;
+    border: 1px solid var(--line);
+    border-radius: calc(var(--radius) + 12px);
+    background:
+        radial-gradient(circle at 50% 20%, rgba(255, 94, 87, 0.22), transparent 36%),
+        linear-gradient(145deg, rgba(255, 255, 255, 0.78), rgba(235, 228, 216, 0.7));
+}
+
+.machine-shell {
+    width: min(360px, 80%);
+    border: 10px solid #1a1716;
+    border-radius: 32px;
+    background: #f8f1e8;
+    padding: 22px;
+    box-shadow: 0 34px 90px rgba(0, 0, 0, 0.16);
+}
+
+.machine-brand {
+    border-radius: 18px;
+    background: #1a1716;
+    color: var(--white);
+    padding: 18px;
+    font-weight: 900;
+}
+
+.machine-display {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+    margin: 18px 0;
+    border: 1px solid rgba(255, 94, 87, 0.28);
+    border-radius: 18px;
+    background: var(--white);
+    padding: 18px;
+}
+
+.machine-display small {
+    color: var(--accent);
+    font-weight: 800;
+}
+
+.machine-shelves {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+}
+
+.machine-shelves span {
+    min-height: 66px;
+    display: grid;
+    place-items: center;
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    background: var(--white);
+    font-weight: 800;
+}
+
+.machine-slot {
+    height: 32px;
+    margin-top: 16px;
+    border-radius: 999px;
+    background: #1a1716;
+}
+
+/* =========================================================
+   SUPPORT SECTION
+   Dark section creates contrast and a technical brand feeling.
+   ========================================================= */
+
+.support-section {
+    margin-top: var(--section-space);
+    padding: var(--section-space) var(--page-pad);
+    background: #0d0d0d;
+    color: var(--white);
+}
+
+.support-section .section-heading h2 {
+    color: var(--white);
+}
+
+.support-grid {
+    width: min(100%, var(--container));
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: clamp(14px, 1.5vw, 22px);
+    margin-inline: auto;
+}
+
+.support-card {
+    border-color: rgba(255, 255, 255, 0.12);
+    background: rgba(255, 255, 255, 0.06);
+}
+
+.support-card:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.support-card h3,
+.event-card h3 {
+    margin-top: auto;
+    font-size: clamp(1.55rem, 2.4vw, 2.35rem);
+    line-height: 1;
+    letter-spacing: -0.035em;
+}
+
+.support-card p {
+    color: rgba(255, 255, 255, 0.68);
+}
+
+/* =========================================================
+   EVENTS
+   Company updates make the website feel more established.
+   ========================================================= */
+
+.event-list {
     display: grid;
     gap: 14px;
 }
 
-.impact-points p {
-    border: 1px solid rgba(255, 255, 255, 0.14);
-    border-radius: var(--radius-md);
-    background: rgba(255, 255, 255, 0.06);
-    padding: 18px;
-    color: #f5eeee;
-    font-weight: 700;
-}
-
-.solution-provider {
-    width: 100%;
-    max-width: none;
-    background:
-        linear-gradient(rgba(23, 19, 19, 0.84), rgba(23, 19, 19, 0.84)),
-        url("Front Banner/1banner.jpg") center / cover no-repeat;
-    color: #ffffff;
-    padding-inline: clamp(16px, 6vw, 80px);
-}
-
-.solution-provider .section-heading h2 {
-    color: #ffffff;
-}
-
-.solution-provider .section-heading p:not(.eyebrow) {
-    color: #e7dddd;
-}
-
-.application-grid {
-    width: min(100%, var(--container));
+.event-card {
+    min-height: auto;
     display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 18px;
-    margin-inline: auto;
+    grid-template-columns: 120px minmax(0, 1fr) minmax(260px, 420px);
+    gap: clamp(18px, 4vw, 48px);
+    align-items: center;
 }
 
-.application-card {
-    min-height: 260px;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    border: 1px solid rgba(255, 255, 255, 0.16);
-    border-radius: var(--radius-md);
-    background: rgba(255, 255, 255, 0.08);
-    padding: 24px;
-    transition: transform 240ms ease, background 240ms ease;
-    backdrop-filter: blur(12px);
-}
-
-.application-card:hover {
-    background: rgba(255, 255, 255, 0.14);
-    transform: translateY(-7px);
-}
-
-.application-card h3 {
-    margin-bottom: 10px;
-    font-size: 1.4rem;
-}
-
-.application-card p {
-    margin-bottom: 18px;
-    color: #e7dddd;
-}
-
-.shop-categories {
-    padding-top: calc(var(--section-space) * 0.75);
-}
-
-.category-link-grid {
-    display: grid;
-    grid-template-columns: repeat(5, minmax(0, 1fr));
-    gap: 16px;
-}
-
-.category-link-card {
-    min-height: 210px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    overflow: hidden;
-    border: 1px solid var(--border-color);
-    border-radius: var(--radius-lg);
-    background:
-        linear-gradient(145deg, rgba(255, 255, 255, 0.92), rgba(246, 239, 232, 0.86));
-    box-shadow: var(--soft-shadow);
-    padding: 22px;
-    transition: transform 240ms ease, border-color 240ms ease, box-shadow 240ms ease;
-}
-
-.category-link-card:hover {
-    border-color: rgba(255, 87, 87, 0.42);
-    box-shadow: var(--card-shadow);
-    transform: translateY(-7px);
-}
-
-.category-link-card span {
-    color: var(--accent-color);
-    font-size: 0.78rem;
+.event-card time {
+    color: var(--accent);
     font-weight: 900;
+    letter-spacing: 0.18em;
+}
+
+/* =========================================================
+   FOOTER
+   Simple dark footer with clear columns.
+   ========================================================= */
+
+.site-footer {
+    display: grid;
+    grid-template-columns: 1.3fr repeat(3, minmax(150px, 0.7fr));
+    gap: clamp(28px, 4vw, 54px);
+    background: #050505;
+    color: rgba(255, 255, 255, 0.72);
+    padding: clamp(58px, 8vw, 96px) var(--page-pad) 28px;
+}
+
+.footer-brand {
+    color: var(--white);
+}
+
+.footer-brand-block p {
+    max-width: 380px;
+    margin-top: 18px;
+}
+
+.footer-column {
+    display: grid;
+    align-content: start;
+    gap: 10px;
+}
+
+.footer-column h3 {
+    color: var(--white);
+    font-size: 0.92rem;
     letter-spacing: 0.12em;
     text-transform: uppercase;
 }
 
-.category-link-card strong {
-    color: var(--primary-color);
-    font-size: 1.15rem;
-    line-height: 1.2;
-}
-
-.category-page {
-    padding-top: calc(var(--section-space) * 0.75);
-}
-
-.category-hero {
-    min-height: 360px;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    overflow: hidden;
-    border-radius: var(--radius-lg);
-    background:
-        linear-gradient(90deg, rgba(23, 19, 19, 0.72), rgba(23, 19, 19, 0.24)),
-        var(--secondary-background);
-    color: #ffffff;
-    padding: clamp(26px, 5vw, 56px);
-}
-
-.category-hero h2 {
-    max-width: 780px;
-    font-size: clamp(2rem, 5vw, 4.8rem);
-    line-height: 0.95;
-}
-
-.category-hero p:not(.eyebrow) {
-    max-width: 560px;
-    margin-top: 16px;
-    color: #f2e8e3;
-}
-
-.gifts-hero {
-    background:
-        linear-gradient(90deg, rgba(23, 19, 19, 0.72), rgba(23, 19, 19, 0.24)),
-        url("Product1/anime poster.jpg") center / cover no-repeat;
-}
-
-.education-hero {
-    background:
-        linear-gradient(90deg, rgba(23, 19, 19, 0.72), rgba(23, 19, 19, 0.24)),
-        url("Product1/solar system.jpg") center / cover no-repeat;
-}
-
-.electronics-hero {
-    background:
-        linear-gradient(90deg, rgba(23, 19, 19, 0.72), rgba(23, 19, 19, 0.24)),
-        url("New Arrival Product/otto robot.jpg") center / cover no-repeat;
-}
-
-.accessories-hero {
-    background:
-        linear-gradient(90deg, rgba(23, 19, 19, 0.72), rgba(23, 19, 19, 0.24)),
-        url("New Arrival Product/watch.jpg") center / cover no-repeat;
-}
-
-.arrivals-hero {
-    background:
-        linear-gradient(90deg, rgba(23, 19, 19, 0.72), rgba(23, 19, 19, 0.24)),
-        url("New Arrival Product/noir perfume.jpg") center / cover no-repeat;
-}
-
-.category-toolbar {
-    position: sticky;
-    z-index: 20;
-    top: 92px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 16px;
-    margin: 18px 0 24px;
-    border: 1px solid rgba(234, 223, 216, 0.88);
-    border-radius: 999px;
-    background: rgba(255, 253, 246, 0.86);
-    box-shadow: var(--soft-shadow);
-    padding: 8px 10px 8px 20px;
-    backdrop-filter: blur(16px);
-}
-
-.category-toolbar span {
-    color: var(--primary-color);
-    font-size: 0.82rem;
-    font-weight: 900;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-}
-
-.category-toolbar div {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    justify-content: flex-end;
-}
-
-.category-toolbar button {
-    min-height: 38px;
-    border: 1px solid transparent;
-    border-radius: 999px;
-    background: var(--secondary-background);
-    color: var(--primary-color);
-    cursor: pointer;
-    font-size: 0.78rem;
-    font-weight: 900;
-    padding: 0 14px;
-    transition: background 180ms ease, color 180ms ease;
-}
-
-.category-toolbar button:hover {
-    background: var(--accent-color);
-    color: #ffffff;
-}
-
-.category-products {
-    align-items: stretch;
-}
-
-.product-section {
-    text-align: center;
-}
-
-.pro-container {
-    display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 24px;
-}
-
-.pro,
-.market-card {
-    overflow: hidden;
-    border: 1px solid var(--border-color);
-    border-radius: var(--radius-md);
-    background: rgba(255, 255, 255, 0.92);
-    box-shadow: var(--soft-shadow);
-    transition: transform 240ms ease, box-shadow 240ms ease, border-color 240ms ease;
-}
-
-.product-image-link {
-    display: block;
-    overflow: hidden;
-    background: var(--secondary-background);
-}
-
-.pro img {
-    width: 100%;
-    aspect-ratio: 1 / 1;
-    object-fit: cover;
-    transform: scale(1.01);
-    transition: transform 420ms ease, filter 420ms ease;
-}
-
-.pro:hover {
-    border-color: rgba(255, 87, 87, 0.42);
-}
-
-.pro:hover img {
-    filter: saturate(1.04) contrast(1.03);
-    transform: scale(1.075);
-}
-
-.des {
-    padding: 18px;
-    text-align: left;
-}
-
-.des span {
-    display: block;
-    margin-bottom: 6px;
-    color: var(--accent-color);
-    font-size: 0.74rem;
-    font-weight: 900;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-}
-
-.des h3 {
-    min-height: 44px;
-    color: var(--primary-color);
-    font-size: 1rem;
-    line-height: 1.35;
-}
-
-.product-footer {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 16px;
-    margin-top: 16px;
-}
-
-.product-footer strong {
-    color: var(--primary-color);
-    font-size: 1.1rem;
-}
-
-.cart-icon {
-    width: 42px;
-    height: 42px;
-    display: inline-flex;
-    flex: 0 0 42px;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    background: var(--secondary-background);
-    color: var(--primary-color);
-    transition: background 180ms ease, color 180ms ease, transform 180ms ease;
-}
-
-.cart-icon:hover {
-    background: var(--accent-color);
-    color: #ffffff;
-    transform: rotate(-8deg) scale(1.05);
-}
-
-.ambient-break {
-    position: relative;
-    height: clamp(74px, 12vw, 150px);
-    overflow: hidden;
-}
-
-.ambient-break span {
-    position: absolute;
-    width: 7px;
-    height: 7px;
-    border-radius: 50%;
-    background: rgba(255, 87, 87, 0.35);
-    animation: sprinkleFall 8s linear infinite;
-}
-
-.ambient-break span:nth-child(1) { left: 14%; animation-delay: -1s; }
-.ambient-break span:nth-child(2) { left: 50%; width: 11px; height: 11px; animation-delay: -4s; }
-.ambient-break span:nth-child(3) { right: 16%; animation-delay: -6s; }
-
-.market-section {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 24px;
-}
-
-.market-card {
-    padding: clamp(28px, 4vw, 48px);
-}
-
-.market-card h2 {
-    margin-bottom: 16px;
-    font-size: clamp(1.7rem, 3vw, 2.8rem);
-    line-height: 1.05;
-}
-
-.market-card p:not(.eyebrow) {
-    color: var(--muted-text);
-}
-
-.market-card.dark {
-    background: var(--primary-color);
-    color: #ffffff;
-}
-
-.market-card.dark p:not(.eyebrow) {
-    color: #e7dddd;
-}
-
-.newsletter {
-    width: 100%;
-    max-width: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: clamp(24px, 6vw, 80px);
-    background: var(--dark-panel);
-    color: #ffffff;
-    padding-inline: clamp(16px, 6vw, 80px);
-}
-
-.newsletter .newstext,
-.newsletter .form {
-    width: min(560px, 100%);
-}
-
-.newsletter h2 {
-    font-size: clamp(1.8rem, 3.4vw, 3rem);
-    line-height: 1.05;
-}
-
-.newsletter p:not(.eyebrow) {
-    margin-top: 12px;
-    color: #e7dddd;
-}
-
-.newsletter .form {
-    display: flex;
-    overflow: hidden;
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    border-radius: 999px;
-    background: #ffffff;
-    padding: 5px;
-}
-
-.newsletter input {
-    min-width: 0;
-    flex: 1;
-    border: 0;
-    outline: 0;
-    padding: 0 18px;
-}
-
-.newsletter .button {
-    box-shadow: none;
-}
-
-.site-footer {
-    width: 100%;
-    max-width: none;
-    display: grid;
-    grid-template-columns: 1.25fr 1fr 1fr 1fr;
-    gap: 32px;
-    margin-inline: 0;
-    background: #0f0d0d;
-    color: #d8d0cd;
-    padding-inline: clamp(16px, 6vw, 80px);
-}
-
-.site-footer h4 {
-    margin-bottom: 14px;
-    color: #ffffff;
-    font-size: 0.98rem;
-}
-
-.site-footer p,
-.site-footer a {
-    display: block;
-    margin-bottom: 9px;
-    color: #d8d0cd;
-    font-size: 0.92rem;
-}
-
-.site-footer a:hover {
-    color: var(--accent-color);
-}
-
-.payment-section {
-    margin-top: 18px;
-}
-
-.payment-logo {
-    display: inline-block;
-    width: 76px;
-    height: 48px;
-    margin: 5px 8px 0 0;
-    border-radius: var(--radius-sm);
-    object-fit: cover;
+.footer-column a:hover {
+    color: var(--accent);
 }
 
 .copyright {
     grid-column: 1 / -1;
     border-top: 1px solid rgba(255, 255, 255, 0.12);
+    margin-top: 22px;
     padding-top: 22px;
-    text-align: center;
+    color: rgba(255, 255, 255, 0.48);
 }
 
-.copyright p {
-    margin: 0;
-}
+/* =========================================================
+   ANIMATIONS
+   Simple reveal animation. Keep it subtle for a premium look.
+   ========================================================= */
 
 .reveal {
     opacity: 0;
-    transform: translateY(26px);
-    transition: opacity 700ms ease var(--reveal-delay, 0ms), transform 700ms ease var(--reveal-delay, 0ms);
+    transform: translateY(28px);
+    transition: opacity 700ms ease var(--delay, 0ms), transform 700ms ease var(--delay, 0ms);
 }
 
 .reveal.is-visible {
@@ -1211,25 +892,7 @@ section[id] {
     transform: translateY(0);
 }
 
-@keyframes floatMachine {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-12px); }
-}
-
-@keyframes particleDrift {
-    0% { opacity: 0; transform: translate3d(0, 40px, 0) scale(0.8); }
-    15% { opacity: 0.5; }
-    75% { opacity: 0.36; }
-    100% { opacity: 0; transform: translate3d(26px, -120px, 0) scale(1.2); }
-}
-
-@keyframes sprinkleFall {
-    0% { opacity: 0; transform: translateY(-30px) rotate(0deg); }
-    20% { opacity: 0.5; }
-    80% { opacity: 0.15; }
-    100% { opacity: 0; transform: translateY(160px) rotate(180deg); }
-}
-
+/* Accessibility: users who prefer less motion get a calm page. */
 @media (prefers-reduced-motion: reduce) {
     *,
     *::before,
@@ -1246,62 +909,95 @@ section[id] {
     }
 }
 
-@media (max-width: 1024px) {
-    .hero {
-        grid-template-columns: 1fr;
-        background:
-            radial-gradient(circle at 80% 24%, rgba(255, 87, 87, 0.2), transparent 32%),
-            linear-gradient(160deg, #fffdf6 0%, #f9f0e7 58%, #332c2b 58%, #171313 100%);
-    }
+/* =========================================================
+   RESPONSIVE DESIGN
+   Each breakpoint changes layout intentionally, not just smaller.
+   ========================================================= */
 
-    .hero-showcase {
-        justify-self: start;
-    }
-
-    .solution-grid,
-    .category-showcase,
-    .application-grid,
-    .category-link-grid,
-    .pro-container {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-
+/* Ultra-wide: keep content controlled so it does not stretch too far. */
+@media (min-width: 1500px) {
+    .top-strip,
+    .nav-bar,
     .site-footer {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+        padding-inline: max(var(--page-pad), calc((100vw - 1480px) / 2));
     }
 }
 
-@media (max-width: 860px) {
-    .site-header {
-        padding: 12px 16px;
+/* Tablet and small laptop: reduce columns before content feels cramped. */
+@media (max-width: 1100px) {
+    :root {
+        --section-space: clamp(68px, 9vw, 108px);
     }
 
-    .utility-bar {
+    .site-nav {
+        gap: 18px;
+    }
+
+    .application-grid,
+    .support-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .machine-story,
+    .site-footer {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .event-card {
+        grid-template-columns: 100px minmax(0, 1fr);
+    }
+
+    .event-card p {
+        grid-column: 2;
+    }
+}
+
+/* Mobile navigation and phone layout. */
+@media (max-width: 780px) {
+    :root {
+        --page-pad: 18px;
+        --section-space: clamp(58px, 13vw, 86px);
+        --radius: 22px;
+    }
+
+    .top-strip {
         display: none;
     }
 
-    .mobile-menu-toggle {
-        display: inline-flex;
+    .nav-bar {
+        min-height: 70px;
+    }
+
+    .brand-logo {
+        width: 38px;
+        height: 38px;
+    }
+
+    .menu-toggle {
+        display: grid;
     }
 
     .site-nav {
         position: absolute;
         top: calc(100% + 8px);
-        right: 16px;
-        left: 16px;
-        display: flex;
-        flex-direction: column;
-        align-items: stretch;
-        border: 1px solid var(--border-color);
-        border-radius: var(--radius-md);
-        background: rgba(255, 255, 255, 0.94);
-        box-shadow: var(--card-shadow);
+        right: var(--page-pad);
+        left: var(--page-pad);
+        display: grid;
+        gap: 0;
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        border-radius: 22px;
+        background: rgba(8, 8, 8, 0.86);
         opacity: 0;
         padding: 14px;
         pointer-events: none;
-        transform: translateY(-8px);
-        transition: opacity 200ms ease, transform 200ms ease;
+        transform: translateY(-10px);
+        transition: opacity 220ms ease, transform 220ms ease;
         backdrop-filter: blur(18px);
+    }
+
+    .site-header.is-scrolled .site-nav {
+        border-color: var(--line);
+        background: rgba(255, 255, 255, 0.94);
     }
 
     .site-nav.is-open {
@@ -1310,142 +1006,182 @@ section[id] {
         transform: translateY(0);
     }
 
-    .nav-links {
-        width: 100%;
-        flex-direction: column;
-        align-items: stretch;
+    .site-nav > a,
+    .nav-group > a {
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+        border-radius: 12px;
+        padding-inline: 10px;
     }
 
-    .nav-links a,
-    .header-cta {
-        width: 100%;
-        justify-content: space-between;
-        border-radius: var(--radius-sm);
+    .nav-group {
+        display: grid;
     }
 
-    .dropdown-menu {
+    /* On mobile the dropdown links become normal stacked links. */
+    .mega-menu {
         position: static;
-        margin-top: 6px;
-        box-shadow: none;
+        min-width: 0;
+        border: 0;
+        background: transparent;
+        opacity: 1;
+        padding: 0 0 8px 12px;
+        pointer-events: auto;
+        transform: none;
+        backdrop-filter: none;
     }
 
-    .hero {
-        min-height: auto;
-        padding-top: 96px;
+    .mega-menu a {
+        min-height: 34px;
+        padding: 8px 10px;
+        color: currentColor;
+        opacity: 0.74;
     }
 
-    .hero h1 {
-        font-size: clamp(2.45rem, 14vw, 4.45rem);
+    .hero-slider {
+        min-height: 92svh;
     }
 
-    .intro-strip,
-    .category-showcase,
-    .impact-inner,
-    .solution-grid,
+    .hero-slide {
+        padding: 108px var(--page-pad) 72px;
+    }
+
+    .slide-content h1 {
+        font-size: clamp(3rem, 15vw, 5.2rem);
+        line-height: 0.9;
+        letter-spacing: -0.045em;
+    }
+
+    .slide-content p:not(.eyebrow) {
+        font-size: 0.98rem;
+    }
+
+    .hero-dots {
+        right: 50%;
+        transform: translateX(50%);
+    }
+
+    .section-heading,
+    .split-heading {
+        display: block;
+        text-align: center;
+    }
+
+    .section-heading h2,
+    .solution-content h2,
+    .machine-copy h2 {
+        font-size: clamp(2rem, 9.2vw, 3.2rem);
+        line-height: 1;
+        letter-spacing: -0.035em;
+    }
+
+    .system-grid,
+    .wide-showcase,
     .application-grid,
-    .category-link-grid,
-    .market-section,
+    .support-grid,
+    .machine-story,
     .site-footer {
         grid-template-columns: 1fr;
     }
 
-    .category-tile {
-        min-height: 340px;
+    .system-card {
+        min-height: 460px;
     }
 
-    .category-toolbar {
-        position: static;
-        align-items: flex-start;
-        border-radius: var(--radius-md);
-        flex-direction: column;
-        padding: 16px;
+    .showcase-tile {
+        min-height: 300px;
     }
 
-    .category-toolbar div,
-    .category-toolbar button {
-        width: 100%;
+    .solution-banner {
+        min-height: 520px;
     }
 
-    .category-toolbar button {
-        justify-content: center;
+    .application-card,
+    .support-card {
+        min-height: 230px;
     }
 
-    .intro-strip {
-        transform: none;
-        padding-top: 24px;
+    .machine-copy {
+        text-align: center;
+        margin-inline: auto;
     }
 
-    .intro-strip article,
-    .intro-strip article:first-child,
-    .intro-strip article:last-child {
-        border-radius: var(--radius-md);
+    .machine-frame {
+        min-height: 450px;
     }
 
-    .newsletter {
-        flex-direction: column;
-        align-items: stretch;
-    }
-
-    .newsletter .form {
-        flex-direction: column;
-        overflow: visible;
-        border: 0;
-        border-radius: 0;
-        background: transparent;
+    .event-card {
+        grid-template-columns: 1fr;
         gap: 12px;
-        padding: 0;
     }
 
-    .newsletter input {
-        min-height: 50px;
-        border-radius: 999px;
+    .event-card p {
+        grid-column: auto;
     }
 
-    .newsletter .button,
-    .hero-actions .button {
-        width: 100%;
+    .application-card:hover,
+    .support-card:hover,
+    .event-card:hover,
+    .text-button:hover,
+    .outline-button:hover {
+        transform: none;
     }
 }
 
-@media (max-width: 560px) {
-    .section-p1 {
-        width: min(100% - 24px, var(--container));
-    }
-
-    .logo,
-    .footer-logo {
-        width: 44px;
-        height: 44px;
-    }
-
-    .store-name {
-        font-size: 0.98rem;
-    }
-
-    .hero {
-        gap: 30px;
-    }
-
-    .showcase-card {
-        border-radius: 26px;
-    }
-
-    .vending-visual {
-        border-width: 7px;
-        border-radius: 24px;
-        padding: 14px;
-    }
-
-    .machine-grid span {
-        min-height: 60px;
+/* Small tablets: keep the full navigation compact and preserve two-column content. */
+@media (min-width: 781px) and (max-width: 1100px) {
+    .site-nav {
+        gap: 14px;
         font-size: 0.82rem;
     }
 
-    .pro-container {
-        grid-template-columns: 1fr;
+    .brand {
+        font-size: 0.96rem;
+    }
+}
+
+/* Small phones: tighten typography and visuals so nothing overflows. */
+@media (max-width: 460px) {
+    .brand {
+        font-size: 0.96rem;
     }
 
-    .des h3 {
-        min-height: auto;
+    .brand-logo {
+        width: 34px;
+        height: 34px;
+    }
+
+    .menu-toggle {
+        width: 42px;
+        height: 42px;
+    }
+
+    .slide-content h1 {
+        font-size: clamp(2.7rem, 14vw, 4rem);
+    }
+
+    .text-button,
+    .outline-button {
+        width: 100%;
+    }
+
+    .system-card {
+        min-height: 420px;
+    }
+
+    .system-card > div,
+    .showcase-tile span {
+        padding: 24px;
+    }
+
+    .machine-shell {
+        width: min(285px, 86%);
+        border-width: 8px;
+        padding: 16px;
+    }
+
+    .machine-shelves span {
+        min-height: 56px;
     }
 }

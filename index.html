@@ -3,440 +3,413 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jigu Store Smart Vending</title>
+    <title>Jigu Store | Smart Vending and Learning Technology</title>
 
+    <!-- Fonts: one clean modern font keeps the website premium and consistent. -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- Main stylesheet for the complete homepage design. -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header id="header" class="site-header">
-        <div class="utility-bar" aria-label="Store shortcuts">
-            <span>NPR</span>
-            <a href="#shop-categories">Categories</a>
-            <a href="#contact">Support</a>
-            <a href="#contact">Sign in</a>
-            <a href="cart.html" aria-label="View cart"><i class="fas fa-shopping-cart"></i> 0</a>
-        </div>
-
-        <div class="header-main">
-            <a href="index.html" class="brand" aria-label="Jigu Store home">
-                <img src="Logo/jigu store logo.jpg" alt="Jigu Store Logo" class="logo" loading="eager">
-                <span class="store-name">Jigu Store</span>
-            </a>
-
-            <button class="mobile-menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-
-            <nav class="site-nav" aria-label="Main navigation">
-                <ul id="navbar" class="nav-links">
-                    <li><a class="active" href="#hero">Home</a></li>
-                    <li><a href="#smart-vending">Smart Vending</a></li>
-                    <li><a href="#shop-categories">Categories</a></li>
-                    <li><a href="#impact">Impact</a></li>
-                    <li class="dropdown">
-                        <a href="#" id="categoryToggle">Categories <span id="arrow">v</span></a>
-                        <ul class="dropdown-menu" id="categoryMenu">
-                            <li><a href="#gifts">Gifts</a></li>
-                            <li><a href="#education">Education</a></li>
-                            <li><a href="#electronics">Electronics</a></li>
-                            <li><a href="#accessories">Accessories</a></li>
-                            <li><a href="#new-arrivals">New Arrivals</a></li>
-                        </ul>
-                    </li>
-                </ul>
-
-                <a href="#contact" class="header-cta">Contact</a>
-            </nav>
-        </div>
-    </header>
-
-    <main>
-        <section id="hero" class="hero hero-premium">
-            <div class="ambient-field" aria-hidden="true">
-                <span class="particle particle-one"></span>
-                <span class="particle particle-two"></span>
-                <span class="particle particle-three"></span>
-                <span class="particle particle-four"></span>
-                <span class="particle particle-five"></span>
-            </div>
-
-            <div class="hero-copy reveal">
-                <p class="eyebrow">jigustore.com.np</p>
-                <h1>Smart vending with social impact</h1>
-                <p>Jigu Store builds QR-code based vending machines and different types of machines that make products and educational materials easier to access across Nepal.</p>
-                <div class="hero-actions">
-                    <a href="#smart-vending" class="button button-primary">Explore Vending</a>
-                    <a href="#shop-categories" class="button button-secondary">Browse Categories</a>
+    <!-- Site shell: this wrapper helps control the full page background and overflow. -->
+    <div class="site-shell">
+        <!-- Header: inspired by premium technology ecommerce sites with a small top bar and main navigation. -->
+        <header id="header" class="site-header">
+            <!-- Small utility row: this gives the page a more professional Yangda-like header rhythm. -->
+            <div class="top-strip">
+                <span>Smart vending and learning technology from Nepal</span>
+                <div class="top-links">
+                    <a href="#support">Support</a>
+                    <a href="#events">Events</a>
+                    <a href="#contact">Contact</a>
                 </div>
             </div>
 
-            <div class="hero-showcase reveal">
-                <div class="showcase-card">
-                    <p class="showcase-label">Smart retail system</p>
-                    <div class="vending-visual" aria-label="Smart vending machine illustration">
-                        <div class="machine-top">
-                            <span>Jigu Store</span>
-                            <small>SMART VENDING</small>
+            <!-- Main navigation row. -->
+            <div class="nav-bar">
+                <a href="#home" class="brand" aria-label="Jigu Store home">
+                    <img src="Logo/jigu store logo.jpg" alt="Jigu Store Logo" class="brand-logo">
+                    <span>Jigu Store</span>
+                </a>
+
+                <!-- Mobile button: JavaScript toggles the menu on phones. -->
+                <button class="menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false">
+                    <span></span>
+                    <span></span>
+                </button>
+
+                <!-- Main nav: dropdowns are CSS-based so they are simple to understand and edit. -->
+                <nav class="site-nav" aria-label="Main navigation">
+                    <a href="#home">Home</a>
+
+                    <div class="nav-group">
+                        <a href="#systems">Products</a>
+                        <div class="mega-menu">
+                            <!-- Comment: add or remove category links inside this mega-menu when your product groups change. -->
+                            <a href="#systems">Smart Vending</a>
+                            <a href="#systems">STEM Solutions</a>
+                            <a href="#systems">Education Kits</a>
+                            <a href="#systems">QR Payment</a>
                         </div>
-                        <div class="machine-screen">
-                            <i class="fas fa-qrcode"></i>
-                            <span>Scan & Pay</span>
+                    </div>
+
+                    <div class="nav-group">
+                        <a href="#machines">Machines</a>
+                        <div class="mega-menu">
+                            <a href="#machines">Vending Concept</a>
+                            <a href="#solutions">Deployment</a>
+                            <a href="#support">Maintenance</a>
                         </div>
-                        <div class="machine-grid">
-                            <span>Care</span>
+                    </div>
+
+                    <a href="#applications">Applications</a>
+                    <a href="#about">About Us</a>
+                    <a href="#contact">Contact</a>
+                </nav>
+            </div>
+        </header>
+
+        <main>
+            <!-- HERO SLIDER
+                 This section is closest to the Yangda feeling: large image, centered title, small subtitle, and Learn More button. -->
+            <section id="home" class="hero-slider" aria-label="Jigu Store featured slides">
+                <!-- Each slide uses your own project images. Change the image path in the style attribute if needed. -->
+                <article class="hero-slide is-active" style="--slide-image: url('Front Banner/feature4.jpg');">
+                    <div class="slide-overlay"></div>
+                    <div class="slide-content">
+                        <p class="eyebrow">Jigu Store Smart Retail</p>
+                        <h1>Smart Vending Ecosystem</h1>
+                        <p>Cashless access points for schools, institutions, offices, and public spaces.</p>
+                        <a href="#systems" class="text-button">Learn More</a>
+                    </div>
+                </article>
+
+                <article class="hero-slide" style="--slide-image: url('Front Banner/feature2.jpg');">
+                    <div class="slide-overlay"></div>
+                    <div class="slide-content">
+                        <p class="eyebrow">QR Pay / AI / Automation</p>
+                        <h1>Modern Retail Access</h1>
+                        <p>Technology-first distribution designed for fast, clean, and reliable product access.</p>
+                        <a href="#solutions" class="text-button">Learn More</a>
+                    </div>
+                </article>
+
+                <article class="hero-slide" style="--slide-image: url('Product1/solar system.jpg');">
+                    <div class="slide-overlay"></div>
+                    <div class="slide-content">
+                        <p class="eyebrow">STEM and Education</p>
+                        <h1>Learning Systems for Schools</h1>
+                        <p>STEM models, learning products, and smart access systems for modern education.</p>
+                        <a href="#applications" class="text-button">Learn More</a>
+                    </div>
+                </article>
+
+                <!-- Slider controls: these dots are clickable and also update automatically. -->
+                <div class="hero-dots" aria-label="Hero slide controls">
+                    <button class="is-active" type="button" aria-label="Show slide 1" data-slide="0"></button>
+                    <button type="button" aria-label="Show slide 2" data-slide="1"></button>
+                    <button type="button" aria-label="Show slide 3" data-slide="2"></button>
+                </div>
+            </section>
+
+            <!-- SYSTEMS SECTION
+                 This replaces a normal ecommerce product grid with premium category tiles. -->
+            <section id="systems" class="section systems-section">
+                <div class="section-heading reveal">
+                    <p class="eyebrow">Jigu Store Systems</p>
+                    <h2>Connected categories for vending, education, and smart retail.</h2>
+                </div>
+
+                <div class="system-grid">
+                    <!-- Card images are decorative but help the section feel like a premium technology catalog. -->
+                    <article class="system-card reveal">
+                        <img src="Front Banner/feature3.jpg" alt="Digital dashboard concept">
+                        <div>
+                            <span>01</span>
+                            <h3>Smart Vending</h3>
+                            <p>Cashless machine placement for useful product access in high-traffic locations.</p>
+                            <a href="#machines">Learn More</a>
+                        </div>
+                    </article>
+
+                    <article class="system-card reveal">
+                        <img src="Product1/solar system.jpg" alt="Solar system STEM model">
+                        <div>
+                            <span>02</span>
+                            <h3>STEM Solutions</h3>
+                            <p>Science models, robotics, and student-focused materials presented as one ecosystem.</p>
+                            <a href="#applications">Learn More</a>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <!-- WIDE FEATURE STRIP
+                 Yangda uses large image blocks after the hero. This section gives Jigu Store that same editorial flow. -->
+            <section class="wide-showcase reveal" aria-label="Featured technology categories">
+                <a href="#machines" class="showcase-tile">
+                    <img src="Front Banner/feature1.jpg" alt="Robotic technology hand">
+                    <span>Smart Machine Design</span>
+                </a>
+                <a href="#applications" class="showcase-tile">
+                    <img src="Product1/periodic clock.jpg" alt="Periodic clock learning product">
+                    <span>Education Technology</span>
+                </a>
+            </section>
+
+            <!-- SOLUTION BANNER
+                 This is inspired by Yangda's one-stop solution section, but the wording is original for Jigu Store. -->
+            <section id="solutions" class="solution-banner">
+                <div class="solution-bg" aria-hidden="true"></div>
+                <div class="solution-content reveal">
+                    <p class="eyebrow">Integrated Smart Retail</p>
+                    <h2>One-stop vending and education access provider.</h2>
+                    <p>Jigu Store connects machines, QR payments, learning products, support, and community placement into one clean system.</p>
+                </div>
+            </section>
+
+            <!-- APPLICATIONS SECTION
+                 Use short cards here. Yangda uses application blocks; this version is for Jigu Store use cases. -->
+            <section id="applications" class="section applications-section">
+                <div class="section-heading split-heading reveal">
+                    <div>
+                        <p class="eyebrow">Applications</p>
+                        <h2>Built for practical places where access matters.</h2>
+                    </div>
+                    <p>These blocks are not product cards. They explain where Jigu Store systems can be used.</p>
+                </div>
+
+                <div class="application-grid">
+                    <article class="application-card reveal">
+                        <span>Schools</span>
+                        <p>STEM kits, education products, stationery, and small essentials near students.</p>
+                        <a href="#support">Learn More</a>
+                    </article>
+                    <article class="application-card reveal">
+                        <span>Hospitals</span>
+                        <p>Access to hygiene, care, and convenience products in a controlled retail point.</p>
+                        <a href="#support">Learn More</a>
+                    </article>
+                    <article class="application-card reveal">
+                        <span>Offices</span>
+                        <p>Smart access for everyday products without needing a full retail counter.</p>
+                        <a href="#support">Learn More</a>
+                    </article>
+                    <article class="application-card reveal">
+                        <span>Events</span>
+                        <p>Temporary vending access for exhibitions, campuses, workshops, and public programs.</p>
+                        <a href="#events">Learn More</a>
+                    </article>
+                </div>
+            </section>
+
+            <!-- ABOUT / MACHINE SECTION
+                 This section adds the vending-machine identity strongly while keeping the design original. -->
+            <section id="machines" class="machine-story section">
+                <div class="machine-copy reveal">
+                    <p class="eyebrow">Professional System Design</p>
+                    <h2>Smart retail machines with a clean technology identity.</h2>
+                    <p>Use this section to explain your vending machine model, QR payment flow, and future machine features.</p>
+                    <a href="#contact" class="outline-button">Request Collaboration</a>
+                </div>
+
+                <!-- CSS machine drawing: easy to edit and does not need a separate image file. -->
+                <div class="machine-frame reveal" aria-label="Jigu Store vending machine illustration">
+                    <div class="machine-shell">
+                        <div class="machine-brand">Jigu Store</div>
+                        <div class="machine-display">
+                            <strong>Scan & Pay</strong>
+                            <small>QR enabled</small>
+                        </div>
+                        <div class="machine-shelves">
                             <span>STEM</span>
-                            <span>Books</span>
+                            <span>Care</span>
                             <span>Kits</span>
-                            <span>Health</span>
-                            <span>NIC</span>
+                            <span>Books</span>
+                            <span>Gifts</span>
+                            <span>Tech</span>
                         </div>
                         <div class="machine-slot"></div>
                     </div>
-                    <div class="showcase-meta">
-                        <span>QR payment</span>
-                        <span>Cashless access</span>
+                </div>
+            </section>
+
+            <!-- SUPPORT SECTION
+                 Yangda has technical support areas. This creates a similar trust-building section for Jigu Store. -->
+            <section id="support" class="support-section">
+                <div class="section-heading reveal">
+                    <p class="eyebrow">Excellent Technical Support</p>
+                    <h2>Support for installation, learning, and daily operation.</h2>
+                </div>
+
+                <div class="support-grid">
+                    <article class="support-card reveal">
+                        <span>01</span>
+                        <h3>On-site Setup</h3>
+                        <p>Machine placement, basic training, and launch support for institutions.</p>
+                    </article>
+                    <article class="support-card reveal">
+                        <span>02</span>
+                        <h3>Online Consultation</h3>
+                        <p>Remote guidance for product planning, QR payment flow, and category setup.</p>
+                    </article>
+                    <article class="support-card reveal">
+                        <span>03</span>
+                        <h3>Documentation</h3>
+                        <p>Simple guides for operation, restocking, payment handling, and maintenance.</p>
+                    </article>
+                </div>
+            </section>
+
+            <!-- EVENTS / NEWS SECTION
+                 This gives the homepage the professional company-site depth that Yangda has. -->
+            <section id="events" class="section events-section">
+                <div class="section-heading split-heading reveal">
+                    <div>
+                        <p class="eyebrow">Events and Updates</p>
+                        <h2>Stories from the Jigu Store ecosystem.</h2>
                     </div>
+                    <a href="#contact" class="outline-button">Contact Team</a>
                 </div>
-            </div>
-        </section>
 
-        <section class="section-p1 intro-strip reveal" aria-label="Jigu Store highlights">
-            <article>
-                <strong>01</strong>
-                <span>Cashless vending</span>
-            </article>
-            <article>
-                <strong>02</strong>
-                <span>Education products</span>
-            </article>
-            <article>
-                <strong>03</strong>
-                <span>Local innovation</span>
-            </article>
-        </section>
-
-        <section class="section-p1 category-showcase">
-            <article class="category-tile large reveal">
-                <img src="New Arrival Product/otto robot.jpg" alt="Smart vending and robotics" loading="lazy">
-                <div>
-                    <p class="eyebrow">Smart Systems</p>
-                    <h2>Machine-first retail experience</h2>
-                    <a href="#smart-vending">Learn More</a>
+                <div class="event-list">
+                    <article class="event-card reveal">
+                        <time>2026</time>
+                        <h3>Smart vending pilot for education-focused retail access</h3>
+                        <p>Planning vending use cases for campuses, schools, and learning communities.</p>
+                    </article>
+                    <article class="event-card reveal">
+                        <time>2026</time>
+                        <h3>QR payment flow for fast product access</h3>
+                        <p>Building a simple purchase journey around familiar digital payment habits.</p>
+                    </article>
+                    <article class="event-card reveal">
+                        <time>2026</time>
+                        <h3>STEM product curation for modern education</h3>
+                        <p>Organizing learning products into clean categories that fit schools and students.</p>
+                    </article>
                 </div>
-            </article>
+            </section>
+        </main>
 
-            <article class="category-tile reveal">
-                <img src="Product1/solar system.jpg" alt="Educational materials" loading="lazy">
-                <div>
-                    <p class="eyebrow">Education</p>
-                    <h2>Learning materials</h2>
-                    <a href="#education">Learn More</a>
-                </div>
-            </article>
-        </section>
-
-        <section id="smart-vending" class="section-p1 vending-section">
-            <div class="section-heading reveal">
-                <p class="eyebrow">Our Solution</p>
-                <h2>Jigu Store Smart Vending</h2>
-                <p>The website now presents vending as the main story: fast access, digital payments, education, product variety, and a premium smart-retail experience.</p>
-            </div>
-
-            <div class="solution-grid">
-                <article class="solution-card featured reveal">
-                    <i class="fas fa-qrcode"></i>
-                    <h3>QR-code based payments</h3>
-                    <p>Smart vending machines support seamless cashless purchases through digital payment integration.</p>
-                </article>
-
-                <article class="solution-card reveal">
-                    <i class="fas fa-box-open"></i>
-                    <h3>Different variety of products</h3>
-                    <p>Vending solutions improve access to products with a fast, simple, and easy buying experience.</p>
-                </article>
-
-                <article class="solution-card reveal">
-                    <i class="fas fa-book-open"></i>
-                    <h3>Educational materials</h3>
-                    <p>Curriculum-aligned learning materials can be distributed through vending for students and schools.</p>
-                </article>
-
-                <article class="solution-card reveal">
-                    <i class="fas fa-tools"></i>
-                    <h3>Built at NIC</h3>
-                    <p>Prototype vending machines are developed at National Innovation Center with integrated QR payment systems.</p>
-                </article>
-            </div>
-        </section>
-
-        <section id="impact" class="impact-band">
-            <div class="ambient-field" aria-hidden="true">
-                <span class="particle particle-two"></span>
-                <span class="particle particle-four"></span>
-                <span class="particle particle-five"></span>
-            </div>
-            <div class="impact-inner">
-                <div class="reveal">
-                    <p class="eyebrow">As per machine we are adding</p>
-                    <h2>Flexible vending for changing product needs</h2>
-                </div>
-                <div class="impact-points reveal">
-                    <p>Products can be adjusted as per machine location and customer need.</p>
-                    <p>Schools, offices, hospitals, and retail points can carry different items.</p>
-                    <p>Jigu Store can update the machine mix as the business grows.</p>
-                </div>
-            </div>
-        </section>
-
-        <section class="solution-provider section-p1">
-            <div class="section-heading reveal">
-                <p class="eyebrow">One-stop vending solution provider</p>
-                <h2>Integrated machines for community and retail applications</h2>
-            </div>
-            <div class="application-grid">
-                <article class="application-card reveal">
-                    <h3>Schools</h3>
-                    <p>Distribute education items and project materials where students already are.</p>
-                    <a href="#education">Learn More</a>
-                </article>
-                <article class="application-card reveal">
-                    <h3>Healthcare</h3>
-                    <p>Support convenient access to essential care products through cashless vending.</p>
-                    <a href="#contact">Learn More</a>
-                </article>
-                <article class="application-card reveal">
-                    <h3>Offices</h3>
-                    <p>Place smart retail points in workplaces for everyday essentials and quick purchases.</p>
-                    <a href="#contact">Learn More</a>
-                </article>
-                <article class="application-card reveal">
-                    <h3>Retail</h3>
-                    <p>Extend product reach with compact vending setups for high-traffic locations.</p>
-                    <a href="#contact">Learn More</a>
-                </article>
-            </div>
-        </section>
-
-        <section id="shop-categories" class="section-p1 shop-categories">
-            <div class="section-heading reveal">
-                <p class="eyebrow">Shop by category</p>
-                <h2>Choose a focused Jigu Store collection</h2>
-                <p>The homepage stays clean. Full product grids now live inside dedicated category sections.</p>
-            </div>
-
-            <div class="category-link-grid">
-                <a href="#gifts" class="category-link-card reveal">
-                    <span>Gifts</span>
-                    <strong>Anime posters and useful small products</strong>
+        <!-- FOOTER
+             A dark footer makes the page feel more premium and gives users clear final navigation. -->
+        <footer id="contact" class="site-footer">
+            <div class="footer-brand-block">
+                <a href="#home" class="footer-brand">
+                    <img src="Logo/jigu store logo.jpg" alt="Jigu Store Logo">
+                    <span>Jigu Store</span>
                 </a>
-                <a href="#education" class="category-link-card reveal">
-                    <span>Education</span>
-                    <strong>Learning models, books, and STEM materials</strong>
-                </a>
-                <a href="#electronics" class="category-link-card reveal">
-                    <span>Electronics</span>
-                    <strong>Robots, kits, and machine-ready tech</strong>
-                </a>
-                <a href="#accessories" class="category-link-card reveal">
-                    <span>Accessories</span>
-                    <strong>Watches, bags, lifestyle products</strong>
-                </a>
-                <a href="#new-arrivals" class="category-link-card reveal">
-                    <span>New Arrivals</span>
-                    <strong>Fresh products added to Jigu Store</strong>
-                </a>
+                <p>Smart vending with social impact for health, education, and modern retail access in Nepal.</p>
             </div>
-        </section>
 
-        <section class="ambient-break" aria-hidden="true">
-            <span></span>
-            <span></span>
-            <span></span>
-        </section>
+            <div class="footer-column">
+                <h3>Navigate</h3>
+                <a href="#systems">Products</a>
+                <a href="#machines">Machines</a>
+                <a href="#applications">Applications</a>
+                <a href="#support">Support</a>
+            </div>
 
-        <section id="gifts" class="category-page section-p1">
-            <div class="category-hero gifts-hero reveal">
-                <p class="eyebrow">Gifts</p>
-                <h2>Small products with a premium buying experience</h2>
-                <p>Focused gift-ready items for Jigu Store customers.</p>
+            <div class="footer-column">
+                <h3>Categories</h3>
+                <a href="#systems">Smart Vending</a>
+                <a href="#systems">Education Systems</a>
+                <a href="#systems">STEM Solutions</a>
+                <a href="#systems">Digital Payment</a>
             </div>
-            <div class="category-toolbar reveal">
-                <span>Gifts Collection</span>
-                <div><button type="button">Featured</button><button type="button">Price</button><button type="button">Newest</button></div>
-            </div>
-            <div class="pro-container category-products">
-                <article class="pro reveal"><a href="cart.html" class="product-image-link"><img src="Product1/anime poster.jpg" alt="Zenitsu Anime Poster" loading="lazy"></a><div class="des"><span>Anime Poster</span><h3>Zenitsu Anime Poster</h3><div class="product-footer"><strong>NPR 300</strong><a href="cart.html" class="cart-icon" aria-label="Add Zenitsu Anime Poster to cart"><i class="fas fa-shopping-cart"></i></a></div></div></article>
-                <article class="pro reveal"><a href="cart.html" class="product-image-link"><img src="Product1/mahabir pun book.jpg" alt="Mahabir Pun Book" loading="lazy"></a><div class="des"><span>Book</span><h3>Mahabir Pun</h3><div class="product-footer"><strong>NPR 700</strong><a href="cart.html" class="cart-icon" aria-label="Add Mahabir Pun to cart"><i class="fas fa-shopping-cart"></i></a></div></div></article>
-            </div>
-        </section>
 
-        <section id="education" class="category-page section-p1">
-            <div class="category-hero education-hero reveal">
-                <p class="eyebrow">Education</p>
-                <h2>Learning materials for schools and students</h2>
-                <p>Products designed for science projects, classrooms, and educational vending.</p>
+            <div class="footer-column">
+                <h3>Info</h3>
+                <span>storejigu@gmail.com</span>
+                <span>+977-9868053067</span>
+                <span>NIC, TU Kirtipur, Kathmandu</span>
             </div>
-            <div class="category-toolbar reveal">
-                <span>Education Collection</span>
-                <div><button type="button">Featured</button><button type="button">STEM</button><button type="button">Models</button></div>
-            </div>
-            <div class="pro-container category-products">
-                <article class="pro reveal"><a href="cart.html" class="product-image-link"><img src="Product1/Animal cell.jpg" alt="Animal Cell" loading="lazy"></a><div class="des"><span>Learning Model</span><h3>Animal Cell</h3><div class="product-footer"><strong>NPR 500</strong><a href="cart.html" class="cart-icon" aria-label="Add Animal Cell to cart"><i class="fas fa-shopping-cart"></i></a></div></div></article>
-                <article class="pro reveal"><a href="cart.html" class="product-image-link"><img src="Product1/plant sell.jpg" alt="Plant Sell" loading="lazy"></a><div class="des"><span>Learning Model</span><h3>Plant Sell</h3><div class="product-footer"><strong>NPR 600</strong><a href="cart.html" class="cart-icon" aria-label="Add Plant Sell to cart"><i class="fas fa-shopping-cart"></i></a></div></div></article>
-                <article class="pro reveal"><a href="cart.html" class="product-image-link"><img src="Product1/solar system.jpg" alt="Solar System" loading="lazy"></a><div class="des"><span>Science Model</span><h3>Solar System</h3><div class="product-footer"><strong>NPR 800</strong><a href="cart.html" class="cart-icon" aria-label="Add Solar System to cart"><i class="fas fa-shopping-cart"></i></a></div></div></article>
-                <article class="pro reveal"><a href="cart.html" class="product-image-link"><img src="Product1/periodic clock.jpg" alt="Periodic Clock" loading="lazy"></a><div class="des"><span>STEM Decor</span><h3>Periodic Clock</h3><div class="product-footer"><strong>NPR 1000</strong><a href="cart.html" class="cart-icon" aria-label="Add Periodic Clock to cart"><i class="fas fa-shopping-cart"></i></a></div></div></article>
-            </div>
-        </section>
 
-        <section id="electronics" class="category-page section-p1">
-            <div class="category-hero electronics-hero reveal">
-                <p class="eyebrow">Electronics</p>
-                <h2>Smart products for machine-first retail</h2>
-                <p>Robotics, kits, and tech products that match the Jigu Store vending direction.</p>
-            </div>
-            <div class="category-toolbar reveal">
-                <span>Electronics Collection</span>
-                <div><button type="button">Featured</button><button type="button">Robotics</button><button type="button">Kits</button></div>
-            </div>
-            <div class="pro-container category-products">
-                <article class="pro reveal"><a href="cart.html" class="product-image-link"><img src="Product1/rc car.jpg" alt="Arduino Car" loading="lazy"></a><div class="des"><span>STEM Kit</span><h3>Arduino Car</h3><div class="product-footer"><strong>NPR 400</strong><a href="cart.html" class="cart-icon" aria-label="Add Arduino Car to cart"><i class="fas fa-shopping-cart"></i></a></div></div></article>
-                <article class="pro reveal"><a href="cart.html" class="product-image-link"><img src="New Arrival Product/otto robot.jpg" alt="Otto Robot" loading="lazy"></a><div class="des"><span>Robot</span><h3>Otto Robot</h3><div class="product-footer"><strong>NPR 900</strong><a href="cart.html" class="cart-icon" aria-label="Add Otto Robot to cart"><i class="fas fa-shopping-cart"></i></a></div></div></article>
-                <article class="pro reveal"><a href="cart.html" class="product-image-link"><img src="New Arrival Product/mouse.jpg" alt="Gaming Mouse" loading="lazy"></a><div class="des"><span>Mouse</span><h3>Gaming Mouse</h3><div class="product-footer"><strong>NPR 50</strong><a href="cart.html" class="cart-icon" aria-label="Add Gaming Mouse to cart"><i class="fas fa-shopping-cart"></i></a></div></div></article>
-            </div>
-        </section>
-
-        <section id="accessories" class="category-page section-p1">
-            <div class="category-hero accessories-hero reveal">
-                <p class="eyebrow">Accessories</p>
-                <h2>Lifestyle products for Jigu Store channels</h2>
-                <p>Accessories and lifestyle items presented in a dedicated premium category.</p>
-            </div>
-            <div class="category-toolbar reveal">
-                <span>Accessories Collection</span>
-                <div><button type="button">Featured</button><button type="button">Lifestyle</button><button type="button">Price</button></div>
-            </div>
-            <div class="pro-container category-products">
-                <article class="pro reveal"><a href="cart.html" class="product-image-link"><img src="New Arrival Product/watch.jpg" alt="Carju Black Watch" loading="lazy"></a><div class="des"><span>Watch</span><h3>Carju Black Watch</h3><div class="product-footer"><strong>$265</strong><a href="cart.html" class="cart-icon" aria-label="Add Carju Black Watch to cart"><i class="fas fa-shopping-cart"></i></a></div></div></article>
-                <article class="pro reveal"><a href="cart.html" class="product-image-link"><img src="New Arrival Product/noir perfume.jpg" alt="Chanel Coco Noir" loading="lazy"></a><div class="des"><span>Perfume</span><h3>Chanel Coco Noir</h3><div class="product-footer"><strong>NPR 100</strong><a href="cart.html" class="cart-icon" aria-label="Add Chanel Coco Noir to cart"><i class="fas fa-shopping-cart"></i></a></div></div></article>
-                <article class="pro reveal"><a href="cart.html" class="product-image-link"><img src="New Arrival Product/line t shirt.jpg" alt="Strip Shirt" loading="lazy"></a><div class="des"><span>Shirt</span><h3>Strip Shirt</h3><div class="product-footer"><strong>NPR 200</strong><a href="cart.html" class="cart-icon" aria-label="Add Strip Shirt to cart"><i class="fas fa-shopping-cart"></i></a></div></div></article>
-            </div>
-        </section>
-
-        <section id="new-arrivals" class="category-page section-p1">
-            <div class="category-hero arrivals-hero reveal">
-                <p class="eyebrow">New Arrivals</p>
-                <h2>Fresh products added to Jigu Store</h2>
-                <p>A focused new-arrivals area keeps fresh products separate from the homepage.</p>
-            </div>
-            <div class="category-toolbar reveal">
-                <span>New Arrivals</span>
-                <div><button type="button">Newest</button><button type="button">Popular</button><button type="button">Vending Ready</button></div>
-            </div>
-            <div class="pro-container category-products">
-                <article class="pro reveal"><a href="cart.html" class="product-image-link"><img src="New Arrival Product/noir perfume.jpg" alt="Chanel Coco Noir" loading="lazy"></a><div class="des"><span>Perfume</span><h3>Chanel Coco Noir</h3><div class="product-footer"><strong>NPR 100</strong><a href="cart.html" class="cart-icon" aria-label="Add Chanel Coco Noir to cart"><i class="fas fa-shopping-cart"></i></a></div></div></article>
-                <article class="pro reveal"><a href="cart.html" class="product-image-link"><img src="New Arrival Product/line t shirt.jpg" alt="Strip Shirt" loading="lazy"></a><div class="des"><span>Shirt</span><h3>Strip Shirt</h3><div class="product-footer"><strong>NPR 200</strong><a href="cart.html" class="cart-icon" aria-label="Add Strip Shirt to cart"><i class="fas fa-shopping-cart"></i></a></div></div></article>
-                <article class="pro reveal"><a href="cart.html" class="product-image-link"><img src="New Arrival Product/mouse.jpg" alt="Gaming Mouse" loading="lazy"></a><div class="des"><span>Mouse</span><h3>Gaming Mouse</h3><div class="product-footer"><strong>NPR 50</strong><a href="cart.html" class="cart-icon" aria-label="Add Gaming Mouse to cart"><i class="fas fa-shopping-cart"></i></a></div></div></article>
-                <article class="pro reveal"><a href="cart.html" class="product-image-link"><img src="New Arrival Product/watch.jpg" alt="Watch" loading="lazy"></a><div class="des"><span>Watch</span><h3>Watch</h3><div class="product-footer"><strong>NPR 72</strong><a href="cart.html" class="cart-icon" aria-label="Add Watch to cart"><i class="fas fa-shopping-cart"></i></a></div></div></article>
-            </div>
-        </section>
-
-        <section class="market-section section-p1">
-            <div class="market-card reveal">
-                <p class="eyebrow">Business Model</p>
-                <h2>Revenue and scaling</h2>
-                <p>Jigu Store can grow through direct-to-customer online sales, institutional subscriptions for schools and NGOs, maintenance packages, and supply contracts.</p>
-            </div>
-            <div class="market-card dark reveal">
-                <p class="eyebrow">Target Sectors</p>
-                <h2>Education, healthcare, offices, and retail</h2>
-                <p>Schools, colleges, NGOs, hospitals, public health spaces, corporate offices, and retail locations can use Jigu Store vending machines for accessible essentials.</p>
-            </div>
-        </section>
-
-        <section id="contact" class="section-p1 newsletter">
-            <div class="newstext reveal">
-                <p class="eyebrow">Join Us</p>
-                <h2>Bring Jigu Store smart vending to your location</h2>
-                <p>WhatsApp: +977-9868053067 | storejigu@gmail.com | NIC, TU Kirtipur, Kathmandu</p>
-            </div>
-            <form class="form reveal">
-                <input type="email" name="email" placeholder="Enter your email" aria-label="Email address">
-                <button class="button button-primary" type="submit">Contact Us</button>
-            </form>
-        </section>
-    </main>
-
-    <footer class="section-p1 site-footer">
-        <div class="col">
-            <img class="footer-logo" src="Logo/jigu store logo.jpg" alt="Jigu Store Logo" loading="lazy">
-            <h4>Jigu Store</h4>
-            <p>Smart vending with social impact for health, education, and accessible retail in Nepal.</p>
-        </div>
-
-        <div class="col">
-            <h4>Contact</h4>
-            <p><strong>Address:</strong> NIC, TU Kirtipur, Kathmandu</p>
-            <p><strong>WhatsApp:</strong> +977-9868053067</p>
-            <p><strong>Email:</strong> storejigu@gmail.com</p>
-        </div>
-
-        <div class="col">
-            <h4>Quick Links</h4>
-            <a href="#smart-vending">Smart Vending</a>
-            <a href="#shop-categories">Categories</a>
-            <a href="#impact">Impact</a>
-            <a href="#contact">Contact</a>
-        </div>
-
-        <div class="col">
-            <h4>Secured Payment</h4>
-            <p>Digital payment ready vending for modern cashless access.</p>
-            <div class="payment-section">
-                <img src="Logo/e sewa.jpg" alt="eSewa" class="payment-logo" loading="lazy">
-                <img src="Logo/khalti.jpg" alt="Khalti" class="payment-logo" loading="lazy">
-            </div>
-        </div>
-
-        <div class="copyright">
-            <p>&copy; 2025 Jigu Store. All Rights Reserved.</p>
-        </div>
-    </footer>
+            <p class="copyright">&copy; 2026 Jigu Store. All Rights Reserved.</p>
+        </footer>
+    </div>
 
     <script>
+        // Get the main elements once so the code stays easy to read.
         const header = document.getElementById("header");
-        const menuToggle = document.querySelector(".mobile-menu-toggle");
-        const siteNav = document.querySelector(".site-nav");
-        const categoryToggle = document.getElementById("categoryToggle");
-        const categoryMenu = document.getElementById("categoryMenu");
+        const menuToggle = document.querySelector(".menu-toggle");
+        const nav = document.querySelector(".site-nav");
+        const slides = document.querySelectorAll(".hero-slide");
+        const dots = document.querySelectorAll(".hero-dots button");
         const revealItems = document.querySelectorAll(".reveal");
 
+        // This function adds a glass background to the header after the user scrolls.
         const setHeaderState = () => {
-            header.classList.toggle("is-scrolled", window.scrollY > 18);
+            header.classList.toggle("is-scrolled", window.scrollY > 20);
         };
 
+        // Mobile menu: this opens and closes the navigation on small screens.
         menuToggle.addEventListener("click", () => {
-            const isOpen = siteNav.classList.toggle("is-open");
+            const isOpen = nav.classList.toggle("is-open");
             menuToggle.classList.toggle("is-open", isOpen);
-            menuToggle.setAttribute("aria-expanded", isOpen);
+            menuToggle.setAttribute("aria-expanded", String(isOpen));
         });
 
-        categoryToggle.addEventListener("click", (event) => {
-            event.preventDefault();
-            categoryMenu.classList.toggle("is-open");
+        // Close the mobile menu after clicking a link, so the page feels smooth on phones.
+        nav.querySelectorAll("a").forEach((link) => {
+            link.addEventListener("click", () => {
+                nav.classList.remove("is-open");
+                menuToggle.classList.remove("is-open");
+                menuToggle.setAttribute("aria-expanded", "false");
+            });
         });
 
-        document.addEventListener("click", (event) => {
-            if (!categoryToggle.contains(event.target) && !categoryMenu.contains(event.target)) {
-                categoryMenu.classList.remove("is-open");
-            }
+        // Smooth anchor links: this keeps section jumps below the fixed header.
+        document.querySelectorAll('a[href^="#"]').forEach((link) => {
+            link.addEventListener("click", (event) => {
+                const target = document.querySelector(link.getAttribute("href"));
+                if (!target) return;
+
+                event.preventDefault();
+                target.scrollIntoView({ behavior: "smooth", block: "start" });
+                history.pushState(null, "", link.getAttribute("href"));
+            });
         });
 
+        // If someone opens a URL with #systems or #contact, jump to the right section after layout finishes.
+        window.addEventListener("load", () => {
+            if (!location.hash) return;
+            const target = document.querySelector(location.hash);
+            if (target) setTimeout(() => target.scrollIntoView({ block: "start" }), 80);
+        });
+
+        // Hero slider: change this number to make slides faster or slower.
+        let activeSlide = 0;
+        const slideDuration = 5200;
+
+        // This function shows one slide and hides the others.
+        const showSlide = (index) => {
+            activeSlide = index;
+            slides.forEach((slide, slideIndex) => {
+                slide.classList.toggle("is-active", slideIndex === index);
+            });
+            dots.forEach((dot, dotIndex) => {
+                dot.classList.toggle("is-active", dotIndex === index);
+            });
+        };
+
+        // Dots let the user choose a hero slide manually.
+        dots.forEach((dot) => {
+            dot.addEventListener("click", () => {
+                showSlide(Number(dot.dataset.slide));
+            });
+        });
+
+        // Auto-play hero slides. It stops being complicated by using only one interval.
+        setInterval(() => {
+            showSlide((activeSlide + 1) % slides.length);
+        }, slideDuration);
+
+        // Reveal animation: items fade upward when they enter the screen.
         const observer = new IntersectionObserver((entries) => {
             entries.forEach((entry) => {
                 if (entry.isIntersecting) {
@@ -444,26 +417,15 @@
                     observer.unobserve(entry.target);
                 }
             });
-        }, { threshold: 0.15 });
+        }, { threshold: 0.14 });
 
+        // Add a small delay to each reveal item so sections feel smoother.
         revealItems.forEach((item, index) => {
-            item.style.setProperty("--reveal-delay", `${Math.min(index * 45, 260)}ms`);
+            item.style.setProperty("--delay", `${Math.min(index * 45, 260)}ms`);
             observer.observe(item);
         });
 
-        const revealVisibleItems = () => {
-            revealItems.forEach((item) => {
-                const rect = item.getBoundingClientRect();
-                if (rect.top < window.innerHeight && rect.bottom > 0) {
-                    item.classList.add("is-visible");
-                }
-            });
-        };
-
-        requestAnimationFrame(revealVisibleItems);
-        window.addEventListener("hashchange", () => setTimeout(revealVisibleItems, 80));
-        setTimeout(() => revealItems.forEach((item) => item.classList.add("is-visible")), 1200);
-
+        // Run header state on scroll and once when the page first loads.
         window.addEventListener("scroll", setHeaderState, { passive: true });
         setHeaderState();
     </script>
