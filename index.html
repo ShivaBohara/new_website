@@ -3,544 +3,469 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jigu Store </title>
+    <title>Jigu Store Smart Vending</title>
 
-    <!-- Correct Font Awesome link (Choose one version) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-
-    <!-- Link to your custom styles -->
     <link rel="stylesheet" href="style.css">
-    <script>
-        console.log("Page loaded and JS is running!");
-    </script>
-    
-
 </head>
 <body>
-
-    <section id="header">
-        <div class="logo-container">
-            <img src="Logo/jigu store logo.jpg" alt="Jigu Store Logo" class="logo">
-            <span class="store-name">Jigu Store</span>
+    <header id="header" class="site-header">
+        <div class="utility-bar" aria-label="Store shortcuts">
+            <span>NPR</span>
+            <a href="#shop-categories">Categories</a>
+            <a href="#contact">Support</a>
+            <a href="#contact">Sign in</a>
+            <a href="cart.html" aria-label="View cart"><i class="fas fa-shopping-cart"></i> 0</a>
         </div>
-        <ul id="navbar">
-            <li><a class="active" href="index.html">Home</a></li>
-            <li><a href="shop.html">Shop</a></li>
-            <li class="dropdown">
-                <a href="#" id="categoryToggle">All Categories <span id="arrow">▼</span></a>
-                <ul class="dropdown-menu" id="categoryMenu">
-                    <li><a href="#">Jigu Gits</a></li>
-                    <li><a href="#">Jigu Labs</a></li>
-                    <li><a href="#">Jigu Stem</a></li>
-                     <li><a href="#">Jigu Machinery</a></li>
+
+        <div class="header-main">
+            <a href="index.html" class="brand" aria-label="Jigu Store home">
+                <img src="Logo/jigu store logo.jpg" alt="Jigu Store Logo" class="logo" loading="eager">
+                <span class="store-name">Jigu Store</span>
+            </a>
+
+            <button class="mobile-menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <nav class="site-nav" aria-label="Main navigation">
+                <ul id="navbar" class="nav-links">
+                    <li><a class="active" href="#hero">Home</a></li>
+                    <li><a href="#smart-vending">Smart Vending</a></li>
+                    <li><a href="#shop-categories">Categories</a></li>
+                    <li><a href="#impact">Impact</a></li>
+                    <li class="dropdown">
+                        <a href="#" id="categoryToggle">Categories <span id="arrow">v</span></a>
+                        <ul class="dropdown-menu" id="categoryMenu">
+                            <li><a href="#gifts">Gifts</a></li>
+                            <li><a href="#education">Education</a></li>
+                            <li><a href="#electronics">Electronics</a></li>
+                            <li><a href="#accessories">Accessories</a></li>
+                            <li><a href="#new-arrivals">New Arrivals</a></li>
+                        </ul>
+                    </li>
                 </ul>
-            </li> 
-            <form action="search.php" method="GET" class="search-bar">
-                <input type="text" name="query" placeholder="Search products..." />
-                <button type="submit">🔍</button>
+
+                <a href="#contact" class="header-cta">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="hero" class="hero hero-premium">
+            <div class="ambient-field" aria-hidden="true">
+                <span class="particle particle-one"></span>
+                <span class="particle particle-two"></span>
+                <span class="particle particle-three"></span>
+                <span class="particle particle-four"></span>
+                <span class="particle particle-five"></span>
+            </div>
+
+            <div class="hero-copy reveal">
+                <p class="eyebrow">jigustore.com.np</p>
+                <h1>Smart vending with social impact</h1>
+                <p>Jigu Store builds QR-code based vending machines and different types of machines that make products and educational materials easier to access across Nepal.</p>
+                <div class="hero-actions">
+                    <a href="#smart-vending" class="button button-primary">Explore Vending</a>
+                    <a href="#shop-categories" class="button button-secondary">Browse Categories</a>
+                </div>
+            </div>
+
+            <div class="hero-showcase reveal">
+                <div class="showcase-card">
+                    <p class="showcase-label">Smart retail system</p>
+                    <div class="vending-visual" aria-label="Smart vending machine illustration">
+                        <div class="machine-top">
+                            <span>Jigu Store</span>
+                            <small>SMART VENDING</small>
+                        </div>
+                        <div class="machine-screen">
+                            <i class="fas fa-qrcode"></i>
+                            <span>Scan & Pay</span>
+                        </div>
+                        <div class="machine-grid">
+                            <span>Care</span>
+                            <span>STEM</span>
+                            <span>Books</span>
+                            <span>Kits</span>
+                            <span>Health</span>
+                            <span>NIC</span>
+                        </div>
+                        <div class="machine-slot"></div>
+                    </div>
+                    <div class="showcase-meta">
+                        <span>QR payment</span>
+                        <span>Cashless access</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-p1 intro-strip reveal" aria-label="Jigu Store highlights">
+            <article>
+                <strong>01</strong>
+                <span>Cashless vending</span>
+            </article>
+            <article>
+                <strong>02</strong>
+                <span>Education products</span>
+            </article>
+            <article>
+                <strong>03</strong>
+                <span>Local innovation</span>
+            </article>
+        </section>
+
+        <section class="section-p1 category-showcase">
+            <article class="category-tile large reveal">
+                <img src="New Arrival Product/otto robot.jpg" alt="Smart vending and robotics" loading="lazy">
+                <div>
+                    <p class="eyebrow">Smart Systems</p>
+                    <h2>Machine-first retail experience</h2>
+                    <a href="#smart-vending">Learn More</a>
+                </div>
+            </article>
+
+            <article class="category-tile reveal">
+                <img src="Product1/solar system.jpg" alt="Educational materials" loading="lazy">
+                <div>
+                    <p class="eyebrow">Education</p>
+                    <h2>Learning materials</h2>
+                    <a href="#education">Learn More</a>
+                </div>
+            </article>
+        </section>
+
+        <section id="smart-vending" class="section-p1 vending-section">
+            <div class="section-heading reveal">
+                <p class="eyebrow">Our Solution</p>
+                <h2>Jigu Store Smart Vending</h2>
+                <p>The website now presents vending as the main story: fast access, digital payments, education, product variety, and a premium smart-retail experience.</p>
+            </div>
+
+            <div class="solution-grid">
+                <article class="solution-card featured reveal">
+                    <i class="fas fa-qrcode"></i>
+                    <h3>QR-code based payments</h3>
+                    <p>Smart vending machines support seamless cashless purchases through digital payment integration.</p>
+                </article>
+
+                <article class="solution-card reveal">
+                    <i class="fas fa-box-open"></i>
+                    <h3>Different variety of products</h3>
+                    <p>Vending solutions improve access to products with a fast, simple, and easy buying experience.</p>
+                </article>
+
+                <article class="solution-card reveal">
+                    <i class="fas fa-book-open"></i>
+                    <h3>Educational materials</h3>
+                    <p>Curriculum-aligned learning materials can be distributed through vending for students and schools.</p>
+                </article>
+
+                <article class="solution-card reveal">
+                    <i class="fas fa-tools"></i>
+                    <h3>Built at NIC</h3>
+                    <p>Prototype vending machines are developed at National Innovation Center with integrated QR payment systems.</p>
+                </article>
+            </div>
+        </section>
+
+        <section id="impact" class="impact-band">
+            <div class="ambient-field" aria-hidden="true">
+                <span class="particle particle-two"></span>
+                <span class="particle particle-four"></span>
+                <span class="particle particle-five"></span>
+            </div>
+            <div class="impact-inner">
+                <div class="reveal">
+                    <p class="eyebrow">As per machine we are adding</p>
+                    <h2>Flexible vending for changing product needs</h2>
+                </div>
+                <div class="impact-points reveal">
+                    <p>Products can be adjusted as per machine location and customer need.</p>
+                    <p>Schools, offices, hospitals, and retail points can carry different items.</p>
+                    <p>Jigu Store can update the machine mix as the business grows.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="solution-provider section-p1">
+            <div class="section-heading reveal">
+                <p class="eyebrow">One-stop vending solution provider</p>
+                <h2>Integrated machines for community and retail applications</h2>
+            </div>
+            <div class="application-grid">
+                <article class="application-card reveal">
+                    <h3>Schools</h3>
+                    <p>Distribute education items and project materials where students already are.</p>
+                    <a href="#education">Learn More</a>
+                </article>
+                <article class="application-card reveal">
+                    <h3>Healthcare</h3>
+                    <p>Support convenient access to essential care products through cashless vending.</p>
+                    <a href="#contact">Learn More</a>
+                </article>
+                <article class="application-card reveal">
+                    <h3>Offices</h3>
+                    <p>Place smart retail points in workplaces for everyday essentials and quick purchases.</p>
+                    <a href="#contact">Learn More</a>
+                </article>
+                <article class="application-card reveal">
+                    <h3>Retail</h3>
+                    <p>Extend product reach with compact vending setups for high-traffic locations.</p>
+                    <a href="#contact">Learn More</a>
+                </article>
+            </div>
+        </section>
+
+        <section id="shop-categories" class="section-p1 shop-categories">
+            <div class="section-heading reveal">
+                <p class="eyebrow">Shop by category</p>
+                <h2>Choose a focused Jigu Store collection</h2>
+                <p>The homepage stays clean. Full product grids now live inside dedicated category sections.</p>
+            </div>
+
+            <div class="category-link-grid">
+                <a href="#gifts" class="category-link-card reveal">
+                    <span>Gifts</span>
+                    <strong>Anime posters and useful small products</strong>
+                </a>
+                <a href="#education" class="category-link-card reveal">
+                    <span>Education</span>
+                    <strong>Learning models, books, and STEM materials</strong>
+                </a>
+                <a href="#electronics" class="category-link-card reveal">
+                    <span>Electronics</span>
+                    <strong>Robots, kits, and machine-ready tech</strong>
+                </a>
+                <a href="#accessories" class="category-link-card reveal">
+                    <span>Accessories</span>
+                    <strong>Watches, bags, lifestyle products</strong>
+                </a>
+                <a href="#new-arrivals" class="category-link-card reveal">
+                    <span>New Arrivals</span>
+                    <strong>Fresh products added to Jigu Store</strong>
+                </a>
+            </div>
+        </section>
+
+        <section class="ambient-break" aria-hidden="true">
+            <span></span>
+            <span></span>
+            <span></span>
+        </section>
+
+        <section id="gifts" class="category-page section-p1">
+            <div class="category-hero gifts-hero reveal">
+                <p class="eyebrow">Gifts</p>
+                <h2>Small products with a premium buying experience</h2>
+                <p>Focused gift-ready items for Jigu Store customers.</p>
+            </div>
+            <div class="category-toolbar reveal">
+                <span>Gifts Collection</span>
+                <div><button type="button">Featured</button><button type="button">Price</button><button type="button">Newest</button></div>
+            </div>
+            <div class="pro-container category-products">
+                <article class="pro reveal"><a href="cart.html" class="product-image-link"><img src="Product1/anime poster.jpg" alt="Zenitsu Anime Poster" loading="lazy"></a><div class="des"><span>Anime Poster</span><h3>Zenitsu Anime Poster</h3><div class="product-footer"><strong>NPR 300</strong><a href="cart.html" class="cart-icon" aria-label="Add Zenitsu Anime Poster to cart"><i class="fas fa-shopping-cart"></i></a></div></div></article>
+                <article class="pro reveal"><a href="cart.html" class="product-image-link"><img src="Product1/mahabir pun book.jpg" alt="Mahabir Pun Book" loading="lazy"></a><div class="des"><span>Book</span><h3>Mahabir Pun</h3><div class="product-footer"><strong>NPR 700</strong><a href="cart.html" class="cart-icon" aria-label="Add Mahabir Pun to cart"><i class="fas fa-shopping-cart"></i></a></div></div></article>
+            </div>
+        </section>
+
+        <section id="education" class="category-page section-p1">
+            <div class="category-hero education-hero reveal">
+                <p class="eyebrow">Education</p>
+                <h2>Learning materials for schools and students</h2>
+                <p>Products designed for science projects, classrooms, and educational vending.</p>
+            </div>
+            <div class="category-toolbar reveal">
+                <span>Education Collection</span>
+                <div><button type="button">Featured</button><button type="button">STEM</button><button type="button">Models</button></div>
+            </div>
+            <div class="pro-container category-products">
+                <article class="pro reveal"><a href="cart.html" class="product-image-link"><img src="Product1/Animal cell.jpg" alt="Animal Cell" loading="lazy"></a><div class="des"><span>Learning Model</span><h3>Animal Cell</h3><div class="product-footer"><strong>NPR 500</strong><a href="cart.html" class="cart-icon" aria-label="Add Animal Cell to cart"><i class="fas fa-shopping-cart"></i></a></div></div></article>
+                <article class="pro reveal"><a href="cart.html" class="product-image-link"><img src="Product1/plant sell.jpg" alt="Plant Sell" loading="lazy"></a><div class="des"><span>Learning Model</span><h3>Plant Sell</h3><div class="product-footer"><strong>NPR 600</strong><a href="cart.html" class="cart-icon" aria-label="Add Plant Sell to cart"><i class="fas fa-shopping-cart"></i></a></div></div></article>
+                <article class="pro reveal"><a href="cart.html" class="product-image-link"><img src="Product1/solar system.jpg" alt="Solar System" loading="lazy"></a><div class="des"><span>Science Model</span><h3>Solar System</h3><div class="product-footer"><strong>NPR 800</strong><a href="cart.html" class="cart-icon" aria-label="Add Solar System to cart"><i class="fas fa-shopping-cart"></i></a></div></div></article>
+                <article class="pro reveal"><a href="cart.html" class="product-image-link"><img src="Product1/periodic clock.jpg" alt="Periodic Clock" loading="lazy"></a><div class="des"><span>STEM Decor</span><h3>Periodic Clock</h3><div class="product-footer"><strong>NPR 1000</strong><a href="cart.html" class="cart-icon" aria-label="Add Periodic Clock to cart"><i class="fas fa-shopping-cart"></i></a></div></div></article>
+            </div>
+        </section>
+
+        <section id="electronics" class="category-page section-p1">
+            <div class="category-hero electronics-hero reveal">
+                <p class="eyebrow">Electronics</p>
+                <h2>Smart products for machine-first retail</h2>
+                <p>Robotics, kits, and tech products that match the Jigu Store vending direction.</p>
+            </div>
+            <div class="category-toolbar reveal">
+                <span>Electronics Collection</span>
+                <div><button type="button">Featured</button><button type="button">Robotics</button><button type="button">Kits</button></div>
+            </div>
+            <div class="pro-container category-products">
+                <article class="pro reveal"><a href="cart.html" class="product-image-link"><img src="Product1/rc car.jpg" alt="Arduino Car" loading="lazy"></a><div class="des"><span>STEM Kit</span><h3>Arduino Car</h3><div class="product-footer"><strong>NPR 400</strong><a href="cart.html" class="cart-icon" aria-label="Add Arduino Car to cart"><i class="fas fa-shopping-cart"></i></a></div></div></article>
+                <article class="pro reveal"><a href="cart.html" class="product-image-link"><img src="New Arrival Product/otto robot.jpg" alt="Otto Robot" loading="lazy"></a><div class="des"><span>Robot</span><h3>Otto Robot</h3><div class="product-footer"><strong>NPR 900</strong><a href="cart.html" class="cart-icon" aria-label="Add Otto Robot to cart"><i class="fas fa-shopping-cart"></i></a></div></div></article>
+                <article class="pro reveal"><a href="cart.html" class="product-image-link"><img src="New Arrival Product/mouse.jpg" alt="Gaming Mouse" loading="lazy"></a><div class="des"><span>Mouse</span><h3>Gaming Mouse</h3><div class="product-footer"><strong>NPR 50</strong><a href="cart.html" class="cart-icon" aria-label="Add Gaming Mouse to cart"><i class="fas fa-shopping-cart"></i></a></div></div></article>
+            </div>
+        </section>
+
+        <section id="accessories" class="category-page section-p1">
+            <div class="category-hero accessories-hero reveal">
+                <p class="eyebrow">Accessories</p>
+                <h2>Lifestyle products for Jigu Store channels</h2>
+                <p>Accessories and lifestyle items presented in a dedicated premium category.</p>
+            </div>
+            <div class="category-toolbar reveal">
+                <span>Accessories Collection</span>
+                <div><button type="button">Featured</button><button type="button">Lifestyle</button><button type="button">Price</button></div>
+            </div>
+            <div class="pro-container category-products">
+                <article class="pro reveal"><a href="cart.html" class="product-image-link"><img src="New Arrival Product/watch.jpg" alt="Carju Black Watch" loading="lazy"></a><div class="des"><span>Watch</span><h3>Carju Black Watch</h3><div class="product-footer"><strong>$265</strong><a href="cart.html" class="cart-icon" aria-label="Add Carju Black Watch to cart"><i class="fas fa-shopping-cart"></i></a></div></div></article>
+                <article class="pro reveal"><a href="cart.html" class="product-image-link"><img src="New Arrival Product/noir perfume.jpg" alt="Chanel Coco Noir" loading="lazy"></a><div class="des"><span>Perfume</span><h3>Chanel Coco Noir</h3><div class="product-footer"><strong>NPR 100</strong><a href="cart.html" class="cart-icon" aria-label="Add Chanel Coco Noir to cart"><i class="fas fa-shopping-cart"></i></a></div></div></article>
+                <article class="pro reveal"><a href="cart.html" class="product-image-link"><img src="New Arrival Product/line t shirt.jpg" alt="Strip Shirt" loading="lazy"></a><div class="des"><span>Shirt</span><h3>Strip Shirt</h3><div class="product-footer"><strong>NPR 200</strong><a href="cart.html" class="cart-icon" aria-label="Add Strip Shirt to cart"><i class="fas fa-shopping-cart"></i></a></div></div></article>
+            </div>
+        </section>
+
+        <section id="new-arrivals" class="category-page section-p1">
+            <div class="category-hero arrivals-hero reveal">
+                <p class="eyebrow">New Arrivals</p>
+                <h2>Fresh products added to Jigu Store</h2>
+                <p>A focused new-arrivals area keeps fresh products separate from the homepage.</p>
+            </div>
+            <div class="category-toolbar reveal">
+                <span>New Arrivals</span>
+                <div><button type="button">Newest</button><button type="button">Popular</button><button type="button">Vending Ready</button></div>
+            </div>
+            <div class="pro-container category-products">
+                <article class="pro reveal"><a href="cart.html" class="product-image-link"><img src="New Arrival Product/noir perfume.jpg" alt="Chanel Coco Noir" loading="lazy"></a><div class="des"><span>Perfume</span><h3>Chanel Coco Noir</h3><div class="product-footer"><strong>NPR 100</strong><a href="cart.html" class="cart-icon" aria-label="Add Chanel Coco Noir to cart"><i class="fas fa-shopping-cart"></i></a></div></div></article>
+                <article class="pro reveal"><a href="cart.html" class="product-image-link"><img src="New Arrival Product/line t shirt.jpg" alt="Strip Shirt" loading="lazy"></a><div class="des"><span>Shirt</span><h3>Strip Shirt</h3><div class="product-footer"><strong>NPR 200</strong><a href="cart.html" class="cart-icon" aria-label="Add Strip Shirt to cart"><i class="fas fa-shopping-cart"></i></a></div></div></article>
+                <article class="pro reveal"><a href="cart.html" class="product-image-link"><img src="New Arrival Product/mouse.jpg" alt="Gaming Mouse" loading="lazy"></a><div class="des"><span>Mouse</span><h3>Gaming Mouse</h3><div class="product-footer"><strong>NPR 50</strong><a href="cart.html" class="cart-icon" aria-label="Add Gaming Mouse to cart"><i class="fas fa-shopping-cart"></i></a></div></div></article>
+                <article class="pro reveal"><a href="cart.html" class="product-image-link"><img src="New Arrival Product/watch.jpg" alt="Watch" loading="lazy"></a><div class="des"><span>Watch</span><h3>Watch</h3><div class="product-footer"><strong>NPR 72</strong><a href="cart.html" class="cart-icon" aria-label="Add Watch to cart"><i class="fas fa-shopping-cart"></i></a></div></div></article>
+            </div>
+        </section>
+
+        <section class="market-section section-p1">
+            <div class="market-card reveal">
+                <p class="eyebrow">Business Model</p>
+                <h2>Revenue and scaling</h2>
+                <p>Jigu Store can grow through direct-to-customer online sales, institutional subscriptions for schools and NGOs, maintenance packages, and supply contracts.</p>
+            </div>
+            <div class="market-card dark reveal">
+                <p class="eyebrow">Target Sectors</p>
+                <h2>Education, healthcare, offices, and retail</h2>
+                <p>Schools, colleges, NGOs, hospitals, public health spaces, corporate offices, and retail locations can use Jigu Store vending machines for accessible essentials.</p>
+            </div>
+        </section>
+
+        <section id="contact" class="section-p1 newsletter">
+            <div class="newstext reveal">
+                <p class="eyebrow">Join Us</p>
+                <h2>Bring Jigu Store smart vending to your location</h2>
+                <p>WhatsApp: +977-9868053067 | storejigu@gmail.com | NIC, TU Kirtipur, Kathmandu</p>
+            </div>
+            <form class="form reveal">
+                <input type="email" name="email" placeholder="Enter your email" aria-label="Email address">
+                <button class="button button-primary" type="submit">Contact Us</button>
             </form>
+        </section>
+    </main>
 
-            <a href="cart.php">
-                <i class="fas fa-shopping-cart"></i>
-            </a>
-        </ul>
-        
-    </section>
-    
-
- 
-<section id="hero">
-    <h0>Trade-in-Offer</h0>
-    <h0>Super value deals</h0>
-    <h1>On all Products</h1>
-    <p>Save more with coupons & up to 70% off! </p>
-    <button>Shop Now</button>
-    
-</section>
-<section id="feature" class="section-p1">
-    <div class="fe-box">
-        <img src="Front Banner/feature1.jpg" alt="">
-        <h6>Holographic Data Systems</h6>
-    </div>
-
-    <div class="fe-box">
-        <img src="Front Banner/feature2.jpg" alt="">
-        <h6>AI & Robotics</h6>
-    </div>
-
-    <div class="fe-box">
-        <img src="Front Banner/feature3.jpg" alt="">
-        <h6>Futuristic Technology</h6>
-    </div>
-
-    <div class="fe-box">
-        <img src="Front Banner/feature4.jpg" alt="">
-        <h6>Smart Computing</h6>
-    </div>
-
-</section>
-
-<section id="Product1" class="section-p1">
-    <h2>Feature Products</h2>
-    <p>Exclusive Deals on Our Best-Selling Products</p>
-    <div class="pro-container">
-        <!-- Zenitsu Anime Poster -->
-        <div class="pro">
-            <img src="Product1/anime poster.jpg" alt="">
-            <div class="des">
-                <span>Anime Poster</span>
-                <h5>Zenitsu Anime Poster</h5>
-                <div class="star">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                </div>
-                <h4>$3</h4>
-            </div>
-            <a href="cart.html" class="cart-icon">
-                <i class="fas fa-shopping-cart cart"></i>
-            </a>
+    <footer class="section-p1 site-footer">
+        <div class="col">
+            <img class="footer-logo" src="Logo/jigu store logo.jpg" alt="Jigu Store Logo" loading="lazy">
+            <h4>Jigu Store</h4>
+            <p>Smart vending with social impact for health, education, and accessible retail in Nepal.</p>
         </div>
 
-        <!-- Arduino Car -->
-        <div class="pro">
-            <img src="Product1/rc car.jpg" alt="">
-            <div class="des">
-                <span>Arduino Car</span>
-                <h5>Arduino Car</h5>
-                <div class="star">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                </div>
-                <h4>$30</h4>
-            </div>
-            <a href="cart.html" class="cart-icon">
-                <i class="fas fa-shopping-cart cart"></i>
-            </a>
+        <div class="col">
+            <h4>Contact</h4>
+            <p><strong>Address:</strong> NIC, TU Kirtipur, Kathmandu</p>
+            <p><strong>WhatsApp:</strong> +977-9868053067</p>
+            <p><strong>Email:</strong> storejigu@gmail.com</p>
         </div>
 
-        <!-- Animal Cell-->
-        <div class="pro">
-            <img src="Product1/Animal cell.jpg" alt="">
-            <div class="des">
-                <span>Animal Cell</span>
-                <h5>Animal Cell</h5>
-                <div class="star">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                </div>
-                <h4>$7</h4>
-            </div>
-            <a href="cart.html" class="cart-icon">
-                <i class="fas fa-shopping-cart cart"></i>
-            </a>
+        <div class="col">
+            <h4>Quick Links</h4>
+            <a href="#smart-vending">Smart Vending</a>
+            <a href="#shop-categories">Categories</a>
+            <a href="#impact">Impact</a>
+            <a href="#contact">Contact</a>
         </div>
 
-        <!-- Plant sell -->
-        <div class="pro">
-            <img src="Product1/plant sell.jpg" alt="">
-            <div class="des">
-                <span>Plant Sell</span>
-                <h5>Plant Sell</h5>
-                <div class="star">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                </div>
-                <h4>$12</h4>
-            </div>
-            <a href="cart.html" class="cart-icon">
-                <i class="fas fa-shopping-cart cart"></i>
-            </a>
-        </div>
-
-        <!-- Mahabir Pun Book -->
-        <div class="pro">
-            <img src="Product1/mahabir pun book.jpg" alt="">
-            <div class="des">
-                <span>Book</span>
-                <h5>Mahabir Pun</h5>
-                <div class="star">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                </div>
-                <h4>$8</h4>
-            </div>
-            <a href="cart.html" class="cart-icon">
-                <i class="fas fa-shopping-cart cart"></i>
-            </a>
-        </div>
-
-        <!-- Men Striped Shirt -->
-        <div class="pro">
-            <img src="Product1/solar system.jpg" alt="">
-            <div class="des">
-                <span>Solar System</span>
-                <h5>Solar System</h5>
-                <div class="star">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                </div>
-                <h4>$5</h4>
-            </div>
-            <a href="cart.html" class="cart-icon">
-                <i class="fas fa-shopping-cart cart"></i>
-            </a>
-        </div>
-
-        <!-- Otto Robot -->
-        <div class="pro">
-            <img src="features/Otto LC.jpeg" alt="">
-            <div class="des">
-                <span>Robot</span>
-                <h5>Otto Robot</h5>
-                <div class="star">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                </div>
-                <h4>$60</h4>
-            </div>
-            <a href="cart.html" class="cart-icon">
-                <i class="fas fa-shopping-cart cart"></i>
-            </a>
-        </div>
-
-        <!-- Peridoic Clock -->
-        <div class="pro">
-            <img src="Product1/periodic clock.jpg" alt="">
-            <div class="des">
-                <span>Peridoic Clock</span>
-                <h5>Periodic Clock</h5>
-                <div class="star">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                </div>
-                <h4>$800</h4>
-            </div>
-            <a href="cart.html" class="cart-icon">
-                <i class="fas fa-shopping-cart cart"></i>
-            </a>
-        </div>
-    </div>
-</section>
-
-<section id="banner" class=".section-m1">
-    <h4>Repair Service</h4>
-    <h2>Up to <span>50% off</span>-in this .....  Offer</h2>
-    <button class="normal">Explor More</button>
-
-</section>
-
- <!--New Arrivals Section-->
-
-<section id="Product1" class="section-p1">
-    <h2>New Arrivals</h2>
-    <p>Exclusive Deals on Our Best-Selling Products</p>
-    <div class="pro-container">
-        <!-- Zenitsu Anime Poster -->
-        <div class="pro">
-            <img src="New Arrival Product/noir perfume.jpg" alt="">
-            <div class="des">
-                <span>Perfume</span>
-                <h5> Chanel Coco Noir </h5>
-                <div class="star">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                </div>
-                <h4>$102</h4>
-            </div>
-            <a href="cart.html" class="cart-icon">
-                <i class="fas fa-shopping-cart cart"></i>
-            </a>
-        </div>
-
-        <!-- Strip Tshirt -->
-        <div class="pro">
-            <img src="New Arrival Product/line t shirt.jpg" alt="">
-            <div class="des">
-                <span>Shirt</span>
-                <h5>Strip Shirt</h5>
-                <div class="star">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                </div>
-                <h4>$30</h4>
-            </div>
-            <a href="cart.html" class="cart-icon">
-                <i class="fas fa-shopping-cart cart"></i>
-            </a>
-        </div>
-
-        <!-- Gaming Mouse -->
-        <div class="pro">
-            <img src="New Arrival Product/mouse.jpg" alt="">
-            <div class="des">
-                <span>Mouse </span>
-                <h5>Gaming Mouse</h5>
-                <div class="star">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                </div>
-                <h4>$400</h4>
-            </div>
-            <a href="cart.html" class="cart-icon">
-                <i class="fas fa-shopping-cart cart"></i>
-            </a>
-        </div>
-
-        <!-- Himalayan Hemp Backpack -->
-        <div class="pro">
-            <img src="New Arrival Product/hamp bag.jpg" alt="">
-            <div class="des">
-                <span>Bag</span>
-                <h5>Bag </h5>
-                <div class="star">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                </div>
-                <h4>$2000</h4>
-            </div>
-            <a href="cart.html" class="cart-icon">
-                <i class="fas fa-shopping-cart cart"></i>
-            </a>
-        </div>
-
-        <!-- Otto diy robot -->
-        <div class="pro">
-            <img src="New Arrival Product/otto robot.jpg">
-            <div class="des">
-                <span>Robot</span>
-                <h5>Otto Diy Robot</h5>
-                <div class="star">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                </div>
-                <h4>$8</h4>
-            </div>
-            <a href="cart.html" class="cart-icon">
-                <i class="fas fa-shopping-cart cart"></i>
-            </a>
-        </div>
-
-        <!-- Men Striped Shirt -->
-        <div class="pro">
-            <img src="New Arrival Product/hamp bag.jpg" alt="">
-            <div class="des">
-                <span>Watch</span>
-                <h5>TimePieces Watch</h5>
-                <div class="star">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                </div>
-                <h4>$5</h4>
-            </div>
-            <a href="cart.html" class="cart-icon">
-                <i class="fas fa-shopping-cart cart"></i>
-            </a>
-        </div>
-
-        <!-- Watch  -->
-        <div class="pro">
-            <img src="New Arrival Product/watch.jpg" alt="">
-            <div class="des">
-                <span>Watch</span>
-                <h5>Watch</h5>
-                <div class="star">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                </div>
-                <h4>$72</h4>
-            </div>
-            <a href="cart.html" class="cart-icon">
-                <i class="fas fa-shopping-cart cart"></i>
-            </a>
-        </div>
-
-        <!-- iPhone 16 Pro -->
-        <div class="pro">
-            <img src="new arrival/Wristwatch.jpeg" alt="">
-            <div class="des">
-                <span>Watch</span>
-                <h5>Carju Black Watch</h5>
-                <div class="star">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                </div>
-                <h4>$265</h4>
-            </div>
-            <a href="cart.html" class="cart-icon">
-                <i class="fas fa-shopping-cart cart"></i>
-            </a>
-        </div>
-    </div>
-</section>
-<section id="sm-banner" class="section-p1">
-    <div class="banner-box">
-        <h4>crazy deals</h4>
-        <h2>buy 1 get 1 free on shirt</h2>
-        <span>The best classic items is on sale at Jigu Store</span>
-        <button class="white">Learn More</button>
-    </div>
-
-    <div class="banner-box banner-box2">
-        <h2>Upcoming Season</h2>
-        <span>The best classic items is on sale at Jigu Store</span>
-        <button class="white">Collection</button>
-    </div>
-</section>
-
-<section id="banner3">
-    <div class="banner-box">
-        <h2>SEASONAL SALE</h2>
-        <h3>summer collection -50% OFF</h3>
-    </div>
-
-    <div class="banner-box banner-box2">
-        <h2>Wrist Watch for men</h2>
-        <h3>Timeless Style, Precision Defined</h3>
-    </div>
-
-    <div class="banner-box banner-box3">
-        <h2>Body Perfume</h2>
-        <h3>Unleash Confidence, One Spray at a Time.</h3>
-    </div>
-
-
-</section>
-<section id="newsletter" class="section-p1 section-m1">
-    <div class="newstext">
-        <h4>Sign Up For Newsletter</h4>
-        <p>Get E-mail update about our latest shop and <span>special offers.</span> </p>
-    </div>
-    <div class="form">
-        <input type="text" name="placeholder">
-        <button  class="normal">Sign Up</button>
-    </div>
-</section>
-
-
-<footer class="section-p1">  
-    <div class="col">
-        <img class="logo" src="Logo/jigu store logo.jpg" alt="Jigu Store Logo" class="footer-logo">
-        <h4>Contact</h4>
-        <p><strong>Address:</strong> Kathmandu, National Innovation Center, Kritipur</p>
-        <p><strong>Phone:</strong> +977-9800000000</p>
-        <p><strong>Email:</strong> support@jigustore.com</p>
-        <div class="follow">
-            <h4>Follow Us</h4>
-            <div class="icon">
-                <i class="fab fa-facebook-f"></i>
-                <i class="fab fa-twitter"></i>
-                <i class="fab fa-instagram"></i>
-                <i class="fab fa-youtube"></i>
-                <i class="fab fa-threads"></i>
+        <div class="col">
+            <h4>Secured Payment</h4>
+            <p>Digital payment ready vending for modern cashless access.</p>
+            <div class="payment-section">
+                <img src="Logo/e sewa.jpg" alt="eSewa" class="payment-logo" loading="lazy">
+                <img src="Logo/khalti.jpg" alt="Khalti" class="payment-logo" loading="lazy">
             </div>
         </div>
-    </div>
 
-    <div class="col">
-        <h4>About Jigu Store</h4>
-        <p>Jigu Store provides high-quality products, including electronics, fashion, and home essentials at the best prices.</p>
-        <a href="#">Learn More</a>
-    </div>
-
-    <div class="col">
-        <h4>Quick Links</h4>
-        <a href="#">Home</a>
-        <a href="#">Shop</a>
-        <a href="#">New Arrivals</a>
-        <a href="#">Privacy Policy</a>
-        <a href="#">Terms & Conditions</a>
-    </div>
-
-    <div class="col">
-        <h4>My Account</h4>
-        <a href="#">Sign In</a>
-        <a href="#">View Cart</a>
-        <a href="#">My Wishlist</a>
-        <a href="#">Track My Order</a>
-        <a href="#">Help</a>
-
-        <div class="payment-section">
-            <p>Secured Payment Gateways</p>
-            <img src="Logo/e sewa.jpg" alt="eSewa" class="payment-logo">
-            <img src="Logo/khalti.jpg" alt="Khalti" class="payment-logo">
+        <div class="copyright">
+            <p>&copy; 2025 Jigu Store. All Rights Reserved.</p>
         </div>
-    </div>
+    </footer>
 
-    <div class="copyright">
-        <p>&copy; 2025 Jigu Store. All Rights Reserved.</p>
-    </div>
-</footer>
+    <script>
+        const header = document.getElementById("header");
+        const menuToggle = document.querySelector(".mobile-menu-toggle");
+        const siteNav = document.querySelector(".site-nav");
+        const categoryToggle = document.getElementById("categoryToggle");
+        const categoryMenu = document.getElementById("categoryMenu");
+        const revealItems = document.querySelectorAll(".reveal");
 
-<script>
-    document.getElementById("categoryToggle").addEventListener("click", function (event) {
-        event.preventDefault();
-        var menu = document.getElementById("categoryMenu");
-        menu.style.display = (menu.style.display === "block") ? "none" : "block";
-    });
+        const setHeaderState = () => {
+            header.classList.toggle("is-scrolled", window.scrollY > 18);
+        };
 
-    // Close the dropdown when clicking outside
-    document.addEventListener("click", function (event) {
-        var menu = document.getElementById("categoryMenu");
-        var toggle = document.getElementById("categoryToggle");
+        menuToggle.addEventListener("click", () => {
+            const isOpen = siteNav.classList.toggle("is-open");
+            menuToggle.classList.toggle("is-open", isOpen);
+            menuToggle.setAttribute("aria-expanded", isOpen);
+        });
 
-        if (!toggle.contains(event.target) && !menu.contains(event.target)) {
-            menu.style.display = "none";
-        }
-    });
-</script>
+        categoryToggle.addEventListener("click", (event) => {
+            event.preventDefault();
+            categoryMenu.classList.toggle("is-open");
+        });
 
+        document.addEventListener("click", (event) => {
+            if (!categoryToggle.contains(event.target) && !categoryMenu.contains(event.target)) {
+                categoryMenu.classList.remove("is-open");
+            }
+        });
 
-</body>
-</html>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("is-visible");
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.15 });
 
+        revealItems.forEach((item, index) => {
+            item.style.setProperty("--reveal-delay", `${Math.min(index * 45, 260)}ms`);
+            observer.observe(item);
+        });
 
+        const revealVisibleItems = () => {
+            revealItems.forEach((item) => {
+                const rect = item.getBoundingClientRect();
+                if (rect.top < window.innerHeight && rect.bottom > 0) {
+                    item.classList.add("is-visible");
+                }
+            });
+        };
+
+        requestAnimationFrame(revealVisibleItems);
+        window.addEventListener("hashchange", () => setTimeout(revealVisibleItems, 80));
+        setTimeout(() => revealItems.forEach((item) => item.classList.add("is-visible")), 1200);
+
+        window.addEventListener("scroll", setHeaderState, { passive: true });
+        setHeaderState();
+    </script>
 </body>
 </html>
