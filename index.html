@@ -4,430 +4,385 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jigu Store | Smart Vending and Learning Technology</title>
-
-    <!-- Fonts: one clean modern font keeps the website premium and consistent. -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-
-    <!-- Main stylesheet for the complete homepage design. -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Site shell: this wrapper helps control the full page background and overflow. -->
-    <div class="site-shell">
-        <!-- Header: inspired by premium technology ecommerce sites with a small top bar and main navigation. -->
-        <header id="header" class="site-header">
-            <!-- Small utility row: this gives the page a more professional Yangda-like header rhythm. -->
-            <div class="top-strip">
-                <span>Smart vending and learning technology from Nepal</span>
-                <div class="top-links">
-                    <a href="#support">Support</a>
-                    <a href="#events">Events</a>
-                    <a href="#contact">Contact</a>
-                </div>
-            </div>
 
-            <!-- Main navigation row. -->
-            <div class="nav-bar">
-                <a href="#home" class="brand" aria-label="Jigu Store home">
-                    <img src="Logo/jigu store logo.jpg" alt="Jigu Store Logo" class="brand-logo">
-                    <span>Jigu Store</span>
-                </a>
+<!-- ============================================================
+     HEADER
+     Layout: Dark top strip → Logo row (search | logo | icons) → Nav row
+     This is exactly like Yangda's 3-row header structure.
+     ============================================================ -->
+<header class="site-header">
 
-                <!-- Mobile button: JavaScript toggles the menu on phones. -->
-                <button class="menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false">
-                    <span></span>
-                    <span></span>
-                </button>
+ 
+    <!-- LOGO ROW: Search icon LEFT — Logo CENTER — NPR/icons RIGHT -->
+    <div class="nav-top-row">
 
-                <!-- Main nav: dropdowns are CSS-based so they are simple to understand and edit. -->
-                <nav class="site-nav" aria-label="Main navigation">
-                    <a href="#home">Home</a>
+        <!-- Left: Search icon (same position as Yangda) -->
+        <button class="icon-btn" aria-label="Search">
+            <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <circle cx="11" cy="11" r="7"/>
+                <line x1="16.5" y1="16.5" x2="22" y2="22"/>
+            </svg>
+        </button>
 
-                    <div class="nav-group">
-                        <a href="#systems">Products</a>
-                        <div class="mega-menu">
-                            <!-- Comment: add or remove category links inside this mega-menu when your product groups change. -->
-                            <a href="#systems">Smart Vending</a>
-                            <a href="#systems">STEM Solutions</a>
-                            <a href="#systems">Education Kits</a>
-                            <a href="#systems">QR Payment</a>
-                        </div>
-                    </div>
+        <!-- Center: Logo + Brand name (centered like Yangda's YANGDA logo) -->
+        <a href="#home" class="brand">
+            <!-- YOUR LOGO: put your logo file path here -->
+            <img src="Logo/jigu store logo.jpg" alt="Jigu Store Logo" class="brand-logo">
+            <span>Jigu Store</span>
+        </a>
 
-                    <div class="nav-group">
-                        <a href="#machines">Machines</a>
-                        <div class="mega-menu">
-                            <a href="#machines">Vending Concept</a>
-                            <a href="#solutions">Deployment</a>
-                            <a href="#support">Maintenance</a>
-                        </div>
-                    </div>
-
-                    <a href="#applications">Applications</a>
-                    <a href="#about">About Us</a>
-                    <a href="#contact">Contact</a>
-                </nav>
-            </div>
-        </header>
-
-        <main>
-            <!-- HERO SLIDER
-                 This section is closest to the Yangda feeling: large image, centered title, small subtitle, and Learn More button. -->
-            <section id="home" class="hero-slider" aria-label="Jigu Store featured slides">
-                <!-- Each slide uses your own project images. Change the image path in the style attribute if needed. -->
-                <article class="hero-slide is-active" style="--slide-image: url('Front Banner/feature4.jpg');">
-                    <div class="slide-overlay"></div>
-                    <div class="slide-content">
-                        <p class="eyebrow">Jigu Store Smart Retail</p>
-                        <h1>Smart Vending Ecosystem</h1>
-                        <p>Cashless access points for schools, institutions, offices, and public spaces.</p>
-                        <a href="#systems" class="text-button">Learn More</a>
-                    </div>
-                </article>
-
-                <article class="hero-slide" style="--slide-image: url('Front Banner/feature2.jpg');">
-                    <div class="slide-overlay"></div>
-                    <div class="slide-content">
-                        <p class="eyebrow">QR Pay / AI / Automation</p>
-                        <h1>Modern Retail Access</h1>
-                        <p>Technology-first distribution designed for fast, clean, and reliable product access.</p>
-                        <a href="#solutions" class="text-button">Learn More</a>
-                    </div>
-                </article>
-
-                <article class="hero-slide" style="--slide-image: url('Product1/solar system.jpg');">
-                    <div class="slide-overlay"></div>
-                    <div class="slide-content">
-                        <p class="eyebrow">STEM and Education</p>
-                        <h1>Learning Systems for Schools</h1>
-                        <p>STEM models, learning products, and smart access systems for modern education.</p>
-                        <a href="#applications" class="text-button">Learn More</a>
-                    </div>
-                </article>
-
-                <!-- Slider controls: these dots are clickable and also update automatically. -->
-                <div class="hero-dots" aria-label="Hero slide controls">
-                    <button class="is-active" type="button" aria-label="Show slide 1" data-slide="0"></button>
-                    <button type="button" aria-label="Show slide 2" data-slide="1"></button>
-                    <button type="button" aria-label="Show slide 3" data-slide="2"></button>
-                </div>
-            </section>
-
-            <!-- SYSTEMS SECTION
-                 This replaces a normal ecommerce product grid with premium category tiles. -->
-            <section id="systems" class="section systems-section">
-                <div class="section-heading reveal">
-                    <p class="eyebrow">Jigu Store Systems</p>
-                    <h2>Connected categories for vending, education, and smart retail.</h2>
-                </div>
-
-                <div class="system-grid">
-                    <!-- Card images are decorative but help the section feel like a premium technology catalog. -->
-                    <article class="system-card reveal">
-                        <img src="Front Banner/feature3.jpg" alt="Digital dashboard concept">
-                        <div>
-                            <span>01</span>
-                            <h3>Smart Vending</h3>
-                            <p>Cashless machine placement for useful product access in high-traffic locations.</p>
-                            <a href="#machines">Learn More</a>
-                        </div>
-                    </article>
-
-                    <article class="system-card reveal">
-                        <img src="Product1/solar system.jpg" alt="Solar system STEM model">
-                        <div>
-                            <span>02</span>
-                            <h3>STEM Solutions</h3>
-                            <p>Science models, robotics, and student-focused materials presented as one ecosystem.</p>
-                            <a href="#applications">Learn More</a>
-                        </div>
-                    </article>
-                </div>
-            </section>
-
-            <!-- WIDE FEATURE STRIP
-                 Yangda uses large image blocks after the hero. This section gives Jigu Store that same editorial flow. -->
-            <section class="wide-showcase reveal" aria-label="Featured technology categories">
-                <a href="#machines" class="showcase-tile">
-                    <img src="Front Banner/feature1.jpg" alt="Robotic technology hand">
-                    <span>Smart Machine Design</span>
-                </a>
-                <a href="#applications" class="showcase-tile">
-                    <img src="Product1/periodic clock.jpg" alt="Periodic clock learning product">
-                    <span>Education Technology</span>
-                </a>
-            </section>
-
-            <!-- SOLUTION BANNER
-                 This is inspired by Yangda's one-stop solution section, but the wording is original for Jigu Store. -->
-            <section id="solutions" class="solution-banner">
-                <div class="solution-bg" aria-hidden="true"></div>
-                <div class="solution-content reveal">
-                    <p class="eyebrow">Integrated Smart Retail</p>
-                    <h2>One-stop vending and education access provider.</h2>
-                    <p>Jigu Store connects machines, QR payments, learning products, support, and community placement into one clean system.</p>
-                </div>
-            </section>
-
-            <!-- APPLICATIONS SECTION
-                 Use short cards here. Yangda uses application blocks; this version is for Jigu Store use cases. -->
-            <section id="applications" class="section applications-section">
-                <div class="section-heading split-heading reveal">
-                    <div>
-                        <p class="eyebrow">Applications</p>
-                        <h2>Built for practical places where access matters.</h2>
-                    </div>
-                    <p>These blocks are not product cards. They explain where Jigu Store systems can be used.</p>
-                </div>
-
-                <div class="application-grid">
-                    <article class="application-card reveal">
-                        <span>Schools</span>
-                        <p>STEM kits, education products, stationery, and small essentials near students.</p>
-                        <a href="#support">Learn More</a>
-                    </article>
-                    <article class="application-card reveal">
-                        <span>Hospitals</span>
-                        <p>Access to hygiene, care, and convenience products in a controlled retail point.</p>
-                        <a href="#support">Learn More</a>
-                    </article>
-                    <article class="application-card reveal">
-                        <span>Offices</span>
-                        <p>Smart access for everyday products without needing a full retail counter.</p>
-                        <a href="#support">Learn More</a>
-                    </article>
-                    <article class="application-card reveal">
-                        <span>Events</span>
-                        <p>Temporary vending access for exhibitions, campuses, workshops, and public programs.</p>
-                        <a href="#events">Learn More</a>
-                    </article>
-                </div>
-            </section>
-
-            <!-- ABOUT / MACHINE SECTION
-                 This section adds the vending-machine identity strongly while keeping the design original. -->
-            <section id="machines" class="machine-story section">
-                <div class="machine-copy reveal">
-                    <p class="eyebrow">Professional System Design</p>
-                    <h2>Smart retail machines with a clean technology identity.</h2>
-                    <p>Use this section to explain your vending machine model, QR payment flow, and future machine features.</p>
-                    <a href="#contact" class="outline-button">Request Collaboration</a>
-                </div>
-
-                <!-- CSS machine drawing: easy to edit and does not need a separate image file. -->
-                <div class="machine-frame reveal" aria-label="Jigu Store vending machine illustration">
-                    <div class="machine-shell">
-                        <div class="machine-brand">Jigu Store</div>
-                        <div class="machine-display">
-                            <strong>Scan & Pay</strong>
-                            <small>QR enabled</small>
-                        </div>
-                        <div class="machine-shelves">
-                            <span>STEM</span>
-                            <span>Care</span>
-                            <span>Kits</span>
-                            <span>Books</span>
-                            <span>Gifts</span>
-                            <span>Tech</span>
-                        </div>
-                        <div class="machine-slot"></div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- SUPPORT SECTION
-                 Yangda has technical support areas. This creates a similar trust-building section for Jigu Store. -->
-            <section id="support" class="support-section">
-                <div class="section-heading reveal">
-                    <p class="eyebrow">Excellent Technical Support</p>
-                    <h2>Support for installation, learning, and daily operation.</h2>
-                </div>
-
-                <div class="support-grid">
-                    <article class="support-card reveal">
-                        <span>01</span>
-                        <h3>On-site Setup</h3>
-                        <p>Machine placement, basic training, and launch support for institutions.</p>
-                    </article>
-                    <article class="support-card reveal">
-                        <span>02</span>
-                        <h3>Online Consultation</h3>
-                        <p>Remote guidance for product planning, QR payment flow, and category setup.</p>
-                    </article>
-                    <article class="support-card reveal">
-                        <span>03</span>
-                        <h3>Documentation</h3>
-                        <p>Simple guides for operation, restocking, payment handling, and maintenance.</p>
-                    </article>
-                </div>
-            </section>
-
-            <!-- EVENTS / NEWS SECTION
-                 This gives the homepage the professional company-site depth that Yangda has. -->
-            <section id="events" class="section events-section">
-                <div class="section-heading split-heading reveal">
-                    <div>
-                        <p class="eyebrow">Events and Updates</p>
-                        <h2>Stories from the Jigu Store ecosystem.</h2>
-                    </div>
-                    <a href="#contact" class="outline-button">Contact Team</a>
-                </div>
-
-                <div class="event-list">
-                    <article class="event-card reveal">
-                        <time>2026</time>
-                        <h3>Smart vending pilot for education-focused retail access</h3>
-                        <p>Planning vending use cases for campuses, schools, and learning communities.</p>
-                    </article>
-                    <article class="event-card reveal">
-                        <time>2026</time>
-                        <h3>QR payment flow for fast product access</h3>
-                        <p>Building a simple purchase journey around familiar digital payment habits.</p>
-                    </article>
-                    <article class="event-card reveal">
-                        <time>2026</time>
-                        <h3>STEM product curation for modern education</h3>
-                        <p>Organizing learning products into clean categories that fit schools and students.</p>
-                    </article>
-                </div>
-            </section>
-        </main>
-
-        <!-- FOOTER
-             A dark footer makes the page feel more premium and gives users clear final navigation. -->
-        <footer id="contact" class="site-footer">
-            <div class="footer-brand-block">
-                <a href="#home" class="footer-brand">
-                    <img src="Logo/jigu store logo.jpg" alt="Jigu Store Logo">
-                    <span>Jigu Store</span>
-                </a>
-                <p>Smart vending with social impact for health, education, and modern retail access in Nepal.</p>
-            </div>
-
-            <div class="footer-column">
-                <h3>Navigate</h3>
-                <a href="#systems">Products</a>
-                <a href="#machines">Machines</a>
-                <a href="#applications">Applications</a>
-                <a href="#support">Support</a>
-            </div>
-
-            <div class="footer-column">
-                <h3>Categories</h3>
-                <a href="#systems">Smart Vending</a>
-                <a href="#systems">Education Systems</a>
-                <a href="#systems">STEM Solutions</a>
-                <a href="#systems">Digital Payment</a>
-            </div>
-
-            <div class="footer-column">
-                <h3>Info</h3>
-                <span>storejigu@gmail.com</span>
-                <span>+977-9868053067</span>
-                <span>NIC, TU Kirtipur, Kathmandu</span>
-            </div>
-
-            <p class="copyright">&copy; 2026 Jigu Store. All Rights Reserved.</p>
-        </footer>
+        <!-- Right: NPR + Heart + Person + Cart (same icons as Yangda's USD/cart row) -->
+        <div class="nav-icons">
+            <span class="currency-label">NPR ▾</span>
+            <button class="icon-btn" aria-label="Wishlist">
+                <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                </svg>
+            </button>
+            <button class="icon-btn" aria-label="Sign In">
+                <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                    <circle cx="12" cy="7" r="4"/>
+                </svg>
+            </button>
+            <button class="icon-btn" aria-label="Cart">
+                <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+                    <line x1="3" y1="6" x2="21" y2="6"/>
+                </svg>
+            </button>
+        </div>
     </div>
 
-    <script>
-        // Get the main elements once so the code stays easy to read.
-        const header = document.getElementById("header");
-        const menuToggle = document.querySelector(".menu-toggle");
-        const nav = document.querySelector(".site-nav");
-        const slides = document.querySelectorAll(".hero-slide");
-        const dots = document.querySelectorAll(".hero-dots button");
-        const revealItems = document.querySelectorAll(".reveal");
+    <!-- NAV ROW: All nav links centered on their own row (same as Yangda's nav row) -->
+    <nav class="site-nav">
+        <a href="#home">Home</a>
+        <a href="#products">Products</a>
+        <a href="#machines">Machines</a>
+        <a href="#applications">Applications</a>
+        <a href="#about">About Us</a>
+        <a href="#contact">Contact</a>
+    </nav>
 
-        // This function adds a glass background to the header after the user scrolls.
-        const setHeaderState = () => {
-            header.classList.toggle("is-scrolled", window.scrollY > 20);
-        };
+</header>
+<!-- END HEADER -->
 
-        // Mobile menu: this opens and closes the navigation on small screens.
-        menuToggle.addEventListener("click", () => {
-            const isOpen = nav.classList.toggle("is-open");
-            menuToggle.classList.toggle("is-open", isOpen);
-            menuToggle.setAttribute("aria-expanded", String(isOpen));
+
+<!-- ============================================================
+     SECTION 1: HERO BANNER
+     Full-width dark image with text on the LEFT side and arrows.
+     Yangda reference: The big "SKY EYE-HT75-M" banner at the top.
+     YOUR PHOTO: Put your best vending machine photo here.
+     ============================================================ -->
+<section id="home" class="hero-banner">
+
+    <!-- Left arrow button -->
+    <button class="hero-arrow hero-arrow--left" aria-label="Previous slide">&#8249;</button>
+
+    <!-- HERO IMAGE: Change the url() path to your photo -->
+    <!-- Yangda uses: a dark dramatic product photo filling the whole banner -->
+    <!-- YOUR PHOTO: Use "Front Banner/feature4.jpg" or your best banner photo -->
+    <div class="hero-inner" style="background-image: url('First_banner/Home_page_Banner.png');">
+        <div class="hero-overlay"></div>
+        <div class="hero-text">
+            <!-- Main title — Yangda uses product name in bold uppercase -->
+            <h1>Smart Vending Ecosystem</h1>
+            <!-- Subtitle — Yangda uses a short product description in uppercase -->
+            <p>Cashless access points for schools, institutions, offices, and public spaces.</p>
+            <!-- Button — Yangda uses dark filled rectangle button -->
+            <a href="#products" class="hero-btn">LEARN MORE</a>
+        </div>
+    </div>
+
+    <!-- Right arrow button -->
+    <button class="hero-arrow hero-arrow--right" aria-label="Next slide">&#8250;</button>
+
+</section>
+<!-- END HERO BANNER -->
+
+
+<!-- ============================================================
+     SECTION 2: PRODUCT CATEGORY CARDS (2 big cards side by side)
+     Yangda reference: "VTOL Drone Series" and "UAV Camera" cards.
+     These are large image cards with title in CENTER and Learn More button.
+     YOUR PHOTOS:
+       Card 1 — Put your Smart Vending photo (e.g. Front Banner/feature3.jpg)
+       Card 2 — Put your STEM/Education photo (e.g. Product1/solar system.jpg)
+     ============================================================ -->
+<section id="products" class="product-cards-section">
+    <div class="product-cards-grid">
+
+        <!-- PRODUCT CARD 1 -->
+        <!-- Yangda: "VTOL Drone Series" card with light grey background and product image -->
+        <!-- YOUR PHOTO: vending machine photo — change the src below -->
+        <article class="product-card">
+            <img src="Smart_and_Category/Easy_to_use.png" alt="Smart Vending Machine">
+            <div class="product-card-body">
+                <h3>Smart Vending</h3>
+                <a href="#machines" class="product-card-btn">Learn More</a>
+            </div>
+        </article>
+
+        <!-- PRODUCT CARD 2 -->
+        <!-- Yangda: "UAV Camera" card — same layout, different image -->
+        <!-- YOUR PHOTO: STEM or education product photo — change the src below -->
+        <article class="product-card">
+            <img src="Smart_and_Category/Diffrent_category.png" alt="Varities">
+            <div class="product-card-body">
+                <h3>Diffrent Category Machine</h3>
+                <a href="#applications" class="product-card-btn">Learn More</a>
+            </div>
+        </article>
+
+    </div>
+</section>
+<!-- END PRODUCT CARDS -->
+
+
+<!-- ============================================================
+     SECTION 3: VIDEO / FULL-WIDTH DARK BANNER
+     Yangda reference: "Professional Gimbal Manufacturer" dark section with play button.
+     This is a full-width dark image with centered title and a play/action button.
+     YOUR PHOTO: Use a wide dark dramatic photo of your machines or team.
+     Change the background-image url inside style="" below.
+     ============================================================ -->
+<section class="dark-feature-banner" style="background-image: url('Professional_Samrt_Retailer/reference_photo.png');">
+    <div class="dark-feature-overlay"></div>
+    <div class="dark-feature-content">
+        <!-- Yangda: "Professional Gimbal Manufacturer" — use your company tagline -->
+        <h2>Professional Smart Retail Provider</h2>
+        <!-- Yangda has a play button here for video — this is a scroll-down button instead -->
+        <a href="#solutions" class="play-btn" aria-label="Learn more">
+            <svg width="28" height="28" fill="white" viewBox="0 0 24 24">
+                <polygon points="5,3 19,12 5,21"/>
+            </svg>
+        </a>
+    </div>
+</section>
+<!-- END DARK FEATURE BANNER -->
+
+
+<!-- ============================================================
+     SECTION 4: ONE-STOP SOLUTION — Title + 4 Application Cards
+     Yangda reference: "ONE-STOP UAV SOLUTION PROVIDER" section with 4 cards.
+     Each card has: background image + bold title + description + Learn More button.
+     YOUR PHOTOS:
+       Card 1 (Schools)    — add your school/education photo to src
+       Card 2 (Hospitals)  — add your hospital/medical photo to src
+       Card 3 (Offices)    — add your office photo to src
+       Card 4 (Events)     — add your event/exhibition photo to src
+     If you don't have photos yet, remove the <img> tag from each card
+     and just use a dark background color.
+     ============================================================ -->
+<section id="solutions" class="solutions-section">
+
+    <!-- Section title — Yangda: "ONE-STOP UAV SOLUTION PROVIDER" in large bold uppercase -->
+    <div class="solutions-heading">
+        <h2>One-Stop Smart Retail Provider</h2>
+        <p>Integrated vending and education systems for a wide range of Varities</p>
+    </div>
+
+    <!-- 4 application cards grid — jigu has exactly 4 cards in a row -->
+    <div class="solutions-grid">
+
+        <!-- APPLICATION CARD 1 -->
+        <!-- Yangda: "Pipeline Inspection" card with background photo -->
+        <!-- YOUR PHOTO: school or campus photo — change src below -->
+        <article class="solution-card">
+            <img src="One_Stop_Smart/School_uses.jpeg" alt="Schools">
+            <!-- Dark overlay is added by CSS automatically -->
+            <div class="solution-card-body">
+                <h3>Schools</h3>
+                <p>Student Csn easily access product</p>
+                <a href="#contact" class="solution-card-btn">Learn More</a>
+            </div>
+        </article>
+
+        <!-- APPLICATION CARD 2 -->
+        <!-- Yangda: "Mine Monitoring" card -->
+        <!-- YOUR PHOTO: hospital or medical setting photo — change src below -->
+        <article class="solution-card">
+            <img src="One_Stop_Smart/our_machine.png" alt="As only for reference">
+            <div class="solution-card-body">
+                <h3>Our Machine </h3>
+                <p>We can add whatever this is only for reference for now only</p>
+                <a href="#contact" class="solution-card-btn">Learn More</a>
+            </div>
+        </article>
+
+        <!-- APPLICATION CARD 3 -->
+        <!-- Yangda: "Security & Surveillance" card -->
+        <!-- YOUR PHOTO: office building or workspace photo — change src below -->
+        <article class="solution-card">
+            <img src="One_Stop_Smart/office_uses.jpeg" alt="Offices">
+            <div class="solution-card-body">
+                <h3>Offices</h3>
+                <p>Smart access for everyday products without needing a full retail counter.</p>
+                <a href="#contact" class="solution-card-btn">Learn More</a>
+            </div>
+        </article>
+
+        <!-- APPLICATION CARD 4 -->
+        <!-- Yangda: "Transport" card -->
+        <!-- YOUR PHOTO: event or exhibition photo — change src below -->
+        <article class="solution-card">
+            <img src="One_Stop_Smart/event_type_one.png" alt="Events">
+            <div class="solution-card-body">
+                <h3>Events</h3>
+                <p>Temporary vending access for exhibitions, campuses, workshops, and public programs.</p>
+                <a href="#contact" class="solution-card-btn">Learn More</a>
+            </div>
+        </article>
+
+    </div>
+</section>
+<!-- END SOLUTIONS SECTION -->
+
+
+<!-- ============================================================
+     SECTION 5: EVENTS / NEWS
+     Yangda reference: "Event" section with 3 cards (photo + date + title).
+     Each card: photo on top, date below, bold title below that.
+     YOUR PHOTOS:
+       Event 1 — add your event/launch photo to src
+       Event 2 — add your team or product photo to src
+       Event 3 — add your campus or school visit photo to src
+     ============================================================ -->
+<section id="events" class="events-section">
+
+    <!-- Section title — Yangda: "Event" in large centered heading -->
+    <div class="events-heading">
+        <h2>Events</h2>
+    </div>
+
+    <!-- 3 event cards in a row — same layout as Yangda -->
+    <div class="events-grid">
+
+        <!-- EVENT CARD 1 -->
+        <!-- Yangda: photo + date + title layout -->
+        <!-- YOUR PHOTO: your event or launch photo — change src below -->
+        <article class="event-card">
+            <div class="event-card-img">
+                <img src="Events/winning_prize.png" alt="Smart Vending Pilot Event">
+            </div>
+            <div class="event-card-body">
+                <!-- Date — Yangda shows "25th Dec 2025" format -->
+                <time>2026</time>
+                <h3>We are making diffrent type of event you can attend and win prize</h3>
+            </div>
+        </article>
+
+        <!-- EVENT CARD 2 -->
+        <!-- YOUR PHOTO: QR payment demo or team photo — change src below -->
+        <article class="event-card">
+            <div class="event-card-img">
+                <img src="Events/QR_Payment.png" alt="QR Payment Launch">
+            </div>
+            <div class="event-card-body">
+                <time>2026</time>
+                <h3>QR payment flow launch for fast product access</h3>
+            </div>
+        </article>
+
+        <!-- EVENT CARD 3 -->
+        <!-- YOUR PHOTO: school visit or STEM product photo — change src below -->
+        <article class="event-card">
+            <div class="event-card-img">
+                <img src="Events/diffrent_machine_based_catogery.png" alt="Varities">
+            </div>
+            <div class="event-card-body">
+                <time>2026</time>
+                <h3>Diffrent Machine For Diffrent Category</h3>
+            </div>
+        </article>
+
+    </div>
+</section>
+<!-- END EVENTS SECTION -->
+
+
+<!-- ============================================================
+     FOOTER
+     Dark footer with 4 columns: brand info, navigate, categories, contact info.
+     ============================================================ -->
+<footer id="contact" class="site-footer">
+
+    <!-- Column 1: Logo + description -->
+    <div class="footer-brand-block">
+        <a href="#home" class="footer-brand">
+            <!-- YOUR LOGO: same logo as header -->
+            <img src="Logo/jigu store logo.jpg" alt="Jigu Store Logo">
+            <span>Jigu Store</span>
+        </a>
+        <p>Smart vending with social impact for health, education, and modern retail access in Nepal.</p>
+    </div>
+
+    <!-- Column 2: Navigate links -->
+    <div class="footer-column">
+        <h3>Navigate</h3>
+        <a href="#products">Products</a>
+        <a href="#machines">Machines</a>
+        <a href="#applications">Applications</a>
+        <a href="#solutions">Solutions</a>
+    </div>
+
+    <!-- Column 3: Product categories -->
+    <div class="footer-column">
+        <h3>Categories</h3>
+        <a href="#products">Smart Vending</a>
+        <a href="#products">Education Systems</a>
+        <a href="#products">STEM Solutions</a>
+        <a href="#products">Digital Payment</a>
+    </div>
+
+    <!-- Column 4: Contact info -->
+    <div class="footer-column">
+        <h3>Contact</h3>
+        <span>storejigu@gmail.com</span>
+        <span>+977-9868053067</span>
+        <span>NIC, TU Kirtipur, Kathmandu</span>
+    </div>
+
+    <!-- Copyright bar at bottom -->
+    <p class="copyright">&copy; 2026 Jigu Store. All Rights Reserved.</p>
+
+</footer>
+<!-- END FOOTER -->
+
+
+<script>
+    // REVEAL ANIMATION: items fade in as you scroll down (same feel as Yangda)
+    const revealItems = document.querySelectorAll(".reveal");
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add("is-visible");
+                observer.unobserve(entry.target);
+            }
         });
+    }, { threshold: 0.1 });
 
-        // Close the mobile menu after clicking a link, so the page feels smooth on phones.
-        nav.querySelectorAll("a").forEach((link) => {
-            link.addEventListener("click", () => {
-                nav.classList.remove("is-open");
-                menuToggle.classList.remove("is-open");
-                menuToggle.setAttribute("aria-expanded", "false");
-            });
+    revealItems.forEach((item, index) => {
+        item.style.setProperty("--delay", `${Math.min(index * 60, 300)}ms`);
+        observer.observe(item);
+    });
+
+    // SMOOTH SCROLL: clicking nav links scrolls smoothly to sections
+    document.querySelectorAll('a[href^="#"]').forEach((link) => {
+        link.addEventListener("click", (e) => {
+            const target = document.querySelector(link.getAttribute("href"));
+            if (!target) return;
+            e.preventDefault();
+            target.scrollIntoView({ behavior: "smooth", block: "start" });
         });
+    });
+</script>
 
-        // Smooth anchor links: this keeps section jumps below the fixed header.
-        document.querySelectorAll('a[href^="#"]').forEach((link) => {
-            link.addEventListener("click", (event) => {
-                const target = document.querySelector(link.getAttribute("href"));
-                if (!target) return;
-
-                event.preventDefault();
-                target.scrollIntoView({ behavior: "smooth", block: "start" });
-                history.pushState(null, "", link.getAttribute("href"));
-            });
-        });
-
-        // If someone opens a URL with #systems or #contact, jump to the right section after layout finishes.
-        window.addEventListener("load", () => {
-            if (!location.hash) return;
-            const target = document.querySelector(location.hash);
-            if (target) setTimeout(() => target.scrollIntoView({ block: "start" }), 80);
-        });
-
-        // Hero slider: change this number to make slides faster or slower.
-        let activeSlide = 0;
-        const slideDuration = 5200;
-
-        // This function shows one slide and hides the others.
-        const showSlide = (index) => {
-            activeSlide = index;
-            slides.forEach((slide, slideIndex) => {
-                slide.classList.toggle("is-active", slideIndex === index);
-            });
-            dots.forEach((dot, dotIndex) => {
-                dot.classList.toggle("is-active", dotIndex === index);
-            });
-        };
-
-        // Dots let the user choose a hero slide manually.
-        dots.forEach((dot) => {
-            dot.addEventListener("click", () => {
-                showSlide(Number(dot.dataset.slide));
-            });
-        });
-
-        // Auto-play hero slides. It stops being complicated by using only one interval.
-        setInterval(() => {
-            showSlide((activeSlide + 1) % slides.length);
-        }, slideDuration);
-
-        // Reveal animation: items fade upward when they enter the screen.
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add("is-visible");
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.14 });
-
-        // Add a small delay to each reveal item so sections feel smoother.
-        revealItems.forEach((item, index) => {
-            item.style.setProperty("--delay", `${Math.min(index * 45, 260)}ms`);
-            observer.observe(item);
-        });
-
-        // Run header state on scroll and once when the page first loads.
-        window.addEventListener("scroll", setHeaderState, { passive: true });
-        setHeaderState();
-    </script>
 </body>
 </html>

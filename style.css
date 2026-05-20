@@ -1,34 +1,28 @@
-/* =========================================================
-   JIGU STORE PREMIUM HOMEPAGE
-   Simple note:
-   This CSS is organized from top to bottom like the webpage.
-   If you want to edit something, first find the matching section name.
-   ========================================================= */
+/* ============================================================
+   JIGU STORE — YANGDA-STYLE CSS
+   Organized top to bottom matching the HTML sections.
+   Every section is labeled so you know what it controls.
+   ============================================================ */
 
+/* ============================================================
+   CSS VARIABLES — change colors/sizes here to update whole site
+   ============================================================ */
 :root {
-    /* Main colors: change these variables to update the whole website theme. */
-    --bg: #f6f2ea;
-    --bg-soft: #fbf7ef;
-    --text: #151515;
-    --muted: #6c675f;
-    --line: rgba(21, 21, 21, 0.12);
-    --white: #ffffff;
-    --black: #050505;
-    --accent: #ff5e57;
-    --accent-dark: #d94842;
-    --glass: rgba(255, 255, 255, 0.72);
-    --dark-glass: rgba(5, 5, 5, 0.5);
-
-    /* Layout variables: these keep spacing consistent on every section. */
-    --container: 1280px;
-    --page-pad: clamp(18px, 4vw, 72px);
-    --section-space: clamp(72px, 9vw, 132px);
-    --radius: 28px;
-    --shadow: 0 24px 80px rgba(0, 0, 0, 0.12);
+    --red:        #cc0000;      /* Brand red — used for logo text and hover */
+    --dark-green: #1a2e1a;      /* Top strip background — same as Yangda's dark bar */
+    --white:      #ffffff;
+    --black:      #050505;
+    --text:       #222222;      /* Main dark text color */
+    --muted:      #666666;      /* Grey text for descriptions */
+    --border:     #e0e0e0;      /* Light grey border lines */
+    --bg:         #ffffff;      /* Page background — white like Yangda */
+    --pad:        clamp(20px, 4vw, 80px);  /* Side padding that shrinks on mobile */
 }
 
-/* Reset: removes default browser spacing so layout is easier to control. */
-* {
+/* ============================================================
+   RESET — removes default browser spacing
+   ============================================================ */
+*, *::before, *::after {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
@@ -39,18 +33,18 @@ html {
 }
 
 body {
-    overflow-x: hidden;
     background: var(--bg);
     color: var(--text);
     font-family: "Inter Tight", Inter, Arial, sans-serif;
     line-height: 1.5;
-    text-rendering: geometricPrecision;
+    overflow-x: hidden;
 }
 
 img {
     display: block;
     width: 100%;
-    max-width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 a {
@@ -59,796 +53,641 @@ a {
 }
 
 button {
-    border: 0;
+    border: none;
     font: inherit;
     cursor: pointer;
 }
 
-/* This makes anchor links stop below the fixed header. */
-section[id] {
-    scroll-margin-top: 138px;
-}
 
-/* Page background: warm and clean, but not flat. */
-.site-shell {
-    min-height: 100vh;
-    background:
-        radial-gradient(circle at 50% 0%, rgba(255, 94, 87, 0.12), transparent 28rem),
-        linear-gradient(180deg, #fbf7ef 0%, #f6f2ea 44%, #fbf7ef 100%);
-}
-
-/* =========================================================
-   HEADER
-   The reference site has a serious ecommerce/tech header.
-   This version keeps that feeling but uses Jigu Store content.
-   ========================================================= */
-
-.site-header {
-    position: fixed;
-    z-index: 1000;
-    inset: 0 0 auto;
-    color: var(--white);
-    transition: background 260ms ease, color 260ms ease, box-shadow 260ms ease, backdrop-filter 260ms ease;
-}
-
-/* Header after scroll: glass effect improves readability on light sections. */
-.site-header.is-scrolled,
-.site-header:focus-within {
-    background: rgba(246, 242, 234, 0.9);
-    color: var(--text);
-    box-shadow: 0 14px 42px rgba(0, 0, 0, 0.08);
-    backdrop-filter: blur(18px);
-}
-
-.top-strip,
-.nav-bar {
-    padding-inline: var(--page-pad);
-}
-
-/* Top strip: small professional details, like a real brand website. */
+/* ============================================================
+   HEADER — TOP STRIP
+   Yangda: dark green/grey thin bar at very top of page
+   ============================================================ */
 .top-strip {
-    min-height: 34px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+    background: var(--dark-green);
+    color: var(--white);
+    text-align: center;
     font-size: 0.75rem;
-    font-weight: 600;
-    letter-spacing: 0.02em;
-    opacity: 0.92;
+    font-weight: 500;
+    padding: 7px var(--pad);
+    letter-spacing: 0.03em;
 }
 
-.site-header.is-scrolled .top-strip {
-    border-color: rgba(21, 21, 21, 0.08);
+
+/* ============================================================
+   HEADER — LOGO ROW
+   Yangda: search icon LEFT, YANGDA logo CENTER, USD+icons RIGHT
+   Uses CSS grid with 3 columns to achieve this exact layout.
+   ============================================================ */
+.site-header {
+    position: relative;       /* scrolls away with page — NOT sticky */
+    background: var(--white);
+    border-bottom: 1px solid var(--border);
+    z-index: 100;
 }
 
-.top-links {
+.nav-top-row {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;  /* left | CENTER | right */
+    align-items: center;
+    padding: 20px var(--pad);
+    border-bottom: 1px solid var(--border);
+}
+
+/* Logo: centered column — Yangda logo is about 140px tall total */
+.brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 16px;
+    font-size: 4rem;         /* Same large size as YANGDA text */
+    font-weight: 900;
+    color: var(--red);
+    justify-self: center;      /* Forces logo to stay in center column */
+    letter-spacing: -0.01em;
+}
+
+/* Logo circle image — Yangda logo image is about 60px */
+.brand-logo {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+/* Right icons: NPR label + heart + person + cart */
+.nav-icons {
     display: flex;
-    gap: 22px;
+    align-items: center;
+    gap: 20px;
+    justify-self: end;         /* Pushes icons to far right */
 }
 
-.top-links a,
+/* NPR currency label — Yangda shows "USD ▾" */
+.currency-label {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #444;
+    cursor: pointer;
+    letter-spacing: 0.02em;
+    white-space: nowrap;
+}
+
+/* Icon buttons: search, heart, person, cart */
+.icon-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #333;
+    padding: 4px;
+    display: flex;
+    align-items: center;
+    transition: color 180ms ease;
+}
+
+.icon-btn:hover {
+    color: var(--red);
+}
+
+
+/* ============================================================
+   HEADER — NAVIGATION ROW
+   Yangda: all nav links centered on their own separate row below logo
+   ============================================================ */
+.site-nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;   /* Centered like Yangda */
+    gap: clamp(28px, 4vw, 64px);
+    padding: 16px var(--pad);
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
 .site-nav a {
-    transition: color 180ms ease, opacity 180ms ease;
+    color: var(--text);
+    transition: color 180ms ease;
+    white-space: nowrap;
 }
 
-.top-links a:hover,
 .site-nav a:hover {
-    color: var(--accent);
+    color: var(--red);
 }
 
-/* Main nav: logo left, menu right, same clean technology layout. */
-.nav-bar {
-    min-height: 72px;
+
+/* ============================================================
+   SECTION 1: HERO BANNER
+   Yangda: wide dark banner, ~500px tall, text on LEFT side, arrows on edges
+   ============================================================ */
+.hero-banner {
+    position: relative;
+    width: 100%;
+    height: 520px;             /* Yangda hero is about 500-520px tall */
+    overflow: hidden;
+    background: #000;
+}
+
+/* The div that holds the background image */
+.hero-inner {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;       /* Vertically center the text block */
+}
+
+/* Dark gradient overlay — darkens left side for text readability */
+/* Yangda: left side is dark, right side shows the product clearly */
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to right,
+        rgba(0, 0, 0, 0.75) 0%,
+        rgba(0, 0, 0, 0.45) 45%,
+        rgba(0, 0, 0, 0.05) 100%
+    );
+}
+
+/* Text block: left side of hero */
+.hero-text {
+    position: relative;
+    z-index: 2;
+    padding-left: clamp(30px, 6vw, 100px);
+    padding-right: 40px;
+    max-width: 580px;
+    color: var(--white);
+}
+
+/* Main title — Yangda: "SKY EYE-HT75-M" in bold white uppercase ~2.5rem */
+.hero-text h1 {
+    font-size: clamp(1.8rem, 3vw, 2.8rem);
+    font-weight: 800;
+    line-height: 1.1;
+    text-transform: uppercase;
+    letter-spacing: 0.01em;
+    margin-bottom: 12px;
+}
+
+/* Subtitle — Yangda: "DUAL THERMAL, 5KM LASER RANGEFINDER" uppercase smaller */
+.hero-text p {
+    font-size: clamp(0.85rem, 1.2vw, 1rem);
+    color: rgba(255, 255, 255, 0.9);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 600;
+    margin-bottom: 28px;
+}
+
+/* LEARN MORE button — Yangda: dark grey filled rectangle, not rounded */
+.hero-btn {
+    display: inline-block;
+    background: rgba(50, 50, 50, 0.9);
+    color: var(--white);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    padding: 12px 30px;
+    font-size: 0.82rem;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    border-radius: 4px;        /* Slight radius like Yangda — NOT pill shaped */
+    transition: background 200ms ease, color 200ms ease;
+}
+
+.hero-btn:hover {
+    background: var(--white);
+    color: var(--black);
+}
+
+/* Arrow buttons on left and right edges — same as Yangda's < > arrows */
+.hero-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 5;
+    background: rgba(0, 0, 0, 0.25);
+    color: var(--white);
+    font-size: 3rem;
+    width: 46px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border: none;
+    transition: background 200ms ease;
+    line-height: 1;
+}
+
+.hero-arrow:hover {
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.hero-arrow--left  { left: 0; }
+.hero-arrow--right { right: 0; }
+
+
+/* ============================================================
+   SECTION 2: PRODUCT CATEGORY CARDS
+   Yangda: 2 large cards side by side — "VTOL Drone Series" + "UAV Camera"
+   Each card: light background, product image centered, title + Learn More button
+   ============================================================ */
+.product-cards-section {
+    padding: 40px var(--pad);
+    background: var(--white);
+}
+
+/* 2-column grid — same as Yangda's 2 product category cards */
+.product-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+/* Each card: light grey background with rounded corners */
+.product-card {
+    position: relative;
+    background: #f0f0f0;       /* Light grey like Yangda's card background */
+    border-radius: 12px;
+    overflow: hidden;
+    height: 440px;             /* Yangda cards are about 430-440px tall */
+    display: flex;
+    flex-direction: column;
+}
+
+/* Product image fills the card */
+.product-card img {
+    width: 100%;
+    height: 340px;             /* Image takes top portion of card */
+    object-fit: cover;
+    object-position: center;
+    transition: transform 600ms ease;
+}
+
+.product-card:hover img {
+    transform: scale(1.04);
+}
+
+/* Card bottom: title + button centered */
+.product-card-body {
+    padding: 20px 24px;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 16px;
+    background: #f0f0f0;
+}
+
+/* Card title — Yangda: "VTOL Drone Series" in medium weight */
+.product-card-body h3 {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--text);
+    letter-spacing: 0.01em;
+}
+
+/* Learn More button — Yangda: dark grey pill button */
+.product-card-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: #4a4a4a;
+    color: var(--white);
+    padding: 10px 22px;
+    font-size: 0.82rem;
+    font-weight: 700;
+    border-radius: 999px;      /* Pill shape like Yangda's Learn More */
+    letter-spacing: 0.04em;
+    white-space: nowrap;
+    transition: background 200ms ease;
+}
+
+.product-card-btn:hover {
+    background: var(--red);
+}
+
+
+/* ============================================================
+   SECTION 3: DARK FEATURE BANNER
+   Yangda: full-width dark image "Professional Gimbal Manufacturer" with play button
+   This is a wide dark dramatic photo with centered white title and play button
+   ============================================================ */
+.dark-feature-banner {
+    position: relative;
+    width: 100%;
+    height: 480px;             /* Yangda's dark feature banner height */
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+/* Dark overlay over the banner image */
+.dark-feature-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.58);
+}
+
+/* Centered text + button block */
+.dark-feature-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    color: var(--white);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     gap: 28px;
 }
 
-.brand,
+/* Title — Yangda: "Professional Gimbal Manufacturer" bold white centered */
+.dark-feature-content h2 {
+    font-size: clamp(1.6rem, 3vw, 2.8rem);
+    font-weight: 800;
+    letter-spacing: 0.01em;
+    text-align: center;
+}
+
+/* Play/action button — Yangda: white circle with play triangle icon */
+.play-btn {
+    width: 68px;
+    height: 68px;
+    border-radius: 50%;
+    border: 3px solid var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.15);
+    transition: background 220ms ease, transform 220ms ease;
+}
+
+.play-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: scale(1.08);
+}
+
+
+/* ============================================================
+   SECTION 4: ONE-STOP SOLUTIONS
+   Yangda: "ONE-STOP UAV SOLUTION PROVIDER" heading + 4 application cards
+   Cards have: full background image + overlay + title + description + Learn More
+   ============================================================ */
+.solutions-section {
+    padding: 64px var(--pad);
+    background: var(--white);
+}
+
+/* Section heading — Yangda: "ONE-STOP UAV SOLUTION PROVIDER" large bold uppercase */
+.solutions-heading {
+    text-align: center;
+    margin-bottom: 48px;
+    max-width: 860px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 48px;
+}
+
+.solutions-heading h2 {
+    font-size: clamp(1.6rem, 3.2vw, 2.6rem);
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--text);
+    margin-bottom: 10px;
+}
+
+.solutions-heading p {
+    font-size: 1rem;
+    color: var(--muted);
+}
+
+/* 4 cards in a row — same as Yangda's 4 application cards */
+.solutions-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+/* Each solution card: tall card with full background image */
+.solution-card {
+    position: relative;
+    height: 480px;             /* Yangda cards are about 480px tall */
+    border-radius: 12px;
+    overflow: hidden;
+    background: #222;
+    display: flex;
+    align-items: flex-end;
+}
+
+/* Card background image */
+.solution-card img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.75;
+    transition: transform 600ms ease, opacity 300ms ease;
+}
+
+.solution-card:hover img {
+    transform: scale(1.05);
+    opacity: 0.85;
+}
+
+/* Dark gradient at bottom so text is readable */
+.solution-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to top,
+        rgba(0, 0, 0, 0.88) 0%,
+        rgba(0, 0, 0, 0.3) 50%,
+        rgba(0, 0, 0, 0.05) 100%
+    );
+}
+
+/* Text content at bottom of card */
+.solution-card-body {
+    position: relative;
+    z-index: 2;
+    padding: 24px 20px;
+    color: var(--white);
+    width: 100%;
+    text-align: center;
+}
+
+/* Card title — Yangda: "Pipeline Inspection" bold white */
+.solution-card-body h3 {
+    font-size: 1.15rem;
+    font-weight: 800;
+    margin-bottom: 10px;
+}
+
+/* Card description text */
+.solution-card-body p {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.85);
+    line-height: 1.5;
+    margin-bottom: 16px;
+}
+
+/* Learn More button inside card — Yangda: dark grey pill button */
+.solution-card-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(60, 60, 60, 0.85);
+    color: var(--white);
+    padding: 9px 22px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    border-radius: 999px;
+    letter-spacing: 0.04em;
+    transition: background 200ms ease;
+}
+
+.solution-card-btn:hover {
+    background: var(--red);
+}
+
+
+/* ============================================================
+   SECTION 5: EVENTS
+   Yangda: "Event" section — 3 cards with photo + date + bold title
+   Photo is on TOP, date and title stack BELOW the photo
+   ============================================================ */
+.events-section {
+    padding: 64px var(--pad);
+    background: var(--white);
+    border-top: 1px solid var(--border);
+}
+
+/* Section heading — Yangda: "Event" large centered heading */
+.events-heading {
+    text-align: center;
+    margin-bottom: 48px;
+}
+
+.events-heading h2 {
+    font-size: clamp(1.8rem, 3.5vw, 3rem);
+    font-weight: 800;
+    color: var(--text);
+    letter-spacing: -0.01em;
+}
+
+/* 3 cards in a row */
+.events-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+/* Each event card */
+.event-card {
+    border-radius: 10px;
+    overflow: hidden;
+    background: var(--white);
+    transition: transform 260ms ease;
+}
+
+.event-card:hover {
+    transform: translateY(-4px);
+}
+
+/* Photo container — Yangda photo is about 230px tall */
+.event-card-img {
+    width: 100%;
+    height: 230px;
+    overflow: hidden;
+    border-radius: 8px;
+    background: #eee;
+}
+
+.event-card-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 500ms ease;
+}
+
+.event-card:hover .event-card-img img {
+    transform: scale(1.04);
+}
+
+/* Text area below photo */
+.event-card-body {
+    padding: 18px 4px;
+}
+
+/* Date — Yangda: "25th Dec 2025" in muted grey small text */
+.event-card-body time {
+    display: block;
+    font-size: 0.82rem;
+    color: var(--muted);
+    margin-bottom: 10px;
+    font-weight: 500;
+    text-align: center;
+}
+
+/* Event title — Yangda: bold dark text, centered, 2-3 lines */
+.event-card-body h3 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1.45;
+    text-align: center;
+}
+
+
+/* ============================================================
+   FOOTER
+   Dark background with 4 columns
+   ============================================================ */
+.site-footer {
+    display: grid;
+    grid-template-columns: 1.4fr repeat(3, 1fr);
+    gap: clamp(24px, 4vw, 52px);
+    background: #050505;
+    color: rgba(255, 255, 255, 0.72);
+    padding: clamp(48px, 7vw, 88px) var(--pad) 28px;
+}
+
 .footer-brand {
     display: inline-flex;
     align-items: center;
     gap: 12px;
-    font-weight: 800;
-    letter-spacing: -0.01em;
+    color: var(--white);
+    font-size: 1.4rem;
+    font-weight: 900;
+    margin-bottom: 16px;
 }
 
-.brand-logo,
 .footer-brand img {
-    width: 42px;
-    height: 42px;
+    width: 44px;
+    height: 44px;
     border-radius: 50%;
     object-fit: cover;
-    box-shadow: 0 12px 34px rgba(0, 0, 0, 0.18);
-}
-
-.site-nav {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    gap: clamp(18px, 3vw, 42px);
-    font-size: 0.88rem;
-    font-weight: 700;
-}
-
-.nav-group {
-    position: relative;
-}
-
-/* Mega menu: small dropdown like a premium ecommerce navigation. */
-.mega-menu {
-    position: absolute;
-    top: calc(100% + 22px);
-    left: 50%;
-    min-width: 220px;
-    display: grid;
-    gap: 4px;
-    border: 1px solid rgba(255, 255, 255, 0.24);
-    border-radius: 18px;
-    background: rgba(9, 9, 9, 0.78);
-    opacity: 0;
-    padding: 12px;
-    pointer-events: none;
-    transform: translate(-50%, 10px);
-    transition: opacity 200ms ease, transform 200ms ease;
-    backdrop-filter: blur(18px);
-}
-
-.site-header.is-scrolled .mega-menu {
-    border-color: var(--line);
-    background: rgba(255, 255, 255, 0.92);
-}
-
-.mega-menu a {
-    border-radius: 12px;
-    padding: 10px 12px;
-    white-space: nowrap;
-}
-
-.mega-menu a:hover {
-    background: rgba(255, 94, 87, 0.12);
-}
-
-.nav-group:hover .mega-menu {
-    opacity: 1;
-    pointer-events: auto;
-    transform: translate(-50%, 0);
-}
-
-/* Mobile hamburger button. */
-.menu-toggle {
-    position: relative;
-    width: 46px;
-    height: 46px;
-    display: none;
-    place-items: center;
-    border: 1px solid rgba(255, 255, 255, 0.24);
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.12);
-    backdrop-filter: blur(16px);
-}
-
-.site-header.is-scrolled .menu-toggle {
-    border-color: var(--line);
-    background: rgba(255, 255, 255, 0.66);
-}
-
-.menu-toggle span {
-    position: absolute;
-    width: 20px;
-    height: 2px;
-    border-radius: 999px;
-    background: currentColor;
-    transition: transform 220ms ease;
-}
-
-.menu-toggle span:first-child {
-    transform: translateY(-4px);
-}
-
-.menu-toggle span:last-child {
-    transform: translateY(4px);
-}
-
-.menu-toggle.is-open span:first-child {
-    transform: rotate(45deg);
-}
-
-.menu-toggle.is-open span:last-child {
-    transform: rotate(-45deg);
-}
-
-/* =========================================================
-   HERO SLIDER
-   Large background images, centered text, and simple controls.
-   This gives the page the Yangda-like first impression.
-   ========================================================= */
-
-.hero-slider {
-    position: relative;
-    min-height: 100svh;
-    overflow: hidden;
-    background: var(--black);
-}
-
-.hero-slide {
-    position: absolute;
-    inset: 0;
-    display: grid;
-    place-items: center;
-    opacity: 0;
-    isolation: isolate;
-    padding: 140px var(--page-pad) 88px;
-    text-align: center;
-    transition: opacity 900ms ease;
-}
-
-.hero-slide::before {
-    position: absolute;
-    inset: 0;
-    z-index: -2;
-    background-image: var(--slide-image);
-    background-position: center;
-    background-size: cover;
-    content: "";
-    transform: scale(1.05);
-    transition: transform 7200ms ease;
-}
-
-.hero-slide.is-active {
-    opacity: 1;
-}
-
-.hero-slide.is-active::before {
-    transform: scale(1);
-}
-
-/* Overlay: keeps white text readable on any image. */
-.slide-overlay {
-    position: absolute;
-    inset: 0;
-    z-index: -1;
-    background:
-        linear-gradient(180deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.22) 42%, rgba(0, 0, 0, 0.62)),
-        radial-gradient(circle at 50% 42%, rgba(255, 94, 87, 0.18), transparent 28rem);
-}
-
-.slide-content {
-    width: min(100%, 980px);
-    color: var(--white);
-}
-
-.eyebrow {
-    color: var(--accent);
-    font-size: clamp(0.68rem, 0.8vw, 0.78rem);
-    font-weight: 800;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-}
-
-.slide-content h1 {
-    margin-top: 16px;
-    font-size: clamp(3.6rem, 8vw, 8.8rem);
-    font-weight: 900;
-    line-height: 0.86;
-    letter-spacing: -0.06em;
-    text-transform: uppercase;
-    text-wrap: balance;
-}
-
-.slide-content p:not(.eyebrow) {
-    max-width: 660px;
-    margin: 24px auto 0;
-    color: rgba(255, 255, 255, 0.84);
-    font-size: clamp(1rem, 1.35vw, 1.22rem);
-    line-height: 1.55;
-}
-
-.text-button,
-.outline-button {
-    min-height: 46px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 999px;
-    margin-top: 30px;
-    padding: 0 24px;
-    font-size: 0.82rem;
-    font-weight: 800;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    transition: transform 220ms ease, background 220ms ease, color 220ms ease, border-color 220ms ease;
-}
-
-.text-button {
-    border: 1px solid rgba(255, 255, 255, 0.72);
-    color: var(--white);
-}
-
-.text-button:hover {
-    background: var(--white);
-    color: var(--text);
-    transform: translateY(-3px);
-}
-
-.hero-dots {
-    position: absolute;
-    z-index: 4;
-    right: var(--page-pad);
-    bottom: clamp(28px, 5vw, 58px);
-    display: flex;
-    gap: 10px;
-}
-
-.hero-dots button {
-    width: 34px;
-    height: 3px;
-    border-radius: 999px;
-    background: rgba(255, 255, 255, 0.42);
-    transition: width 220ms ease, background 220ms ease;
-}
-
-.hero-dots button.is-active {
-    width: 64px;
-    background: var(--accent);
-}
-
-/* =========================================================
-   SHARED SECTION STYLES
-   These reusable styles keep all sections aligned.
-   ========================================================= */
-
-.section {
-    width: min(calc(100% - (var(--page-pad) * 2)), var(--container));
-    margin-inline: auto;
-    padding-block: var(--section-space);
-}
-
-.section-heading {
-    max-width: 920px;
-    margin: 0 auto clamp(34px, 5vw, 64px);
-    text-align: center;
-}
-
-.section-heading h2,
-.solution-content h2,
-.machine-copy h2 {
-    margin-top: 12px;
-    color: var(--text);
-    font-size: clamp(2.25rem, 4.8vw, 5.2rem);
-    font-weight: 900;
-    line-height: 0.92;
-    letter-spacing: -0.055em;
-    text-wrap: balance;
-}
-
-.section-heading > p:not(.eyebrow),
-.split-heading > p,
-.solution-content > p:not(.eyebrow),
-.machine-copy > p {
-    color: var(--muted);
-    font-size: clamp(0.98rem, 1.2vw, 1.08rem);
-}
-
-.split-heading {
-    max-width: none;
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(260px, 380px);
-    gap: 36px;
-    align-items: end;
-    text-align: left;
-}
-
-/* =========================================================
-   SYSTEM CARDS
-   Big image cards feel more premium than small ecommerce product cards.
-   ========================================================= */
-
-.system-grid {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: clamp(18px, 2vw, 26px);
-}
-
-.system-card {
-    position: relative;
-    min-height: clamp(520px, 46vw, 660px);
-    display: flex;
-    align-items: flex-end;
-    overflow: hidden;
-    border-radius: var(--radius);
-    background: var(--black);
-    box-shadow: var(--shadow);
-}
-
-.system-card img {
-    position: absolute;
-    inset: 0;
-    height: 100%;
-    object-fit: cover;
-    opacity: 0.82;
-    transition: transform 700ms ease, opacity 300ms ease;
-}
-
-.system-card::after {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(180deg, rgba(0, 0, 0, 0.08), rgba(0, 0, 0, 0.82));
-    content: "";
-}
-
-.system-card:hover img {
-    opacity: 0.94;
-    transform: scale(1.06);
-}
-
-.system-card > div {
-    position: relative;
-    z-index: 2;
-    max-width: 520px;
-    padding: clamp(24px, 4vw, 48px);
-    color: var(--white);
-}
-
-.system-card span,
-.support-card span {
-    color: var(--accent);
-    font-size: 0.78rem;
-    font-weight: 900;
-    letter-spacing: 0.18em;
-}
-
-.system-card h3 {
-    margin-top: 16px;
-    font-size: clamp(2rem, 4vw, 4.2rem);
-    line-height: 0.92;
-    letter-spacing: -0.05em;
-}
-
-.system-card p {
-    margin-top: 18px;
-    color: rgba(255, 255, 255, 0.82);
-}
-
-.system-card a,
-.application-card a {
-    display: inline-flex;
-    margin-top: 22px;
-    color: var(--accent);
-    font-weight: 800;
-}
-
-/* =========================================================
-   WIDE SHOWCASE
-   Two simple image blocks, like a premium tech category preview.
-   ========================================================= */
-
-.wide-showcase {
-    width: min(calc(100% - (var(--page-pad) * 2)), var(--container));
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: clamp(18px, 2vw, 26px);
-    margin-inline: auto;
-}
-
-.showcase-tile {
-    position: relative;
-    min-height: clamp(300px, 30vw, 420px);
-    display: flex;
-    align-items: flex-end;
-    overflow: hidden;
-    border-radius: var(--radius);
-    background: var(--black);
-}
-
-.showcase-tile img {
-    position: absolute;
-    inset: 0;
-    height: 100%;
-    object-fit: cover;
-    opacity: 0.76;
-    transition: transform 650ms ease, opacity 260ms ease;
-}
-
-.showcase-tile:hover img {
-    opacity: 0.94;
-    transform: scale(1.05);
-}
-
-.showcase-tile::after {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.72));
-    content: "";
-}
-
-.showcase-tile span {
-    position: relative;
-    z-index: 2;
-    padding: 34px;
-    color: var(--white);
-    font-size: clamp(1.6rem, 3vw, 3.2rem);
-    font-weight: 850;
-    line-height: 0.96;
-    letter-spacing: -0.04em;
-}
-
-/* =========================================================
-   SOLUTION BANNER
-   Full-width cinematic strip for the "one-stop provider" message.
-   ========================================================= */
-
-.solution-banner {
-    position: relative;
-    min-height: clamp(520px, 58vw, 760px);
-    display: grid;
-    place-items: center;
-    overflow: hidden;
-    margin-top: var(--section-space);
-    padding: var(--section-space) var(--page-pad);
-    text-align: center;
-    color: var(--white);
-}
-
-.solution-bg {
-    position: absolute;
-    inset: 0;
-    background:
-        linear-gradient(180deg, rgba(0, 0, 0, 0.52), rgba(0, 0, 0, 0.72)),
-        url("Lower Banner/Lbanner1.jpg") center / cover;
-    transform: scale(1.04);
-}
-
-.solution-content {
-    position: relative;
-    z-index: 2;
-    width: min(100%, 940px);
-}
-
-.solution-content h2 {
-    color: var(--white);
-}
-
-.solution-content > p:not(.eyebrow) {
-    max-width: 690px;
-    margin: 24px auto 0;
-    color: rgba(255, 255, 255, 0.82);
-}
-
-/* =========================================================
-   APPLICATION CARDS
-   These explain use cases without becoming product cards.
-   ========================================================= */
-
-.application-grid {
-    display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: clamp(14px, 1.5vw, 20px);
-}
-
-.application-card,
-.support-card,
-.event-card {
-    min-height: 270px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    border: 1px solid var(--line);
-    border-radius: var(--radius);
-    background: rgba(255, 255, 255, 0.62);
-    padding: clamp(22px, 3vw, 34px);
-    transition: transform 260ms ease, background 260ms ease, border-color 260ms ease;
-}
-
-.application-card:hover,
-.support-card:hover,
-.event-card:hover {
-    border-color: rgba(255, 94, 87, 0.34);
-    background: rgba(255, 255, 255, 0.9);
-    transform: translateY(-6px);
-}
-
-.application-card span {
-    font-size: clamp(1.5rem, 2.2vw, 2.2rem);
-    font-weight: 850;
-    letter-spacing: -0.03em;
-}
-
-.application-card p,
-.support-card p,
-.event-card p {
-    margin-top: 18px;
-    color: var(--muted);
-}
-
-/* =========================================================
-   MACHINE STORY
-   This area explains the vending machine theme visually.
-   ========================================================= */
-
-.machine-story {
-    display: grid;
-    grid-template-columns: minmax(0, 0.95fr) minmax(320px, 1.05fr);
-    gap: clamp(36px, 7vw, 96px);
-    align-items: center;
-}
-
-.machine-copy {
-    max-width: 620px;
-}
-
-.outline-button {
-    border: 1px solid var(--line);
-    color: var(--text);
-}
-
-.outline-button:hover {
-    border-color: var(--accent);
-    background: var(--accent);
-    color: var(--white);
-    transform: translateY(-3px);
-}
-
-.machine-frame {
-    min-height: clamp(520px, 52vw, 680px);
-    display: grid;
-    place-items: center;
-    border: 1px solid var(--line);
-    border-radius: calc(var(--radius) + 12px);
-    background:
-        radial-gradient(circle at 50% 20%, rgba(255, 94, 87, 0.22), transparent 36%),
-        linear-gradient(145deg, rgba(255, 255, 255, 0.78), rgba(235, 228, 216, 0.7));
-}
-
-.machine-shell {
-    width: min(360px, 80%);
-    border: 10px solid #1a1716;
-    border-radius: 32px;
-    background: #f8f1e8;
-    padding: 22px;
-    box-shadow: 0 34px 90px rgba(0, 0, 0, 0.16);
-}
-
-.machine-brand {
-    border-radius: 18px;
-    background: #1a1716;
-    color: var(--white);
-    padding: 18px;
-    font-weight: 900;
-}
-
-.machine-display {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 18px;
-    margin: 18px 0;
-    border: 1px solid rgba(255, 94, 87, 0.28);
-    border-radius: 18px;
-    background: var(--white);
-    padding: 18px;
-}
-
-.machine-display small {
-    color: var(--accent);
-    font-weight: 800;
-}
-
-.machine-shelves {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 10px;
-}
-
-.machine-shelves span {
-    min-height: 66px;
-    display: grid;
-    place-items: center;
-    border: 1px solid var(--line);
-    border-radius: 16px;
-    background: var(--white);
-    font-weight: 800;
-}
-
-.machine-slot {
-    height: 32px;
-    margin-top: 16px;
-    border-radius: 999px;
-    background: #1a1716;
-}
-
-/* =========================================================
-   SUPPORT SECTION
-   Dark section creates contrast and a technical brand feeling.
-   ========================================================= */
-
-.support-section {
-    margin-top: var(--section-space);
-    padding: var(--section-space) var(--page-pad);
-    background: #0d0d0d;
-    color: var(--white);
-}
-
-.support-section .section-heading h2 {
-    color: var(--white);
-}
-
-.support-grid {
-    width: min(100%, var(--container));
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: clamp(14px, 1.5vw, 22px);
-    margin-inline: auto;
-}
-
-.support-card {
-    border-color: rgba(255, 255, 255, 0.12);
-    background: rgba(255, 255, 255, 0.06);
-}
-
-.support-card:hover {
-    background: rgba(255, 255, 255, 0.1);
-}
-
-.support-card h3,
-.event-card h3 {
-    margin-top: auto;
-    font-size: clamp(1.55rem, 2.4vw, 2.35rem);
-    line-height: 1;
-    letter-spacing: -0.035em;
-}
-
-.support-card p {
-    color: rgba(255, 255, 255, 0.68);
-}
-
-/* =========================================================
-   EVENTS
-   Company updates make the website feel more established.
-   ========================================================= */
-
-.event-list {
-    display: grid;
-    gap: 14px;
-}
-
-.event-card {
-    min-height: auto;
-    display: grid;
-    grid-template-columns: 120px minmax(0, 1fr) minmax(260px, 420px);
-    gap: clamp(18px, 4vw, 48px);
-    align-items: center;
-}
-
-.event-card time {
-    color: var(--accent);
-    font-weight: 900;
-    letter-spacing: 0.18em;
-}
-
-/* =========================================================
-   FOOTER
-   Simple dark footer with clear columns.
-   ========================================================= */
-
-.site-footer {
-    display: grid;
-    grid-template-columns: 1.3fr repeat(3, minmax(150px, 0.7fr));
-    gap: clamp(28px, 4vw, 54px);
-    background: #050505;
-    color: rgba(255, 255, 255, 0.72);
-    padding: clamp(58px, 8vw, 96px) var(--page-pad) 28px;
-}
-
-.footer-brand {
-    color: var(--white);
+    flex-shrink: 0;
 }
 
 .footer-brand-block p {
-    max-width: 380px;
-    margin-top: 18px;
+    max-width: 340px;
+    font-size: 0.9rem;
+    line-height: 1.6;
 }
 
 .footer-column {
@@ -859,32 +698,43 @@ section[id] {
 
 .footer-column h3 {
     color: var(--white);
-    font-size: 0.92rem;
+    font-size: 0.88rem;
+    font-weight: 800;
     letter-spacing: 0.12em;
     text-transform: uppercase;
+    margin-bottom: 4px;
+}
+
+.footer-column a,
+.footer-column span {
+    font-size: 0.88rem;
+    color: rgba(255, 255, 255, 0.65);
+    transition: color 180ms ease;
 }
 
 .footer-column a:hover {
-    color: var(--accent);
+    color: var(--red);
 }
 
 .copyright {
     grid-column: 1 / -1;
-    border-top: 1px solid rgba(255, 255, 255, 0.12);
-    margin-top: 22px;
-    padding-top: 22px;
-    color: rgba(255, 255, 255, 0.48);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    margin-top: 20px;
+    padding-top: 20px;
+    font-size: 0.82rem;
+    color: rgba(255, 255, 255, 0.4);
+    text-align: center;
 }
 
-/* =========================================================
-   ANIMATIONS
-   Simple reveal animation. Keep it subtle for a premium look.
-   ========================================================= */
 
+/* ============================================================
+   REVEAL ANIMATION — items fade up as you scroll
+   ============================================================ */
 .reveal {
     opacity: 0;
-    transform: translateY(28px);
-    transition: opacity 700ms ease var(--delay, 0ms), transform 700ms ease var(--delay, 0ms);
+    transform: translateY(24px);
+    transition: opacity 600ms ease var(--delay, 0ms),
+                transform 600ms ease var(--delay, 0ms);
 }
 
 .reveal.is-visible {
@@ -892,296 +742,95 @@ section[id] {
     transform: translateY(0);
 }
 
-/* Accessibility: users who prefer less motion get a calm page. */
-@media (prefers-reduced-motion: reduce) {
-    *,
-    *::before,
-    *::after {
-        scroll-behavior: auto !important;
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-    }
 
-    .reveal {
-        opacity: 1;
-        transform: none;
-    }
-}
-
-/* =========================================================
-   RESPONSIVE DESIGN
-   Each breakpoint changes layout intentionally, not just smaller.
-   ========================================================= */
-
-/* Ultra-wide: keep content controlled so it does not stretch too far. */
-@media (min-width: 1500px) {
-    .top-strip,
-    .nav-bar,
-    .site-footer {
-        padding-inline: max(var(--page-pad), calc((100vw - 1480px) / 2));
-    }
-}
-
-/* Tablet and small laptop: reduce columns before content feels cramped. */
+/* ============================================================
+   RESPONSIVE — TABLET (max 1100px)
+   ============================================================ */
 @media (max-width: 1100px) {
-    :root {
-        --section-space: clamp(68px, 9vw, 108px);
+    .solutions-grid {
+        grid-template-columns: repeat(2, 1fr);
     }
 
-    .site-nav {
-        gap: 18px;
-    }
-
-    .application-grid,
-    .support-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-
-    .machine-story,
     .site-footer {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-
-    .event-card {
-        grid-template-columns: 100px minmax(0, 1fr);
-    }
-
-    .event-card p {
-        grid-column: 2;
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 
-/* Mobile navigation and phone layout. */
-@media (max-width: 780px) {
-    :root {
-        --page-pad: 18px;
-        --section-space: clamp(58px, 13vw, 86px);
-        --radius: 22px;
+
+/* ============================================================
+   RESPONSIVE — MOBILE (max 768px)
+   ============================================================ */
+@media (max-width: 768px) {
+    /* Hero shorter on mobile */
+    .hero-banner {
+        height: 380px;
     }
 
-    .top-strip {
-        display: none;
-    }
-
-    .nav-bar {
-        min-height: 70px;
-    }
-
-    .brand-logo {
-        width: 38px;
-        height: 38px;
-    }
-
-    .menu-toggle {
-        display: grid;
-    }
-
-    .site-nav {
-        position: absolute;
-        top: calc(100% + 8px);
-        right: var(--page-pad);
-        left: var(--page-pad);
-        display: grid;
-        gap: 0;
-        border: 1px solid rgba(255, 255, 255, 0.18);
-        border-radius: 22px;
-        background: rgba(8, 8, 8, 0.86);
-        opacity: 0;
-        padding: 14px;
-        pointer-events: none;
-        transform: translateY(-10px);
-        transition: opacity 220ms ease, transform 220ms ease;
-        backdrop-filter: blur(18px);
-    }
-
-    .site-header.is-scrolled .site-nav {
-        border-color: var(--line);
-        background: rgba(255, 255, 255, 0.94);
-    }
-
-    .site-nav.is-open {
-        opacity: 1;
-        pointer-events: auto;
-        transform: translateY(0);
-    }
-
-    .site-nav > a,
-    .nav-group > a {
-        min-height: 44px;
-        display: flex;
-        align-items: center;
-        border-radius: 12px;
-        padding-inline: 10px;
-    }
-
-    .nav-group {
-        display: grid;
-    }
-
-    /* On mobile the dropdown links become normal stacked links. */
-    .mega-menu {
-        position: static;
-        min-width: 0;
-        border: 0;
-        background: transparent;
-        opacity: 1;
-        padding: 0 0 8px 12px;
-        pointer-events: auto;
-        transform: none;
-        backdrop-filter: none;
-    }
-
-    .mega-menu a {
-        min-height: 34px;
-        padding: 8px 10px;
-        color: currentColor;
-        opacity: 0.74;
-    }
-
-    .hero-slider {
-        min-height: 92svh;
-    }
-
-    .hero-slide {
-        padding: 108px var(--page-pad) 72px;
-    }
-
-    .slide-content h1 {
-        font-size: clamp(3rem, 15vw, 5.2rem);
-        line-height: 0.9;
-        letter-spacing: -0.045em;
-    }
-
-    .slide-content p:not(.eyebrow) {
-        font-size: 0.98rem;
-    }
-
-    .hero-dots {
-        right: 50%;
-        transform: translateX(50%);
-    }
-
-    .section-heading,
-    .split-heading {
-        display: block;
-        text-align: center;
-    }
-
-    .section-heading h2,
-    .solution-content h2,
-    .machine-copy h2 {
-        font-size: clamp(2rem, 9.2vw, 3.2rem);
-        line-height: 1;
-        letter-spacing: -0.035em;
-    }
-
-    .system-grid,
-    .wide-showcase,
-    .application-grid,
-    .support-grid,
-    .machine-story,
-    .site-footer {
+    /* Product cards stack vertically */
+    .product-cards-grid {
         grid-template-columns: 1fr;
     }
 
-    .system-card {
-        min-height: 460px;
+    /* Solutions: 2 columns on mobile */
+    .solutions-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 14px;
     }
 
-    .showcase-tile {
-        min-height: 300px;
+    .solution-card {
+        height: 360px;
     }
 
-    .solution-banner {
-        min-height: 520px;
-    }
-
-    .application-card,
-    .support-card {
-        min-height: 230px;
-    }
-
-    .machine-copy {
-        text-align: center;
+    /* Events: 1 column on mobile */
+    .events-grid {
+        grid-template-columns: 1fr;
+        max-width: 480px;
         margin-inline: auto;
     }
 
-    .machine-frame {
-        min-height: 450px;
-    }
-
-    .event-card {
+    /* Footer: single column on mobile */
+    .site-footer {
         grid-template-columns: 1fr;
-        gap: 12px;
     }
 
-    .event-card p {
-        grid-column: auto;
-    }
-
-    .application-card:hover,
-    .support-card:hover,
-    .event-card:hover,
-    .text-button:hover,
-    .outline-button:hover {
-        transform: none;
-    }
-}
-
-/* Small tablets: keep the full navigation compact and preserve two-column content. */
-@media (min-width: 781px) and (max-width: 1100px) {
+    /* Nav row: smaller gap on mobile */
     .site-nav {
-        gap: 14px;
-        font-size: 0.82rem;
+        gap: 16px;
+        font-size: 0.75rem;
+        flex-wrap: wrap;
+        padding: 12px var(--pad);
     }
 
+    /* Logo row: tighter on mobile */
     .brand {
-        font-size: 0.96rem;
-    }
-}
-
-/* Small phones: tighten typography and visuals so nothing overflows. */
-@media (max-width: 460px) {
-    .brand {
-        font-size: 0.96rem;
+        font-size: 1.6rem;
     }
 
     .brand-logo {
-        width: 34px;
-        height: 34px;
+        width: 44px;
+        height: 44px;
     }
 
-    .menu-toggle {
-        width: 42px;
-        height: 42px;
+    /* Dark feature banner shorter on mobile */
+    .dark-feature-banner {
+        height: 320px;
+    }
+}
+
+
+/* ============================================================
+   RESPONSIVE — SMALL PHONES (max 480px)
+   ============================================================ */
+@media (max-width: 480px) {
+    .solutions-grid {
+        grid-template-columns: 1fr;
     }
 
-    .slide-content h1 {
-        font-size: clamp(2.7rem, 14vw, 4rem);
+    .nav-icons {
+        gap: 12px;
     }
 
-    .text-button,
-    .outline-button {
-        width: 100%;
-    }
-
-    .system-card {
-        min-height: 420px;
-    }
-
-    .system-card > div,
-    .showcase-tile span {
-        padding: 24px;
-    }
-
-    .machine-shell {
-        width: min(285px, 86%);
-        border-width: 8px;
-        padding: 16px;
-    }
-
-    .machine-shelves span {
-        min-height: 56px;
+    .currency-label {
+        display: none;  /* Hide NPR label on very small screens */
     }
 }
