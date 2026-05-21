@@ -57,7 +57,65 @@ button {
     font: inherit;
     cursor: pointer;
 }
+/* ============================================================
+   This is for Search Bar 
+   ============================================================ */
+.search-overlay {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: white;
+    padding: 28px 60px;
+    border-bottom: 2px solid #e0e0e0;
+    z-index: 9999;
+    align-items: center;
+    gap: 20px;
+}
 
+.search-overlay.is-open {
+    display: flex;
+}
+
+/* Big search icon inside the bar */
+.search-overlay svg {
+    width: 32px;
+    height: 32px;
+    color: #aaa;
+    flex-shrink: 0;
+}
+
+/* The input field — big and full width like Yangda */
+.search-overlay input {
+    flex: 1;                        /* takes all remaining space */
+    border: none;
+    outline: none;
+    font-size: 1.3rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #333;
+    background: transparent;
+}
+
+.search-overlay input::placeholder {
+    color: #aaa;
+}
+
+/* Close X button */
+#searchClose {
+    background: none;
+    border: none;
+    font-size: 1.4rem;
+    color: #888;
+    cursor: pointer;
+    padding: 4px 8px;
+}
+
+#searchClose:hover {
+    color: #cc0000;
+}
 
 /* ============================================================
    HEADER — TOP STRIP
@@ -139,7 +197,7 @@ button {
     border: none;
     cursor: pointer;
     color: #333;
-    padding: 4px;
+    padding: 10px;
     display: flex;
     align-items: center;
     transition: color 180ms ease;
@@ -184,7 +242,7 @@ button {
 .hero-banner {
     position: relative;
     width: 100%;
-    height: 520px;             /* Yangda hero is about 500-520px tall */
+    height: 520px;             
     overflow: hidden;
     background: #000;
 }
@@ -289,6 +347,49 @@ button {
 .hero-arrow--left  { left: 0; }
 .hero-arrow--right { right: 0; }
 
+/* this is drop down pannel of product section */
+.dropdown-panel {
+    display: none;
+    position: absolute;   /* ← THIS is what makes it float over the page */
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);  
+    background: white;
+    border: 1px solid #e0e0e0;
+    min-width: 220px;
+    z-index: 999;
+}
+
+.nav-item {
+    position: relative;
+}
+
+.nav-item:hover .dropdown-panel {
+    display: block;
+}
+
+.dropdown-panel a {
+    display: block;
+    padding: 10px 16px;
+    color: #222;
+    font-size: 0.88rem;
+    font-weight: 600;
+    border-left: 3px solid transparent;
+}
+
+.dropdown-panel a:hover {
+    color: #cc0000;
+    border-left: 3px solid #cc0000;
+    background: #f9f9f9;
+}
+
+.nav-item {
+    position: relative;
+}
+
+.nav-item:hover .dropdown-panel {
+    display: block;
+}
 
 /* ============================================================
    SECTION 2: PRODUCT CATEGORY CARDS
@@ -833,4 +934,41 @@ button {
     .currency-label {
         display: none;  /* Hide NPR label on very small screens */
     }
+    /* ============================================================
+   FILTER BUTTONS
+   ============================================================ */
+.filter-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 40px;
+}
+
+.filter-btn {
+    padding: 10px 24px;
+    border: 2px solid #e0e0e0;
+    background: white;
+    color: #444;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: all 200ms ease;
+}
+
+.filter-btn:hover {
+    border-color: #cc0000;
+    color: #cc0000;
+}
+
+/* Active state — the currently selected filter */
+.filter-btn.active {
+    background: #cc0000;
+    border-color: #cc0000;
+    color: white;
+}
+
 }

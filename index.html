@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  
+
 
 <!-- ============================================================
      HEADER
@@ -18,12 +20,11 @@
      ============================================================ -->
 <header class="site-header">
 
- 
     <!-- LOGO ROW: Search icon LEFT — Logo CENTER — NPR/icons RIGHT -->
     <div class="nav-top-row">
 
         <!-- Left: Search icon (same position as Yangda) -->
-        <button class="icon-btn" aria-label="Search">
+        <button class="icon-btn" id="searchToggle" aria-label="Search">
             <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                 <circle cx="11" cy="11" r="7"/>
                 <line x1="16.5" y1="16.5" x2="22" y2="22"/>
@@ -33,7 +34,7 @@
         <!-- Center: Logo + Brand name (centered like Yangda's YANGDA logo) -->
         <a href="#home" class="brand">
             <!-- YOUR LOGO: put your logo file path here -->
-            <img src="Logo/jigu store logo.jpg" alt="Jigu Store Logo" class="brand-logo">
+            <img src="assets/images/logo/jigu store logo.jpg" alt="Jigu Store Logo" class="brand-logo">
             <span>Jigu Store</span>
         </a>
 
@@ -63,12 +64,61 @@
     <!-- NAV ROW: All nav links centered on their own row (same as Yangda's nav row) -->
     <nav class="site-nav">
         <a href="#home">Home</a>
-        <a href="#products">Products</a>
-        <a href="#machines">Machines</a>
+
+         <!-- this is the dropdown menu of the product  -->
+        <div class="nav-item has-dropdown">
+        <a href="#">Products</a>
+
+        <div class="dropdown-panel">
+            <a href="#">Item One</a>
+            <a href="#">Item two</a>
+            <a href="#">Item three</a>
+            <a href="#">Item four</a>
+            <a href="#"> referance</a>
+        </div>
+    </div>
+
+        <!-- this is the dropdown menu of the machine  -->
+      <div class="nav-item has-dropdown">
+    <a href="#">Machines</a>
+
+    <div class="dropdown-panel">
+        <a href="#">Fast Food Vending Machine</a>
+        <a href="#">Coffee Vending Machine</a>
+        <a href="#">Soft Drink Vending Machine</a>
+        <a href="#">As Reference Only</a>
+        <a href="#">Reference</a>
+    </div>
+</div>
+
+
+        <!-- this is the dropdown menu of the application -->
+           <div class="nav-item has-dropdown">
         <a href="#applications">Applications</a>
+         <div class="dropdown-panel">
+        <a href="#">Reference</a>
+        <a href="#">Reference</a>
+        <a href="#">REFERENCE</a>
+        <a href="#">As Reference Only</a>
+        <a href="#">Reference</a>
+    </div>
+</div>
+
+
         <a href="#about">About Us</a>
         <a href="#contact">Contact</a>
     </nav>
+
+ <div class="search-overlay" id="searchOverlay">
+    <!-- search icon on the left -->
+    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <circle cx="11" cy="11" r="7"/>
+        <line x1="16.5" y1="16.5" x2="22" y2="22"/>
+    </svg>
+    <input type="text" id="searchInput" placeholder="Search...">
+    <button id="searchClose">✕</button>
+</div>
+
 
 </header>
 <!-- END HEADER -->
@@ -88,7 +138,7 @@
     <!-- HERO IMAGE: Change the url() path to your photo -->
     <!-- Yangda uses: a dark dramatic product photo filling the whole banner -->
     <!-- YOUR PHOTO: Use "Front Banner/feature4.jpg" or your best banner photo -->
-    <div class="hero-inner" style="background-image: url('First_banner/Home_page_Banner.png');">
+    <div class="hero-inner" style="background-image: url('assets/images/First_page_banner/Home_page_Banner.png');">
         <div class="hero-overlay"></div>
         <div class="hero-text">
             <!-- Main title — Yangda uses product name in bold uppercase -->
@@ -122,7 +172,7 @@
         <!-- Yangda: "VTOL Drone Series" card with light grey background and product image -->
         <!-- YOUR PHOTO: vending machine photo — change the src below -->
         <article class="product-card">
-            <img src="Smart_and_Category/Easy_to_use.png" alt="Smart Vending Machine">
+            <img src="assets/images/Smart_and_Category/Easy_to_use.png" alt="Smart Vending Machine">
             <div class="product-card-body">
                 <h3>Smart Vending</h3>
                 <a href="#machines" class="product-card-btn">Learn More</a>
@@ -133,7 +183,7 @@
         <!-- Yangda: "UAV Camera" card — same layout, different image -->
         <!-- YOUR PHOTO: STEM or education product photo — change the src below -->
         <article class="product-card">
-            <img src="Smart_and_Category/Diffrent_category.png" alt="Varities">
+            <img src="assets/images/Smart_and_Category/Diffrent_category.png" alt="Varities">
             <div class="product-card-body">
                 <h3>Diffrent Category Machine</h3>
                 <a href="#applications" class="product-card-btn">Learn More</a>
@@ -152,7 +202,7 @@
      YOUR PHOTO: Use a wide dark dramatic photo of your machines or team.
      Change the background-image url inside style="" below.
      ============================================================ -->
-<section class="dark-feature-banner" style="background-image: url('Professional_Samrt_Retailer/reference_photo.png');">
+<section class="dark-feature-banner" style="background-image: url('assets/images/Professional_Samrt_Retailer/reference_photo.png');">
     <div class="dark-feature-overlay"></div>
     <div class="dark-feature-content">
         <!-- Yangda: "Professional Gimbal Manufacturer" — use your company tagline -->
@@ -195,7 +245,7 @@
         <!-- Yangda: "Pipeline Inspection" card with background photo -->
         <!-- YOUR PHOTO: school or campus photo — change src below -->
         <article class="solution-card">
-            <img src="One_Stop_Smart/School_uses.jpeg" alt="Schools">
+            <img src="assets/images/One_Stop_Smart/School_uses.jpeg" alt="Schools">
             <!-- Dark overlay is added by CSS automatically -->
             <div class="solution-card-body">
                 <h3>Schools</h3>
@@ -208,7 +258,7 @@
         <!-- Yangda: "Mine Monitoring" card -->
         <!-- YOUR PHOTO: hospital or medical setting photo — change src below -->
         <article class="solution-card">
-            <img src="One_Stop_Smart/our_machine.png" alt="As only for reference">
+            <img src="assets/images/One_Stop_Smart/our_machine.png" alt="As only for reference">
             <div class="solution-card-body">
                 <h3>Our Machine </h3>
                 <p>We can add whatever this is only for reference for now only</p>
@@ -220,7 +270,7 @@
         <!-- Yangda: "Security & Surveillance" card -->
         <!-- YOUR PHOTO: office building or workspace photo — change src below -->
         <article class="solution-card">
-            <img src="One_Stop_Smart/office_uses.jpeg" alt="Offices">
+            <img src="assets/images/One_Stop_Smart/office_uses.jpeg" alt="Offices">
             <div class="solution-card-body">
                 <h3>Offices</h3>
                 <p>Smart access for everyday products without needing a full retail counter.</p>
@@ -232,7 +282,7 @@
         <!-- Yangda: "Transport" card -->
         <!-- YOUR PHOTO: event or exhibition photo — change src below -->
         <article class="solution-card">
-            <img src="One_Stop_Smart/event_type_one.png" alt="Events">
+            <img src="assets/images/One_Stop_Smart/event_type_one.png" alt="Events">
             <div class="solution-card-body">
                 <h3>Events</h3>
                 <p>Temporary vending access for exhibitions, campuses, workshops, and public programs.</p>
@@ -269,7 +319,7 @@
         <!-- YOUR PHOTO: your event or launch photo — change src below -->
         <article class="event-card">
             <div class="event-card-img">
-                <img src="Events/winning_prize.png" alt="Smart Vending Pilot Event">
+                <img src="assets/images/Events/winning_prize.png" alt="Smart Vending Pilot Event">
             </div>
             <div class="event-card-body">
                 <!-- Date — Yangda shows "25th Dec 2025" format -->
@@ -282,7 +332,7 @@
         <!-- YOUR PHOTO: QR payment demo or team photo — change src below -->
         <article class="event-card">
             <div class="event-card-img">
-                <img src="Events/QR_Payment.png" alt="QR Payment Launch">
+                <img src="assets/images/Events/QR_Payment.png" alt="QR Payment Launch">
             </div>
             <div class="event-card-body">
                 <time>2026</time>
@@ -294,7 +344,7 @@
         <!-- YOUR PHOTO: school visit or STEM product photo — change src below -->
         <article class="event-card">
             <div class="event-card-img">
-                <img src="Events/diffrent_machine_based_catogery.png" alt="Varities">
+                <img src="assets/images/Events/diffrent_machine_based_catogery.png" alt="Varities">
             </div>
             <div class="event-card-body">
                 <time>2026</time>
@@ -317,7 +367,7 @@
     <div class="footer-brand-block">
         <a href="#home" class="footer-brand">
             <!-- YOUR LOGO: same logo as header -->
-            <img src="Logo/jigu store logo.jpg" alt="Jigu Store Logo">
+            <img src="assets/images/logo/jigu store logo.jpg" alt="Jigu Store Logo">
             <span>Jigu Store</span>
         </a>
         <p>Smart vending with social impact for health, education, and modern retail access in Nepal.</p>
@@ -355,34 +405,11 @@
 </footer>
 <!-- END FOOTER -->
 
+<script src="js/animation.js"></script>
+<script src="js/search.js"></script>
+<script src="js/nav.js"></script>
+<script src="js/main.js"></script>
 
-<script>
-    // REVEAL ANIMATION: items fade in as you scroll down (same feel as Yangda)
-    const revealItems = document.querySelectorAll(".reveal");
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add("is-visible");
-                observer.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0.1 });
-
-    revealItems.forEach((item, index) => {
-        item.style.setProperty("--delay", `${Math.min(index * 60, 300)}ms`);
-        observer.observe(item);
-    });
-
-    // SMOOTH SCROLL: clicking nav links scrolls smoothly to sections
-    document.querySelectorAll('a[href^="#"]').forEach((link) => {
-        link.addEventListener("click", (e) => {
-            const target = document.querySelector(link.getAttribute("href"));
-            if (!target) return;
-            e.preventDefault();
-            target.scrollIntoView({ behavior: "smooth", block: "start" });
-        });
-    });
-</script>
 
 </body>
 </html>
