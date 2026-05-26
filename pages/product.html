@@ -1,0 +1,263 @@
+<!-- product.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product | Jigu Store</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        .product-detail { max-width: 1100px; margin: 0 auto; padding: 60px 20px; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
+        .product-detail-img { background: #f0f0f0; border-radius: 16px; overflow: hidden; height: 460px; }
+        .product-detail-img img { width: 100%; height: 100%; object-fit: cover; }
+        .product-detail-info { position: sticky; top: 20px; }
+        .product-tag { font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: #cc0000; margin-bottom: 12px; display: block; }
+        .product-detail-info h1 { font-size: 2rem; font-weight: 900; line-height: 1.15; margin-bottom: 16px; }
+        .product-detail-price { font-size: 1.8rem; font-weight: 900; color: #222; margin-bottom: 24px; }
+        .product-detail-desc { color: #555; line-height: 1.7; margin-bottom: 32px; font-size: 0.95rem; }
+        .product-features { margin-bottom: 32px; }
+        .product-features h3 { font-size: 0.85rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 14px; color: #333; }
+        .feature-item { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; font-size: 0.9rem; color: #444; }
+        .feature-dot { width: 6px; height: 6px; background: #cc0000; border-radius: 50%; flex-shrink: 0; }
+        .btn-row { display: flex; gap: 12px; }
+        .add-cart-btn { flex: 1; background: #222; color: white; border: none; padding: 16px; font-size: 0.9rem; font-weight: 800; border-radius: 8px; cursor: pointer; text-transform: uppercase; letter-spacing: 0.06em; transition: background 200ms; }
+        .add-cart-btn:hover { background: #cc0000; }
+        .buy-now-btn { flex: 1; background: #cc0000; color: white; border: none; padding: 16px; font-size: 0.9rem; font-weight: 800; border-radius: 8px; cursor: pointer; text-transform: uppercase; letter-spacing: 0.06em; transition: background 200ms; }
+        .buy-now-btn:hover { background: #aa0000; }
+
+        /* QR MODAL */
+        .qr-modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.75); z-index: 9999; align-items: center; justify-content: center; }
+        .qr-modal.open { display: flex; }
+        .qr-box { background: white; border-radius: 16px; padding: 40px; text-align: center; max-width: 380px; width: 90%; }
+        .qr-box h2 { font-size: 1.3rem; font-weight: 900; margin-bottom: 8px; }
+        .qr-box p { color: #666; font-size: 0.9rem; margin-bottom: 24px; }
+        .qr-image { width: 200px; height: 200px; margin: 0 auto 24px; border: 2px solid #e0e0e0; border-radius: 12px; padding: 12px; }
+        .qr-image img { width: 100%; height: 100%; }
+        .qr-payment-logos { display: flex; justify-content: center; gap: 12px; margin-bottom: 20px; flex-wrap: wrap; }
+        .qr-payment-logo { background: #f5f5f5; border-radius: 6px; padding: 6px 14px; font-size: 0.8rem; font-weight: 700; color: #444; }
+        .qr-close-btn { background: #222; color: white; border: none; padding: 12px 32px; border-radius: 8px; font-weight: 700; cursor: pointer; font-size: 0.9rem; }
+
+        @media (max-width: 768px) {
+            .product-detail { grid-template-columns: 1fr; gap: 32px; }
+        }
+    </style>
+</head>
+<body>
+
+<header class="site-header">
+    <div class="nav-top-row">
+        <button class="icon-btn" aria-label="Back" onclick="history.back()">
+            <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path d="M19 12H5M12 5l-7 7 7 7"/>
+            </svg>
+        </button>
+        <a href="../index.html" class="brand">
+            <img src="../assets/images/logo/jigu store logo.jpg" alt="Jigu Store Logo" class="brand-logo">
+            <span>Jigu Store</span>
+        </a>
+        <div class="nav-icons">
+            <button class="icon-btn cart-icon-btn" onclick="window.location.href='cart.html'">
+                <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+                    <line x1="3" y1="6" x2="21" y2="6"/>
+                </svg>
+                <span class="cart-count" id="cartCount">0</span>
+            </button>
+        </div>
+    </div>
+</header>
+
+<!-- PRODUCT DETAIL -->
+<div class="product-detail" id="productDetail">
+    <!-- filled by JavaScript based on URL -->
+</div>
+
+<!-- QR PAYMENT MODAL -->
+<div class="qr-modal" id="qrModal">
+    <div class="qr-box">
+        <h2>Scan to Pay</h2>
+        <p id="qrProductName">Fast Food Vending Machine</p>
+        <div class="qr-image">
+            <!-- QR code generated by JavaScript -->
+            <img id="qrCodeImg" src="" alt="QR Code">
+        </div>
+        <div class="qr-payment-logos">
+            <span class="qr-payment-logo">eSewa</span>
+            <span class="qr-payment-logo">Khalti</span>
+            <span class="qr-payment-logo">FonePay</span>
+            <span class="qr-payment-logo">Mobile Banking</span>
+        </div>
+        <p style="font-size:0.85rem;color:#888;margin-bottom:20px;">
+            Scan with any payment app to complete your order
+        </p>
+        <button class="qr-close-btn" onclick="closeQR()">Close</button>
+    </div>
+</div>
+
+<script>
+// ── PRODUCT DATA ─────────────────────────────────
+// Later this will come from your backend API
+const products = {
+  1: {
+    id: 1,
+    name: 'Sanitary Pad Vending Machine',
+    category: 'Health',
+    price: 45000,
+    image: '../assets/images/category/Easy_to_use.png',
+    description: 'Hygienic and discreet sanitary pad dispensing for schools, colleges, hospitals, and public spaces across Nepal. Supports cashless payment.',
+    features: [
+        'Discreet dispensing design',
+        'QR and card payment support',
+        'Suitable for schools and colleges',
+        'Remote inventory monitoring',
+        '24/7 operation',
+        'Hygienic sealed compartments'
+    ]
+},
+    2: {
+        id: 2,
+        name: 'Cold Drinks Machine',
+        category: 'Drinks',
+        price: Reveal-soon,
+        image: '../assets/images/category/Diffrent_category.png',
+        description: 'Keep drinks cold and accessible around the clock. The Cold Drinks Machine is designed for high-traffic locations and supports all major digital payment methods.',
+        features: [
+            'Temperature controlled cooling',
+            'Digital payment ready',
+            'High capacity storage',
+            'Energy efficient operation',
+            'Real-time stock alerts',
+            'Anti-theft design'
+        ]
+    },
+    3: {
+        id: 3,
+        name: 'Coffee Vending Machine',
+        category: 'Coffee',
+        price: Reveal-soon,
+        image: '../assets/images/solutions/our_machine.png',
+        description: 'Freshly brewed coffee on demand. The Coffee Vending Machine brings cafe-quality beverages to offices, hospitals, and campuses without needing a barista.',
+        features: [
+            'Multiple coffee varieties',
+            'Fresh bean grinding option',
+            'Hot and cold options',
+            'Digital payment support',
+            'Auto-cleaning system',
+            'Low maintenance design'
+        ]
+    },
+    4: {
+        id: 4,
+        name: 'Fast Food Machine',
+        category: 'Fast Food',
+        price: Reveal-soon,
+        image: '../assets/images/solutions/office_uses.jpeg',
+        description: 'Hot meals available instantly. The Fast Food Machine serves freshly heated meals and snacks, ideal for canteens, hospitals, and large office buildings.',
+        features: [
+            'Heating technology built-in',
+            'Multiple meal options',
+            'Cashless payment only',
+            'Hygiene sealed compartments',
+            'Remote management dashboard',
+            'Nepal Food Safety compliant'
+        ]
+    }
+};
+
+// ── LOAD PRODUCT FROM URL ─────────────────────────
+function getProductId() {
+    const params = new URLSearchParams(window.location.search);
+    return parseInt(params.get('id')) || 1;
+}
+
+function renderProduct() {
+    const id = getProductId();
+    const product = products[id];
+    if (!product) return;
+
+    document.title = product.name + ' | Jigu Store';
+
+    document.getElementById('productDetail').innerHTML = `
+        <div class="product-detail-img">
+            <img src="${product.image}" alt="${product.name}">
+        </div>
+        <div class="product-detail-info">
+            <span class="product-tag">${product.category}</span>
+            <h1>${product.name}</h1>
+            <div class="product-detail-price">NPR ${product.price.toLocaleString()}</div>
+            <p class="product-detail-desc">${product.description}</p>
+            <div class="product-features">
+                <h3>Key Features</h3>
+                ${product.features.map(f => `
+                    <div class="feature-item">
+                        <div class="feature-dot"></div>
+                        <span>${f}</span>
+                    </div>
+                `).join('')}
+            </div>
+            <div class="btn-row">
+                <button class="add-cart-btn" onclick="addToCart(${product.id}, '${product.name}', ${product.price})">
+                    Add to Cart
+                </button>
+                <button class="buy-now-btn" onclick="showQR(${product.id}, '${product.name}', ${product.price})">
+                    Buy Now — QR Pay
+                </button>
+            </div>
+        </div>
+    `;
+}
+
+// ── CART FUNCTIONS ───────────────────────────────
+let cart = JSON.parse(localStorage.getItem('jiguCart')) || [];
+
+function updateCartCount() {
+    const count = cart.reduce((t, i) => t + i.quantity, 0);
+    const badge = document.getElementById('cartCount');
+    if (badge) {
+        badge.textContent = count;
+        badge.style.display = count > 0 ? 'flex' : 'none';
+    }
+}
+
+function addToCart(id, name, price) {
+    const existing = cart.find(i => i.id === id);
+    if (existing) {
+        existing.quantity += 1;
+    } else {
+        cart.push({ id, name, price, quantity: 1 });
+    }
+    localStorage.setItem('jiguCart', JSON.stringify(cart));
+    updateCartCount();
+    alert('Added to cart successfully!');
+}
+
+// ── QR CODE FUNCTIONS ────────────────────────────
+function showQR(id, name, price) {
+    document.getElementById('qrProductName').textContent =
+        name + ' — NPR ' + price.toLocaleString();
+
+    // Generate QR using free API
+    const qrData = `Jigu Store Payment - ${name} - NPR ${price}`;
+    const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(qrData)}`;
+    document.getElementById('qrCodeImg').src = qrUrl;
+
+    document.getElementById('qrModal').classList.add('open');
+}
+
+function closeQR() {
+    document.getElementById('qrModal').classList.remove('open');
+}
+
+// Close modal when clicking outside the box
+document.getElementById('qrModal').addEventListener('click', function(e) {
+    if (e.target === this) closeQR();
+});
+
+// ── INIT ─────────────────────────────────────────
+renderProduct();
+updateCartCount();
+</script>
+</body>
+</html>

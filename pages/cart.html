@@ -1,0 +1,201 @@
+<!-- cart.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart | Jigu Store</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        .cart-page { max-width: 1000px; margin: 0 auto; padding: 40px 20px; }
+        .cart-page h1 { font-size: 2rem; font-weight: 900; margin-bottom: 32px; text-transform: uppercase; }
+        .cart-empty { text-align: center; padding: 80px 20px; color: #666; }
+        .cart-empty h2 { font-size: 1.5rem; margin-bottom: 16px; }
+        .cart-empty a { background: #cc0000; color: white; padding: 14px 32px; border-radius: 8px; font-weight: 700; display: inline-block; margin-top: 16px; }
+        .cart-table { width: 100%; border-collapse: collapse; }
+        .cart-table th { text-align: left; padding: 12px 16px; border-bottom: 2px solid #e0e0e0; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.08em; color: #666; }
+        .cart-table td { padding: 16px; border-bottom: 1px solid #f0f0f0; vertical-align: middle; }
+        .cart-item-img { width: 80px; height: 80px; object-fit: cover; border-radius: 8px; background: #f0f0f0; }
+        .cart-item-name { font-weight: 700; font-size: 1rem; }
+        .cart-item-price { font-weight: 700; color: #222; }
+        .qty-control { display: flex; align-items: center; gap: 10px; }
+        .qty-btn { width: 32px; height: 32px; border: 1px solid #e0e0e0; background: white; border-radius: 6px; font-size: 1.1rem; cursor: pointer; font-weight: 700; transition: background 200ms; }
+        .qty-btn:hover { background: #cc0000; color: white; border-color: #cc0000; }
+        .qty-num { font-weight: 700; min-width: 24px; text-align: center; }
+        .remove-btn { background: none; border: none; color: #cc0000; cursor: pointer; font-size: 0.85rem; font-weight: 700; text-decoration: underline; }
+        .cart-summary { margin-top: 40px; display: flex; justify-content: flex-end; }
+        .cart-summary-box { width: 360px; border: 1px solid #e0e0e0; border-radius: 12px; padding: 24px; }
+        .cart-summary-box h3 { font-size: 1.1rem; font-weight: 800; margin-bottom: 20px; text-transform: uppercase; }
+        .summary-row { display: flex; justify-content: space-between; margin-bottom: 12px; font-size: 0.95rem; }
+        .summary-total { display: flex; justify-content: space-between; font-size: 1.1rem; font-weight: 800; border-top: 2px solid #222; padding-top: 16px; margin-top: 8px; }
+        .checkout-btn { width: 100%; background: #cc0000; color: white; border: none; padding: 16px; font-size: 1rem; font-weight: 800; border-radius: 8px; cursor: pointer; margin-top: 20px; letter-spacing: 0.04em; text-transform: uppercase; transition: background 200ms; }
+        .checkout-btn:hover { background: #aa0000; }
+        .continue-btn { display: block; text-align: center; margin-top: 12px; color: #666; font-size: 0.9rem; text-decoration: underline; }
+    </style>
+</head>
+<body>
+
+<header class="site-header">
+    <div class="nav-top-row">
+        <button class="icon-btn" aria-label="Search">
+            <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <circle cx="11" cy="11" r="7"/>
+                <line x1="16.5" y1="16.5" x2="22" y2="22"/>
+            </svg>
+        </button>
+        <a href="../index.html" class="brand">
+            <img src="../assets/images/logo/jigu store logo.jpg" alt="Jigu Store Logo" class="brand-logo">
+            <span>Jigu Store</span>
+        </a>
+        <div class="nav-icons">
+            <span class="currency-label">NPR ▾</span>
+            <button class="icon-btn cart-icon-btn" onclick="window.location.href='cart.html'">
+                <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+                    <line x1="3" y1="6" x2="21" y2="6"/>
+                </svg>
+                <span class="cart-count" id="cartCount">0</span>
+            </button>
+        </div>
+    </div>
+    <nav class="site-nav">
+        <a href="../index.html">Home</a>
+        <a href="shop.html">Shop</a>
+        <a href="cart.html" class="active">Cart</a>
+    </nav>
+</header>
+
+<div class="cart-page">
+    <h1>Your Cart</h1>
+
+    <!-- Empty cart message — shown when cart is empty -->
+    <div class="cart-empty" id="cartEmpty" style="display:none;">
+        <h2>Your cart is empty</h2>
+        <p>Looks like you have not added anything yet.</p>
+        <a href="shop.html">Continue Shopping</a>
+    </div>
+
+    <!-- Cart items table — shown when cart has items -->
+    <div id="cartContent">
+        <table class="cart-table">
+            <thead>
+                <tr>
+                    <th>Product</th>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Total</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody id="cartItems">
+                <!-- filled by JavaScript -->
+            </tbody>
+        </table>
+
+        <div class="cart-summary">
+            <div class="cart-summary-box">
+                <h3>Order Summary</h3>
+                <div class="summary-row">
+                    <span>Subtotal</span>
+                    <span id="subtotal">NPR 0</span>
+                </div>
+                <div class="summary-row">
+                    <span>Delivery</span>
+                    <span>Free</span>
+                </div>
+                <div class="summary-total">
+                    <span>Total</span>
+                    <span id="totalPrice">NPR 0</span>
+                </div>
+                <button class="checkout-btn" onclick="goToCheckout()">
+                    Proceed to Checkout
+                </button>
+                <a href="shop.html" class="continue-btn">Continue Shopping</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+let cart = JSON.parse(localStorage.getItem('jiguCart')) || [];
+
+function formatPrice(num) {
+    return 'NPR ' + num.toLocaleString();
+}
+
+function updateCartCount() {
+    const count = cart.reduce((t, i) => t + i.quantity, 0);
+    const badge = document.getElementById('cartCount');
+    if (badge) {
+        badge.textContent = count;
+        badge.style.display = count > 0 ? 'flex' : 'none';
+    }
+}
+
+function renderCart() {
+    const tbody = document.getElementById('cartItems');
+    const cartEmpty = document.getElementById('cartEmpty');
+    const cartContent = document.getElementById('cartContent');
+
+    if (cart.length === 0) {
+        cartEmpty.style.display = 'block';
+        cartContent.style.display = 'none';
+        return;
+    }
+
+    cartEmpty.style.display = 'none';
+    cartContent.style.display = 'block';
+
+    tbody.innerHTML = cart.map(item => `
+        <tr>
+            <td><img src="${item.image || ''}" style="width:80px;height:80px;object-fit:cover;border-radius:8px;background:#f0f0f0;" onerror="this.style.background='#f0f0f0'"></td>
+            <td><div class="cart-item-name">${item.name}</div></td>
+            <td class="cart-item-price">${formatPrice(item.price)}</td>
+            <td>
+                <div class="qty-control">
+                    <button class="qty-btn" onclick="changeQty(${item.id}, -1)">−</button>
+                    <span class="qty-num">${item.quantity}</span>
+                    <button class="qty-btn" onclick="changeQty(${item.id}, 1)">+</button>
+                </div>
+            </td>
+            <td class="cart-item-price">${formatPrice(item.price * item.quantity)}</td>
+            <td><button class="remove-btn" onclick="removeItem(${item.id})">Remove</button></td>
+        </tr>
+    `).join('');
+
+    const total = cart.reduce((t, i) => t + (i.price * i.quantity), 0);
+    document.getElementById('subtotal').textContent = formatPrice(total);
+    document.getElementById('totalPrice').textContent = formatPrice(total);
+}
+
+function changeQty(id, change) {
+    const item = cart.find(i => i.id === id);
+    if (!item) return;
+    item.quantity += change;
+    if (item.quantity <= 0) {
+        cart = cart.filter(i => i.id !== id);
+    }
+    localStorage.setItem('jiguCart', JSON.stringify(cart));
+    renderCart();
+    updateCartCount();
+}
+
+function removeItem(id) {
+    cart = cart.filter(i => i.id !== id);
+    localStorage.setItem('jiguCart', JSON.stringify(cart));
+    renderCart();
+    updateCartCount();
+}
+
+function goToCheckout() {
+    alert('Checkout coming soon! Payment integration will be added.');
+}
+
+renderCart();
+updateCartCount();
+</script>
+</body>
+</html>

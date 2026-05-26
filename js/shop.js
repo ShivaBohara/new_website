@@ -14,7 +14,7 @@ function updateCartCount() {
 }
 
 // Add item to cart
-function addToCart(id, name, price) {
+function addToCart(id, name, price, image) {
 
     // check if item already in cart
     const existingItem = cart.find(item => item.id === id);
@@ -24,7 +24,7 @@ function addToCart(id, name, price) {
         existingItem.quantity += 1;
     } else {
         // add new item
-        cart.push({ id, name, price, quantity: 1 });
+        cart.push({ id, name, price, image, quantity: 1 });
     }
 
     // save to localStorage

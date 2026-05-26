@@ -1,3 +1,5 @@
+<!-- shop.html -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,6 +10,23 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="../css/shop.css">
+<style>
+.shop-hero {
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d0000 100%);
+    color: white;
+    text-align: center;
+    padding: 80px 20px;
+}
+.shop-hero h1 {
+    color: white;
+    text-transform: uppercase;
+    font-size: 2.5rem;
+    font-weight: 900;
+}
+.shop-hero p {
+    color: rgba(255, 255, 255, 0.7);
+}
+</style>
 </head>
 <body>
 
@@ -50,7 +69,15 @@
     <nav class="site-nav">
         <a href="../index.html">Home</a>
         <a href="shop.html" class="active">Shop</a>
-        <a href="../index.html#solutions">Solutions</a>
+     <div class="nav-item has-dropdown">
+        
+    <a href="#">Machines</a>
+    <div class="dropdown-panel">
+        <a href="machine.html?type=fastfood">Fast Food Vending Machine</a>
+        <a href="machine.html?type=coffee">Coffee Vending Machine</a>
+        <a href="machine.html?type=softdrink">Soft Drink Vending Machine</a>
+    </div>
+</div>
         <a href="../index.html#contact">Contact</a>
     </nav>
 </header>
@@ -58,7 +85,7 @@
 <!-- PAGE TITLE -->
 <section class="shop-hero">
     <h1>Our Products</h1>
-    <p>Smart vending machines for every space</p>
+    <p>#diffrent type of kits and Gadgets</p>
 </section>
 
 <!-- FILTER + PRODUCTS -->
@@ -67,10 +94,10 @@
     <!-- Filter buttons -->
     <div class="shop-filters">
         <button class="filter-btn active" data-filter="all">All</button>
-        <button class="filter-btn" data-filter="snacks">Snacks</button>
-        <button class="filter-btn" data-filter="drinks">Drinks</button>
-        <button class="filter-btn" data-filter="coffee">Coffee</button>
-        <button class="filter-btn" data-filter="food">Fast Food</button>
+        <button class="filter-btn" data-filter="snacks">Prototype Drones</button>
+        <button class="filter-btn" data-filter="drinks">Stem</button>
+        <button class="filter-btn" data-filter="coffee">Science</button>
+        <button class="filter-btn" data-filter="Project Material">Project Material</button>
     </div>
 
     <!-- Product grid -->
@@ -79,16 +106,16 @@
         <!-- PRODUCT 1 -->
         <article class="product-item" data-category="snacks">
             <div class="product-item-img">
-                <img src="../assets/images/category/Easy_to_use.png" alt="Snack Vending Machine">
-                <button class="quick-add-btn" onclick="addToCart(1, 'Snack Machine', 45000)">
+                <img src="../assets/images/product/STEM Science Kits.jpeg" alt="Stem Kits">
+                <button class="quick-add-btn" onclick="addToCart(1, 'Stem Kits', 0, '../assets/images/product/STEM Science Kits.jpeg' )">
                     + Add to Cart
                 </button>
             </div>
             <div class="product-item-body">
-                <span class="product-category-tag">Snacks</span>
-                <h3>Smart Snack Machine</h3>
+                <span class="product-category-tag">STEM Kits</span>
+                <h3>Stem Kits</h3>
                 <div class="product-price-row">
-                    <span class="product-price">NPR 45,000</span>
+                    <span class="product-price">NPR Not define yet</span>
                     <a href="product.html?id=1" class="product-view-btn">View</a>
                 </div>
             </div>
@@ -97,16 +124,16 @@
         <!-- PRODUCT 2 -->
         <article class="product-item" data-category="drinks">
             <div class="product-item-img">
-                <img src="../assets/images/category/Diffrent_category.png" alt="Drink Vending Machine">
-                <button class="quick-add-btn" onclick="addToCart(2, 'Cold Drinks Machine', 52000)">
+                <img src="../assets/images/product/Prototype_drone_kits.jpeg" alt="Prototype Drones">
+                <button class="quick-add-btn" onclick="addToCart(2, 'Prototype Drones',  0, '../assets/images/product/Prototype_drone_kits.jpeg')">
                     + Add to Cart
                 </button>
             </div>
             <div class="product-item-body">
-                <span class="product-category-tag">Drinks</span>
-                <h3>Cold Drinks Machine</h3>
+                <span class="product-category-tag">Prototype Drones</span>
+                <h3>Prototype Drones Kits</h3>
                 <div class="product-price-row">
-                    <span class="product-price">NPR 52,000</span>
+                    <span class="product-price">NPR Revel soon</span>
                     <a href="product.html?id=2" class="product-view-btn">View</a>
                 </div>
             </div>
@@ -115,16 +142,16 @@
         <!-- PRODUCT 3 -->
         <article class="product-item" data-category="coffee">
             <div class="product-item-img">
-                <img src="../assets/images/solutions/our_machine.png" alt="Coffee Machine">
-                <button class="quick-add-btn" onclick="addToCart(3, 'Coffee Vending Machine', 68000)">
+                <img src="../assets/images/product/Science_Project_kits.jpeg" alt="Science Kits">
+                <button class="quick-add-btn" onclick="addToCart(3, 'Science Kits',  0, '../assets/images/product/Science_Project_kits.jpeg')">
                     + Add to Cart
                 </button>
             </div>
             <div class="product-item-body">
-                <span class="product-category-tag">Coffee</span>
-                <h3>Coffee Vending Machine</h3>
+                <span class="product-category-tag">Science Kits</span>
+                <h3>Science Project Kits</h3>
                 <div class="product-price-row">
-                    <span class="product-price">NPR 68,000</span>
+                    <span class="product-price">NPR Revel soon</span>
                     <a href="product.html?id=3" class="product-view-btn">View</a>
                 </div>
             </div>
@@ -133,16 +160,16 @@
         <!-- PRODUCT 4 -->
         <article class="product-item" data-category="food">
             <div class="product-item-img">
-                <img src="../assets/images/solutions/office_uses.jpeg" alt="Fast Food Machine">
-                <button class="quick-add-btn" onclick="addToCart(4, 'Fast Food Machine', 89000)">
+                <img src="../assets/images/product/Project_Material.jpeg" alt="Project Material">
+                <button class="quick-add-btn" onclick="addToCart(4, 'Project Material',  0, '../assets/images/product/Science_Project_kits.jpeg')">
                     + Add to Cart
                 </button>
             </div>
             <div class="product-item-body">
-                <span class="product-category-tag">Fast Food</span>
-                <h3>Fast Food Machine</h3>
+                <span class="product-category-tag">Project Material</span>
+                <h3>Project Material </h3>
                 <div class="product-price-row">
-                    <span class="product-price">NPR 89,000</span>
+                    <span class="product-price">NPR Revel Soon</span>
                     <a href="product.html?id=4" class="product-view-btn">View</a>
                 </div>
             </div>
@@ -155,6 +182,7 @@
 <div class="cart-toast" id="cartToast">
     Item added to cart!
 </div>
+
 
 <script src="../js/shop.js"></script>
 </body>
