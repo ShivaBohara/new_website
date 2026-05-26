@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile | Jigu Store</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        .profile-page {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+        .profile-header {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            margin-bottom: 48px;
+            padding-bottom: 32px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+        .profile-avatar {
+            width: 80px;
+            height: 80px;
+            background: #cc0000;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            font-weight: 900;
+            color: white;
+            flex-shrink: 0;
+        }
+        .profile-info h1 {
+            font-size: 1.8rem;
+            font-weight: 900;
+            margin-bottom: 4px;
+        }
+        .profile-info p {
+            color: #666;
+            font-size: 0.95rem;
+        }
+        .signout-btn {
+            margin-left: auto;
+            background: none;
+            border: 2px solid #e0e0e0;
+            padding: 10px 24px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            cursor: pointer;
+            color: #666;
+            transition: all 200ms;
+        }
+        .signout-btn:hover {
+            border-color: #cc0000;
+            color: #cc0000;
+        }
+
+        /* TABS */
+        .profile-tabs {
+            display: flex;
+            gap: 4px;
+            margin-bottom: 32px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+        .profile-tab {
+            padding: 12px 24px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            cursor: pointer;
+            color: #999;
+            border: none;
+            background: none;
+            border-bottom: 2px solid transparent;
+            margin-bottom: -2px;
+            transition: all 200ms;
+        }
+        .profile-tab.active {
+            color: #cc0000;
+            border-bottom-color: #cc0000;
+        }
+
+        .profile-panel { display: none; }
+        .profile-panel.active { display: block; }
+
+        /* ACCOUNT DETAILS */
+        .detail-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        .detail-label {
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: #999;
+            margin-bottom: 4px;
+        }
+        .detail-value {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #222;
+        }
+        .edit-btn {
+            background: none;
+            border: 1px solid #e0e0e0;
+            padding: 8px 18px;
+            border-radius: 6px;
+            font-size: 0.82rem;
+            font-weight: 700;
+            cursor: pointer;
+            color: #444;
+            transition: all 200ms;
+        }
+        .edit-btn:hover {
+            border-color: #cc0000;
+            color: #cc0000;
+        }
+
+        /* ORDERS */
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            color: #999;
+        }
+        .empty-state h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: #444;
+        }
+        .empty-state a {
+            display: inline-block;
+            margin-top: 16px;
+            background: #cc0000;
+            color: white;
+            padding: 12px 28px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 0.88rem;
+        }
+        .order-card {
+            border: 1px solid #e0e0e0;
+            border-radius: 12px;
+            padding: 20px 24px;
+            margin-bottom: 16px;
+        }
+        .order-card-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+        .order-id {
+            font-size: 0.82rem;
+            font-weight: 700;
+            color: #999;
+        }
+        .order-status {
+            font-size: 0.78rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            padding: 4px 12px;
+            border-radius: 999px;
+            background: #e8f5e9;
+            color: #2e7d32;
+        }
+        .order-items {
+            font-size: 0.9rem;
+            color: #444;
+            margin-bottom: 8px;
+        }
+        .order-total {
+            font-size: 0.95rem;
+            font-weight: 800;
+            color: #222;
+        }
+    </style>
+</head>
+<body>
+
+<header class="site-header">
+    <div class="nav-top-row">
+        <button class="icon-btn" onclick="window.location.href='../index.html'">
+            <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path d="M19 12H5M12 5l-7 7 7 7"/>
+            </svg>
+        </button>
+        <a href="../index.html" class="brand">
+            <img src="../assets/images/logo/jigu store logo.jpg" alt="Jigu Store Logo" class="brand-logo">
+            <span>Jigu Store</span>
+        </a>
+        <div class="nav-icons">
+            <button class="icon-btn" onclick="window.location.href='cart.html'">
+                <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+                    <line x1="3" y1="6" x2="21" y2="6"/>
+                </svg>
+            </button>
+        </div>
+    </div>
+</header>
+
+<div class="profile-page">
+
+    <!-- PROFILE HEADER -->
+    <div class="profile-header">
+        <div class="profile-avatar" id="userAvatar">J</div>
+        <div class="profile-info">
+            <h1 id="userName">Loading...</h1>
+            <p id="userEmail">loading@email.com</p>
+        </div>
+        <button class="signout-btn" onclick="signOut()">Sign Out</button>
+    </div>
+
+    <!-- TABS -->
+    <div class="profile-tabs">
+        <button class="profile-tab active" onclick="switchPanel('account')">Account</button>
+        <button class="profile-tab" onclick="switchPanel('orders')">My Orders</button>
+        <button class="profile-tab" onclick="switchPanel('wishlist')">Wishlist</button>
+    </div>
+
+    <!-- ACCOUNT PANEL -->
+    <div class="profile-panel active" id="panel-account">
+        <div class="detail-row">
+            <div>
+                <div class="detail-label">Full Name</div>
+                <div class="detail-value" id="detailName">—</div>
+            </div>
+            <button class="edit-btn">Edit</button>
+        </div>
+        <div class="detail-row">
+            <div>
+                <div class="detail-label">Email Address</div>
+                <div class="detail-value" id="detailEmail">—</div>
+            </div>
+        </div>
+        <div class="detail-row">
+            <div>
+                <div class="detail-label">Password</div>
+                <div class="detail-value">••••••••</div>
+            </div>
+            <button class="edit-btn">Change</button>
+        </div>
+        <div class="detail-row">
+            <div>
+                <div class="detail-label">Member Since</div>
+                <div class="detail-value" id="detailJoined">—</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ORDERS PANEL -->
+    <div class="profile-panel" id="panel-orders">
+        <div id="ordersList"></div>
+    </div>
+
+    <!-- WISHLIST PANEL -->
+    <div class="profile-panel" id="panel-wishlist">
+        <div class="empty-state">
+            <h3>Your wishlist is empty</h3>
+            <p>Save products you are interested in</p>
+            <a href="shop.html">Browse Products</a>
+        </div>
+    </div>
+
+</div>
+
+<script>
+// ── CHECK LOGIN ───────────────────────────────────
+const token = localStorage.getItem('jiguToken');
+const user = JSON.parse(localStorage.getItem('jiguUser') || 'null');
+
+if (!token || !user) {
+    window.location.href = 'auth.html';
+}
+
+// ── LOAD USER DATA ────────────────────────────────
+function loadProfile() {
+    if (!user) return;
+
+    const initial = user.name ? user.name.charAt(0).toUpperCase() : 'U';
+    document.getElementById('userAvatar').textContent = initial;
+    document.getElementById('userName').textContent = user.name;
+    document.getElementById('userEmail').textContent = user.email;
+    document.getElementById('detailName').textContent = user.name;
+    document.getElementById('detailEmail').textContent = user.email;
+    document.getElementById('detailJoined').textContent = '2026';
+}
+
+// ── LOAD ORDERS FROM LOCALSTORAGE ─────────────────
+// Later this will come from backend API
+function loadOrders() {
+    const cart = JSON.parse(localStorage.getItem('jiguCart') || '[]');
+    const container = document.getElementById('ordersList');
+
+    if (cart.length === 0) {
+        container.innerHTML = `
+            <div class="empty-state">
+                <h3>No orders yet</h3>
+                <p>Your completed orders will appear here</p>
+                <a href="shop.html">Start Shopping</a>
+            </div>
+        `;
+        return;
+    }
+
+    const total = cart.reduce((t, i) => t + (i.price * i.quantity), 0);
+    container.innerHTML = `
+        <div class="order-card">
+            <div class="order-card-top">
+                <span class="order-id">Order #JG-2026-001</span>
+                <span class="order-status">Pending</span>
+            </div>
+            <div class="order-items">
+                ${cart.map(i => `${i.name} × ${i.quantity}`).join(', ')}
+            </div>
+            <div class="order-total">
+                Total: NPR ${total.toLocaleString()}
+            </div>
+        </div>
+    `;
+}
+
+// ── TAB SWITCHING ─────────────────────────────────
+function switchPanel(panel) {
+    document.querySelectorAll('.profile-tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.profile-panel').forEach(p => p.classList.remove('active'));
+
+    event.target.classList.add('active');
+    document.getElementById('panel-' + panel).classList.add('active');
+
+    if (panel === 'orders') loadOrders();
+}
+
+// ── SIGN OUT ──────────────────────────────────────
+function signOut() {
+    localStorage.removeItem('jiguToken');
+    localStorage.removeItem('jiguUser');
+    window.location.href = '../index.html';
+}
+
+loadProfile();
+</script>
+</body>
+</html>
