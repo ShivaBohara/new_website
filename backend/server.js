@@ -11,6 +11,9 @@ app.use(cors());
 const authRoutes = require('./routes/auth');
 app.use('/api/auth', authRoutes);
 // ─────────────────────────────────────
+const wishlistRoutes = require('./routes/wishlist');
+app.use('/api/wishlist', wishlistRoutes);
+
 
 mongoose.connect(process.env.MONGO_URI)
     .then(() => console.log('MongoDB connected'))

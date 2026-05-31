@@ -1,5 +1,5 @@
 /* ============================================================
-   JIGU STORE — YANGDA-STYLE CSS
+   JIGU STORE 
    Organized top to bottom matching the HTML sections.
    Every section is labeled so you know what it controls.
    ============================================================ */
@@ -9,13 +9,13 @@
    ============================================================ */
 :root {
     --red:        #cc0000;      /* Brand red — used for logo text and hover */
-    --dark-green: #1a2e1a;      /* Top strip background — same as Yangda's dark bar */
+    --dark-green: #1a2e1a;      /* Top strip background  */
     --white:      #ffffff;
     --black:      #050505;
     --text:       #222222;      /* Main dark text color */
     --muted:      #666666;      /* Grey text for descriptions */
     --border:     #e0e0e0;      /* Light grey border lines */
-    --bg:         #ffffff;      /* Page background — white like Yangda */
+    --bg:         #ffffff;      /* Page background — white  */
     --pad:        clamp(20px, 4vw, 80px);  /* Side padding that shrinks on mobile */
 }
 
@@ -86,7 +86,7 @@ button {
     flex-shrink: 0;
 }
 
-/* The input field — big and full width like Yangda */
+/* The input field — big and full width  */
 .search-overlay input {
     flex: 1;                        /* takes all remaining space */
     border: none;
@@ -119,7 +119,6 @@ button {
 
 /* ============================================================
    HEADER — TOP STRIP
-   Yangda: dark green/grey thin bar at very top of page
    ============================================================ */
 .top-strip {
     background: var(--dark-green);
@@ -134,8 +133,6 @@ button {
 
 /* ============================================================
    HEADER — LOGO ROW
-   Yangda: search icon LEFT, YANGDA logo CENTER, USD+icons RIGHT
-   Uses CSS grid with 3 columns to achieve this exact layout.
    ============================================================ */
 .site-header {
     position: relative;       /* scrolls away with page — NOT sticky */
@@ -152,7 +149,7 @@ button {
     border-bottom: 1px solid var(--border);
 }
 
-/* Logo: centered column — Yangda logo is about 140px tall total */
+/* Logo: centered column l */
 .brand {
     display: inline-flex;
     align-items: center;
@@ -164,7 +161,7 @@ button {
     letter-spacing: -0.01em;
 }
 
-/* Logo circle image — Yangda logo image is about 60px */
+/* Logo circle image  */
 .brand-logo {
     width: 60px;
     height: 60px;
@@ -181,7 +178,7 @@ button {
     justify-self: end;         /* Pushes icons to far right */
 }
 
-/* NPR currency label — Yangda shows "USD ▾" */
+/* NPR currency label  */
 .currency-label {
     font-size: 0.9rem;
     font-weight: 700;
@@ -210,12 +207,11 @@ button {
 
 /* ============================================================
    HEADER — NAVIGATION ROW
-   Yangda: all nav links centered on their own separate row below logo
    ============================================================ */
 .site-nav {
     display: flex;
     align-items: center;
-    justify-content: center;   /* Centered like Yangda */
+    justify-content: center;   /* Centered  */
     gap: clamp(28px, 4vw, 64px);
     padding: 16px var(--pad);
     font-size: 0.82rem;
@@ -237,7 +233,6 @@ button {
 
 /* ============================================================
    SECTION 1: HERO BANNER
-   Yangda: wide dark banner, ~500px tall, text on LEFT side, arrows on edges
    ============================================================ */
 .hero-banner {
     position: relative;
@@ -258,7 +253,6 @@ button {
 }
 
 /* Dark gradient overlay — darkens left side for text readability */
-/* Yangda: left side is dark, right side shows the product clearly */
 .hero-overlay {
     position: absolute;
     inset: 0;
@@ -280,7 +274,7 @@ button {
     color: var(--white);
 }
 
-/* Main title — Yangda: "SKY EYE-HT75-M" in bold white uppercase ~2.5rem */
+/* Main title —  */
 .hero-text h1 {
     font-size: clamp(1.8rem, 3vw, 2.8rem);
     font-weight: 800;
@@ -290,7 +284,7 @@ button {
     margin-bottom: 12px;
 }
 
-/* Subtitle — Yangda: "DUAL THERMAL, 5KM LASER RANGEFINDER" uppercase smaller */
+/* Subtitle —  */
 .hero-text p {
     font-size: clamp(0.85rem, 1.2vw, 1rem);
     color: rgba(255, 255, 255, 0.9);
@@ -300,7 +294,7 @@ button {
     margin-bottom: 28px;
 }
 
-/* LEARN MORE button — Yangda: dark grey filled rectangle, not rounded */
+/* LEARN MORE button  */
 .hero-btn {
     display: inline-block;
     background: rgba(50, 50, 50, 0.9);
@@ -311,7 +305,7 @@ button {
     font-weight: 800;
     letter-spacing: 0.14em;
     text-transform: uppercase;
-    border-radius: 4px;        /* Slight radius like Yangda — NOT pill shaped */
+    border-radius: 4px;        /* Slight radius  */
     transition: background 200ms ease, color 200ms ease;
 }
 
@@ -320,7 +314,7 @@ button {
     color: var(--black);
 }
 
-/* Arrow buttons on left and right edges — same as Yangda's < > arrows */
+/* Arrow buttons on left and right edges < > arrows */
 .hero-arrow {
     position: absolute;
     top: 50%;
@@ -370,17 +364,19 @@ button {
 
 .dropdown-panel a {
     display: block;
-    padding: 10px 16px;
+    padding: 12px 20px;
     color: #222;
-    font-size: 0.88rem;
-    font-weight: 600;
+    font-size: 0.92rem;        /* slightly bigger */
+    font-weight: 500;          /* medium weight like Yangda */
+    letter-spacing: 0.01em;    /* tighter tracking */
     border-left: 3px solid transparent;
+    font-family: "Inter Tight", sans-serif;
 }
 
 .dropdown-panel a:hover {
     color: #cc0000;
     border-left: 3px solid #cc0000;
-    background: #f9f9f9;
+    background: #fafafa;
 }
 
 .nav-item {
@@ -393,15 +389,13 @@ button {
 
 /* ============================================================
    SECTION 2: PRODUCT CATEGORY CARDS
-   Yangda: 2 large cards side by side — "VTOL Drone Series" + "UAV Camera"
-   Each card: light background, product image centered, title + Learn More button
    ============================================================ */
 .product-cards-section {
     padding: 40px var(--pad);
     background: var(--white);
 }
 
-/* 2-column grid — same as Yangda's 2 product category cards */
+/* 2-column grid */
 .product-cards-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -413,10 +407,10 @@ button {
 /* Each card: light grey background with rounded corners */
 .product-card {
     position: relative;
-    background: #f0f0f0;       /* Light grey like Yangda's card background */
+    background: #f0f0f0;       
     border-radius: 12px;
     overflow: hidden;
-    height: 440px;             /* Yangda cards are about 430-440px tall */
+    height: 440px;            
     display: flex;
     flex-direction: column;
 }
@@ -444,7 +438,7 @@ button {
     background: #f0f0f0;
 }
 
-/* Card title — Yangda: "VTOL Drone Series" in medium weight */
+/* Card title */
 .product-card-body h3 {
     font-size: 1.15rem;
     font-weight: 700;
@@ -452,7 +446,7 @@ button {
     letter-spacing: 0.01em;
 }
 
-/* Learn More button — Yangda: dark grey pill button */
+/* Learn More button  */
 .product-card-btn {
     display: inline-flex;
     align-items: center;
@@ -462,7 +456,7 @@ button {
     padding: 10px 22px;
     font-size: 0.82rem;
     font-weight: 700;
-    border-radius: 999px;      /* Pill shape like Yangda's Learn More */
+    border-radius: 999px;      
     letter-spacing: 0.04em;
     white-space: nowrap;
     transition: background 200ms ease;
@@ -475,13 +469,11 @@ button {
 
 /* ============================================================
    SECTION 3: DARK FEATURE BANNER
-   Yangda: full-width dark image "Professional Gimbal Manufacturer" with play button
-   This is a wide dark dramatic photo with centered white title and play button
    ============================================================ */
 .dark-feature-banner {
     position: relative;
     width: 100%;
-    height: 480px;             /* Yangda's dark feature banner height */
+    height: 480px;             
     background-size: cover;
     background-position: center;
     display: flex;
@@ -509,7 +501,7 @@ button {
     gap: 28px;
 }
 
-/* Title — Yangda: "Professional Gimbal Manufacturer" bold white centered */
+/* Title  */
 .dark-feature-content h2 {
     font-size: clamp(1.6rem, 3vw, 2.8rem);
     font-weight: 800;
@@ -517,7 +509,7 @@ button {
     text-align: center;
 }
 
-/* Play/action button — Yangda: white circle with play triangle icon */
+/* Play/action button  */
 .play-btn {
     width: 68px;
     height: 68px;
@@ -538,15 +530,13 @@ button {
 
 /* ============================================================
    SECTION 4: ONE-STOP SOLUTIONS
-   Yangda: "ONE-STOP UAV SOLUTION PROVIDER" heading + 4 application cards
-   Cards have: full background image + overlay + title + description + Learn More
    ============================================================ */
 .solutions-section {
     padding: 64px var(--pad);
     background: var(--white);
 }
 
-/* Section heading — Yangda: "ONE-STOP UAV SOLUTION PROVIDER" large bold uppercase */
+/* Section heading*/
 .solutions-heading {
     text-align: center;
     margin-bottom: 48px;
@@ -570,7 +560,7 @@ button {
     color: var(--muted);
 }
 
-/* 4 cards in a row — same as Yangda's 4 application cards */
+/* 4 cards in a row  */
 .solutions-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -582,7 +572,7 @@ button {
 /* Each solution card: tall card with full background image */
 .solution-card {
     position: relative;
-    height: 480px;             /* Yangda cards are about 480px tall */
+    height: 480px;            
     border-radius: 12px;
     overflow: hidden;
     background: #222;
@@ -629,7 +619,7 @@ button {
     text-align: center;
 }
 
-/* Card title — Yangda: "Pipeline Inspection" bold white */
+/* Card title — */
 .solution-card-body h3 {
     font-size: 1.15rem;
     font-weight: 800;
@@ -644,7 +634,7 @@ button {
     margin-bottom: 16px;
 }
 
-/* Learn More button inside card — Yangda: dark grey pill button */
+/* Learn More button inside card — */
 .solution-card-btn {
     display: inline-flex;
     align-items: center;
@@ -666,8 +656,6 @@ button {
 
 /* ============================================================
    SECTION 5: EVENTS
-   Yangda: "Event" section — 3 cards with photo + date + bold title
-   Photo is on TOP, date and title stack BELOW the photo
    ============================================================ */
 .events-section {
     padding: 64px var(--pad);
@@ -675,7 +663,7 @@ button {
     border-top: 1px solid var(--border);
 }
 
-/* Section heading — Yangda: "Event" large centered heading */
+/* Section heading  */
 .events-heading {
     text-align: center;
     margin-bottom: 48px;
@@ -709,7 +697,7 @@ button {
     transform: translateY(-4px);
 }
 
-/* Photo container — Yangda photo is about 230px tall */
+/* Photo container*/
 .event-card-img {
     width: 100%;
     height: 230px;
@@ -734,7 +722,7 @@ button {
     padding: 18px 4px;
 }
 
-/* Date — Yangda: "25th Dec 2025" in muted grey small text */
+/* Date —  */
 .event-card-body time {
     display: block;
     font-size: 0.82rem;
@@ -744,7 +732,7 @@ button {
     text-align: center;
 }
 
-/* Event title — Yangda: bold dark text, centered, 2-3 lines */
+/* Event title */
 .event-card-body h3 {
     font-size: 1rem;
     font-weight: 700;

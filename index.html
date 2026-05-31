@@ -16,7 +16,7 @@
 <!-- ============================================================
      HEADER
      Layout: Dark top strip → Logo row (search | logo | icons) → Nav row
-     This is exactly like Yangda's 3-row header structure.
+     This is  jigu store  header structure.
      ============================================================ -->
 <header class="site-header">
 
@@ -31,17 +31,17 @@
             </svg>
         </button>
 
-        <!-- Center: Logo + Brand name (centered like Yangda's YANGDA logo) -->
+        <!-- Center: Logo + Brand name (centered jigu store logo) -->
         <a href="#home" class="brand">
-            <!-- YOUR LOGO: put your logo file path here -->
             <img src="assets/images/logo/jigu store logo.jpg" alt="Jigu Store Logo" class="brand-logo">
             <span>Jigu Store</span>
         </a>
 
-        <!-- Right: NPR + Heart + Person + Cart (same icons as Yangda's USD/cart row) -->
+        <!-- Right: NPR + Heart + Person + Cart  -->
         <div class="nav-icons">
             <span class="currency-label">NPR ▾</span>
-            <button class="icon-btn" aria-label="Wishlist">
+          <button class="icon-btn" aria-label="Wishlist"
+        onclick="window.location.href='pages/auth.html'">
                 <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                     <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
                 </svg>
@@ -65,7 +65,7 @@
         </div>
     </div>
 
-    <!-- NAV ROW: All nav links centered on their own row (same as Yangda's nav row) -->
+    <!-- NAV ROW: All nav links centered on their own row -->
    <nav class="site-nav">
     <a href="#home">Home</a>
 
@@ -80,6 +80,7 @@
             <a href="pages/product.html?id=4">Item Four</a>
         </div>
     </div>
+
 
     <!-- MACHINES dropdown -->
     <div class="nav-item has-dropdown">
@@ -125,26 +126,19 @@
 
 <!-- ============================================================
      SECTION 1: HERO BANNER
-     Full-width dark image with text on the LEFT side and arrows.
-     Yangda reference: The big "SKY EYE-HT75-M" banner at the top.
-     YOUR PHOTO: Put your best vending machine photo here.
      ============================================================ -->
 <section id="home" class="hero-banner">
 
     <!-- Left arrow button -->
     <button class="hero-arrow hero-arrow--left" aria-label="Previous slide">&#8249;</button>
 
-    <!-- HERO IMAGE: Change the url() path to your photo -->
-    <!-- Yangda uses: a dark dramatic product photo filling the whole banner -->
-    <!-- YOUR PHOTO: Use "Front Banner/feature4.jpg" or your best banner photo -->
+    <!-- HERO IMAGE -->
     <div class="hero-inner" style="background-image: url('assets/images/First_page_banner/Home_page_Banner.png');">
         <div class="hero-overlay"></div>
         <div class="hero-text">
-            <!-- Main title — Yangda uses product name in bold uppercase -->
             <h1>Smart Vending Ecosystem</h1>
-            <!-- Subtitle — Yangda uses a short product description in uppercase -->
             <p>Cashless access points for schools, institutions, offices, and public spaces.</p>
-            <!-- Button — Yangda uses dark filled rectangle button -->
+            <!-- Button button -->
             <a href="#products" class="hero-btn">LEARN MORE</a>
         </div>
     </div>
@@ -158,18 +152,11 @@
 
 <!-- ============================================================
      SECTION 2: PRODUCT CATEGORY CARDS (2 big cards side by side)
-     Yangda reference: "VTOL Drone Series" and "UAV Camera" cards.
-     These are large image cards with title in CENTER and Learn More button.
-     YOUR PHOTOS:
-       Card 1 — Put your Smart Vending photo (e.g. Front Banner/feature3.jpg)
-       Card 2 — Put your STEM/Education photo (e.g. Product1/solar system.jpg)
      ============================================================ -->
 <section id="products" class="product-cards-section">
     <div class="product-cards-grid">
 
         <!-- PRODUCT CARD 1 -->
-        <!-- Yangda: "VTOL Drone Series" card with light grey background and product image -->
-        <!-- YOUR PHOTO: vending machine photo — change the src below -->
         <article class="product-card">
             <img src="assets/images/Smart_and_Category/Easy_to_use.png" alt="Smart Vending Machine">
             <div class="product-card-body">
@@ -179,8 +166,6 @@
         </article>
 
         <!-- PRODUCT CARD 2 -->
-        <!-- Yangda: "UAV Camera" card — same layout, different image -->
-        <!-- YOUR PHOTO: STEM or education product photo — change the src below -->
         <article class="product-card">
             <img src="assets/images/Smart_and_Category/Diffrent_category.png" alt="Varities">
             <div class="product-card-body">
@@ -196,17 +181,11 @@
 
 <!-- ============================================================
      SECTION 3: VIDEO / FULL-WIDTH DARK BANNER
-     Yangda reference: "Professional Gimbal Manufacturer" dark section with play button.
-     This is a full-width dark image with centered title and a play/action button.
-     YOUR PHOTO: Use a wide dark dramatic photo of your machines or team.
-     Change the background-image url inside style="" below.
      ============================================================ -->
 <section class="dark-feature-banner" style="background-image: url('assets/images/Professional_Samrt_Retailer/reference_photo.png');">
     <div class="dark-feature-overlay"></div>
     <div class="dark-feature-content">
-        <!-- Yangda: "Professional Gimbal Manufacturer" — use your company tagline -->
         <h2>Professional Smart Retail Provider</h2>
-        <!-- Yangda has a play button here for video — this is a scroll-down button instead -->
         <a href="#solutions" class="play-btn" aria-label="Learn more">
             <svg width="28" height="28" fill="white" viewBox="0 0 24 24">
                 <polygon points="5,3 19,12 5,21"/>
@@ -221,13 +200,6 @@
      SECTION 4: ONE-STOP SOLUTION — Title + 4 Application Cards
      Yangda reference: "ONE-STOP UAV SOLUTION PROVIDER" section with 4 cards.
      Each card has: background image + bold title + description + Learn More button.
-     YOUR PHOTOS:
-       Card 1 (Schools)    — add your school/education photo to src
-       Card 2 (Hospitals)  — add your hospital/medical photo to src
-       Card 3 (Offices)    — add your office photo to src
-       Card 4 (Events)     — add your event/exhibition photo to src
-     If you don't have photos yet, remove the <img> tag from each card
-     and just use a dark background color.
      ============================================================ -->
 <section id="solutions" class="solutions-section">
 
@@ -241,8 +213,6 @@
     <div class="solutions-grid">
 
         <!-- APPLICATION CARD 1 -->
-        <!-- Yangda: "Pipeline Inspection" card with background photo -->
-        <!-- YOUR PHOTO: school or campus photo — change src below -->
         <article class="solution-card">
             <img src="assets/images/One_Stop_Smart/School_uses.jpeg" alt="Schools">
             <!-- Dark overlay is added by CSS automatically -->
@@ -254,8 +224,6 @@
         </article>
 
         <!-- APPLICATION CARD 2 -->
-        <!-- Yangda: "Mine Monitoring" card -->
-        <!-- YOUR PHOTO: hospital or medical setting photo — change src below -->
         <article class="solution-card">
             <img src="assets/images/One_Stop_Smart/our_machine.png" alt="As only for reference">
             <div class="solution-card-body">
@@ -266,8 +234,6 @@
         </article>
 
         <!-- APPLICATION CARD 3 -->
-        <!-- Yangda: "Security & Surveillance" card -->
-        <!-- YOUR PHOTO: office building or workspace photo — change src below -->
         <article class="solution-card">
             <img src="assets/images/One_Stop_Smart/office_uses.jpeg" alt="Offices">
             <div class="solution-card-body">
@@ -278,8 +244,6 @@
         </article>
 
         <!-- APPLICATION CARD 4 -->
-        <!-- Yangda: "Transport" card -->
-        <!-- YOUR PHOTO: event or exhibition photo — change src below -->
         <article class="solution-card">
             <img src="assets/images/One_Stop_Smart/event_type_one.png" alt="Events">
             <div class="solution-card-body">
@@ -296,39 +260,30 @@
 
 <!-- ============================================================
      SECTION 5: EVENTS / NEWS
-     Yangda reference: "Event" section with 3 cards (photo + date + title).
-     Each card: photo on top, date below, bold title below that.
-     YOUR PHOTOS:
-       Event 1 — add your event/launch photo to src
-       Event 2 — add your team or product photo to src
-       Event 3 — add your campus or school visit photo to src
      ============================================================ -->
 <section id="events" class="events-section">
 
-    <!-- Section title — Yangda: "Event" in large centered heading -->
+    <!-- Section title  -->
     <div class="events-heading">
         <h2>Events</h2>
     </div>
 
-    <!-- 3 event cards in a row — same layout as Yangda -->
+    <!-- 3 event cards in a row  -->
     <div class="events-grid">
 
         <!-- EVENT CARD 1 -->
-        <!-- Yangda: photo + date + title layout -->
-        <!-- YOUR PHOTO: your event or launch photo — change src below -->
         <article class="event-card">
             <div class="event-card-img">
                 <img src="assets/images/Events/winning_prize.png" alt="Smart Vending Pilot Event">
             </div>
             <div class="event-card-body">
-                <!-- Date — Yangda shows "25th Dec 2025" format -->
                 <time>2026</time>
                 <h3>We are making diffrent type of event you can attend and win prize</h3>
             </div>
         </article>
 
         <!-- EVENT CARD 2 -->
-        <!-- YOUR PHOTO: QR payment demo or team photo — change src below -->
+        <!--  QR payment demo or team photo -->
         <article class="event-card">
             <div class="event-card-img">
                 <img src="assets/images/Events/QR_Payment.png" alt="QR Payment Launch">
@@ -340,7 +295,7 @@
         </article>
 
         <!-- EVENT CARD 3 -->
-        <!-- YOUR PHOTO: school visit or STEM product photo — change src below -->
+        <!-- school visit or STEM product photo —  -->
         <article class="event-card">
             <div class="event-card-img">
                 <img src="assets/images/Events/diffrent_machine_based_catogery.png" alt="Varities">
