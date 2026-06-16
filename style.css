@@ -1123,3 +1123,101 @@ button {
     }
 }
 
+/* Machines expand/collapse button */
+.mobile-menu-expand {
+    width: 100%;
+    background: none;
+    border: none;
+    text-align: left;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.expand-arrow {
+    transition: transform 200ms ease;
+}
+.mobile-menu-expand.is-open .expand-arrow {
+    transform: rotate(180deg);
+}
+
+/* Sub-list — collapsed by default */
+.mobile-submenu {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 250ms ease;
+}
+.mobile-submenu.is-open {
+    max-height: 300px;
+}
+.mobile-submenu a {
+    padding-left: 12px;
+    font-size: 0.85rem;
+    text-transform: none;
+    letter-spacing: 0.02em;
+    border-bottom: none;
+}
+
+/* ============================================================
+   MOBILE CAROUSEL — turns stacked cards into swipeable < > slider
+   Desktop: untouched, normal grid.
+   Mobile (≤768px): becomes a horizontal scroll-snap row.
+   ============================================================ */
+
+.carousel-arrows {
+    display: none;   /* hidden on desktop */
+}
+
+@media (max-width: 768px) {
+
+    /* Turn the grid into a horizontal single-row scroller */
+    .solutions-grid,
+    .events-grid {
+        display: flex;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        gap: 14px;
+        max-width: 100%;
+        /* Hide the scrollbar visually — arrows control it instead */
+        scrollbar-width: none;
+    }
+    .solutions-grid::-webkit-scrollbar,
+    .events-grid::-webkit-scrollbar {
+        display: none;
+    }
+
+    /* Each card takes ~90% of the screen width so one shows at a time */
+    .solutions-grid .solution-card,
+    .events-grid .event-card {
+        flex: 0 0 88%;
+        scroll-snap-align: center;
+    }
+
+    /* Arrow row sits centered below the carousel */
+    .carousel-arrows {
+        display: flex;
+        justify-content: center;
+        gap: 16px;
+        margin-top: 16px;
+    }
+
+    .carousel-arrow {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        border: 1px solid #ddd;
+        background: white;
+        font-size: 1.4rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        color: #333;
+    }
+    .carousel-arrow:hover {
+        background: var(--red);
+        color: white;
+        border-color: var(--red);
+    }
+}

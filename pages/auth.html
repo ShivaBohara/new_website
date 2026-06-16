@@ -731,16 +731,12 @@ async function handleSignIn(){
       showMsg('Signed in! Redirecting...','success');
       setTimeout(()=>location.href='profile.html',900);
     }else{
-      showMsg(data.message||'Sign in failed.','error');
+      // Real failure from server (wrong password, no account, etc.)
+     showMsg((data.message||'Sign in failed.') + ' Click Sign Up tab.', 'error');
     }
   }catch(e){
-    // Backend offline — save locally so site works without backend
-    const fakeUser={id:Date.now(),name:email.split('@')[0],email};
-    const fakeToken='local-'+Date.now();
-    localStorage.setItem('jiguToken',fakeToken);
-    localStorage.setItem('jiguUser',JSON.stringify(fakeUser));
-    showMsg('Signed in successfully! Redirecting...','success');
-    setTimeout(()=>location.href='profile.html',900);
+    // Network/server error — backend unreachable. Do NOT log the user in.
+    showMsg('Unable to reach server. Please try again later.','error');
   }
   btn.disabled=false;btn.textContent='Sign In';
 }
@@ -771,18 +767,15 @@ async function handleSignUp(){
       showMsg('Account created! Redirecting...','success');
       setTimeout(()=>location.href='profile.html',900);
     }else{
+      // Real failure (e.g. "email already in use")
       showMsg(data.message||'Sign up failed.','error');
     }
   }catch(e){
-    const fakeUser={id:Date.now(),name,email};
-    const fakeToken='local-'+Date.now();
-    localStorage.setItem('jiguToken',fakeToken);
-    localStorage.setItem('jiguUser',JSON.stringify(fakeUser));
-    showMsg('Account created! Redirecting...','success');
-    setTimeout(()=>location.href='profile.html',900);
+    showMsg('Unable to reach server. Please try again later.','error');
   }
   btn.disabled=false;btn.textContent='Create Account';
 }
+
 
 // ── Auto redirect if already logged in ──
 if(localStorage.getItem('jiguToken')){location.href='profile.html';}
