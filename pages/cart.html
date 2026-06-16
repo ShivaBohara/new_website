@@ -33,9 +33,44 @@
         .checkout-btn { width: 100%; background: #cc0000; color: white; border: none; padding: 16px; font-size: 1rem; font-weight: 800; border-radius: 8px; cursor: pointer; margin-top: 20px; letter-spacing: 0.04em; text-transform: uppercase; transition: background 200ms; }
         .checkout-btn:hover { background: #aa0000; }
         .continue-btn { display: block; text-align: center; margin-top: 12px; color: #666; font-size: 0.9rem; text-decoration: underline; }
+        /* ── QR PAYMENT MODAL ── */
+.qr-modal { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.75); z-index:9999; align-items:center; justify-content:center; }
+.qr-modal.open { display:flex; }
+.qr-box { background:white; border-radius:16px; padding:40px; text-align:center; max-width:380px; width:90%; }
+.qr-box h2 { font-size:1.3rem; font-weight:900; margin-bottom:8px; }
+.qr-box p { color:#666; font-size:0.9rem; margin-bottom:24px; }
+.qr-image { width:200px; height:200px; margin:0 auto 24px; border:2px solid #e0e0e0; border-radius:12px; padding:12px; }
+.qr-image img { width:100%; height:100%; object-fit:contain; }
+.qr-payment-logos { display:flex; justify-content:center; gap:12px; margin-bottom:20px; flex-wrap:wrap; }
+.qr-payment-logo { background:#f5f5f5; border-radius:6px; padding:6px 14px; font-size:0.8rem; font-weight:700; color:#444; }
+.qr-close-btn { background:#222; color:white; border:none; padding:12px 32px; border-radius:8px; font-weight:700; cursor:pointer; font-size:0.9rem; }
     </style>
 </head>
 <body>
+<!-- ════════════════════════════════════════════════
+     QR PAYMENT MODAL — shows when "Proceed to Checkout" is clicked
+     ════════════════════════════════════════════════ -->
+<div class="qr-modal" id="qrModal">
+    <div class="qr-box">
+        <h2>Scan to Pay</h2>
+        <p id="qrOrderLabel"></p>
+        <div class="qr-image">
+            <!--  QR IMAGE HERE  ▼ -->
+    <img id="qrCodeImg" src="../assets/images/Qr_Image/QrImagemy.jpeg" alt="QR Code">
+            
+        </div>
+        <div class="qr-payment-logos">
+            <span class="qr-payment-logo">eSewa</span>
+            <span class="qr-payment-logo">Khalti</span>
+            <span class="qr-payment-logo">FonePay</span>
+            <span class="qr-payment-logo">Mobile Banking</span>
+        </div>
+        <p style="font-size:0.85rem;color:#888;margin-bottom:20px;">
+            Scan with any payment app to complete your order
+        </p>
+        <button class="qr-close-btn" onclick="closeQR()">Close</button>
+    </div>
+</div>
 
 <header class="site-header">
     <div class="nav-top-row">
@@ -192,9 +227,30 @@ function removeItem(id) {
     updateCartCount();
 }
 
+
+
+// opens the QR modal instead of an alert
 function goToCheckout() {
-    alert('Checkout coming soon! Payment integration will be added.');
+    if (cart.length === 0) return;
+
+    const total = cart.reduce((t, i) => t + (i.price * i.quantity), 0);
+    document.getElementById('qrOrderLabel').textContent =
+        'Order Total: ' + formatPrice(total);
+    
+    document.getElementById('qrModal').classList.add('open');
 }
+
+function closeQR() {
+    document.getElementById('qrModal').classList.remove('open');
+}
+
+document.getElementById('qrModal').addEventListener('click', function(e) {
+    if (e.target === this) closeQR();
+});
+
+
+renderCart();
+updateCartCount();
 
 renderCart();
 updateCartCount();

@@ -1,3 +1,16 @@
+<!-- ============================================================
+     machine.html  — MACHINE DETAIL PAGE
+     ============================================================
+     HOW TO ADD A NEW MACHINE:
+     1. Scroll to the "MACHINE DATA" section below
+     2. Copy any existing machine block (e.g. fastfood)
+     3. Give it a new key name (e.g. "sanitarypad")
+     4. Fill in: name, tag, description, image, specs[], useCases[]
+     5. In the header nav (and in index.html/shop.html navs),
+        add: <a href="machine.html?type=sanitarypad">Your Machine</a>
+     That's it — the page renders automatically from the data.
+     ============================================================ -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,7 +20,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../style.css">
     <style>
-        .machine-page { background: #111; }
+
+        /* ── DARK HERO SECTION ── */
+        .machine-hero-wrap {
+            background: #111;
+        }
         .machine-hero {
             color: white;
             padding: 80px 40px;
@@ -65,6 +82,8 @@
             border: none;
         }
         .machine-btn:hover { background: #aa0000; }
+
+        /* ── SPECIFICATIONS ── */
         .specs-section {
             max-width: 1200px;
             margin: 0 auto;
@@ -100,9 +119,9 @@
             font-weight: 700;
             color: #222;
         }
-        .use-cases {
-            margin-bottom: 60px;
-        }
+
+        /* ── USE CASES ── */
+        .use-cases { margin-bottom: 60px; }
         .use-cases h2 {
             font-size: 2rem;
             font-weight: 900;
@@ -129,6 +148,8 @@
             font-size: 0.82rem;
             color: #666;
         }
+
+        /* ── CALL TO ACTION ── */
         .cta-section {
             background: #cc0000;
             color: white;
@@ -157,16 +178,21 @@
             text-transform: uppercase;
             letter-spacing: 0.06em;
         }
+        .cta-btn:hover { background: #f5f5f5; }
+
+        /* ── RESPONSIVE ── */
         @media (max-width: 768px) {
-            .machine-hero { grid-template-columns: 1fr; padding: 40px 20px; }
-            .specs-grid { grid-template-columns: 1fr 1fr; }
-            .use-cases-grid { grid-template-columns: 1fr 1fr; }
+            .machine-hero       { grid-template-columns: 1fr; padding: 40px 20px; }
+            .specs-grid         { grid-template-columns: 1fr 1fr; }
+            .use-cases-grid     { grid-template-columns: 1fr 1fr; }
         }
     </style>
 </head>
 <body>
 
-<!-- HEADER -->
+<!-- ════════════════════════════════════════════════
+     HEADER
+     ════════════════════════════════════════════════ -->
 <header class="site-header">
     <div class="nav-top-row">
         <button class="icon-btn" onclick="history.back()">
@@ -179,7 +205,7 @@
             <span>Jigu Store</span>
         </a>
         <div class="nav-icons">
-            <button class="icon-btn" onclick="window.location.href='cart.html'">
+            <button class="icon-btn cart-icon-btn" aria-label="Cart" onclick="window.location.href='cart.html'">
                 <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                     <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
                     <line x1="3" y1="6" x2="21" y2="6"/>
@@ -189,81 +215,88 @@
     </div>
     <nav class="site-nav">
         <a href="../index.html">Home</a>
-        
-         <!-- MACHINES dropdown -->
-    <div class="nav-item has-dropdown">
-        <a href="#">Machines</a>
-
-        <div class="dropdown-panel">
-            <a href="machine.html?type=fastfood">
-                Fast Food Vending Machine
-            </a>
-
-            <a href="machine.html?type=coffee">
-                Coffee Vending Machine
-            </a>
-
-            <a href="machine.html?type=softdrink">
-                Soft Drink Vending Machine
-            </a>
-        </div>
-    </div>
-        <!-- product dropdown -->
-         <div class="nav-item has-dropdown">
         <a href="shop.html">Products</a>
-        <div class="dropdown-panel">
-            <a href="shop.html">Stem Kits</a>
-            <a href="shop.html">Prototype Drones</a>
-            <a href="shop.html">Science Kits</a>
-            <a href="shop.html">Project Material</a>
+        <!-- Machines dropdown — TO ADD NEW MACHINE: add <a> here and in MACHINE DATA below -->
+        <div class="nav-item has-dropdown">
+            <a href="#" class="active">Machines</a>
+            <div class="dropdown-panel">
+                <!-- ▼ ADD NEW MACHINE MENU LINK HERE ▼ -->
+                <a href="machine.html?type=fastfood">Fast Food Vending Machine</a>
+                <a href="machine.html?type=coffee">Coffee Vending Machine</a>
+                <a href="machine.html?type=softdrink">Soft Drink Vending Machine</a>
+                <a href="machine.html?type=sanitarypad">Sanitary Pad Vending Machine</a>
+                <!-- ▲ ADD NEW MACHINE MENU LINK HERE ▲ -->
+            </div>
         </div>
-    </div>
         <a href="../index.html#contact">Contact</a>
     </nav>
 </header>
 
-<!-- MACHINE CONTENT — filled by JavaScript -->
-<div id="machineContent"></div>
+<!-- ════════════════════════════════════════════════
+     MACHINE CONTENT  (filled by JavaScript below)
+     ════════════════════════════════════════════════ -->
+<div id="machineContent">
+    <!-- JavaScript renders this based on ?type= in the URL -->
+</div>
 
+<!-- ════════════════════════════════════════════════
+     JAVASCRIPT
+     ════════════════════════════════════════════════ -->
 <script>
-// ── ALL MACHINE DATA IN ONE PLACE ─────────────────
-// When you get real photos, just update the image paths here
-const machines = {
 
+/* ══════════════════════════════════════════════════
+   ▼▼▼  MACHINE DATA  ▼▼▼
+   ══════════════════════════════════════════════════
+   HOW TO ADD A NEW MACHINE:
+   ─────────────────────────
+   1. Copy one block below (e.g. fastfood)
+   2. Change the key name (e.g. "sanitarypad")
+   3. Fill in all the fields
+   4. Add a menu link in the <nav> above:
+      <a href="machine.html?type=sanitarypad">Your Machine</a>
+   5. Also add the same link in index.html and shop.html navs
+   ══════════════════════════════════════════════════ */
+
+const MACHINES = {
+
+    /* ── MACHINE: FAST FOOD ──────────────────────────
+       URL: machine.html?type=fastfood
+       ─────────────────────────────────────────────── */
     fastfood: {
-        name: 'Fast Food Vending Machine',
-        tag: 'Hot Food',
+        name:        'Fast Food Vending Machine',
+        tag:         'Hot Food',
         description: 'Hot meals available 24/7 without any staff. Designed for high-traffic locations including hospitals, campuses, and large office buildings across Nepal. Supports all major digital payment methods.',
-        image: '../assets/images/machine/fast_food_vending_machine.png',
-        productId: 4,
+        image:       '../assets/images/machine/fast_food_vending_machine.png',
         specs: [
             { label: 'Capacity',     value: 'Up to 40 items' },
             { label: 'Payment',      value: 'QR / Card / Cash' },
             { label: 'Temperature',  value: 'Heated compartments' },
             { label: 'Screen',       value: '10 inch touchscreen' },
-            { label: 'Power',        value: '###V AC standard' },
-            { label: 'Connectivity', value: '4G + WiFi ###' }
+            { label: 'Power',        value: '220V AC standard' },
+            { label: 'Connectivity', value: '4G + WiFi' }
         ],
         useCases: [
-            { place: 'Hospitals',   desc: 'Night shift staff meals' },
-            { place: 'Campuses',    desc: 'Student canteen support' },
-            { place: 'Offices',     desc: 'Quick lunch access' },
-            { place: 'Factories',   desc: '24hr worker meals' }
+            { place: 'Hospitals',  desc: 'Night shift staff meals' },
+            { place: 'Campuses',   desc: 'Student canteen support' },
+            { place: 'Offices',    desc: 'Quick lunch access' },
+            { place: 'Factories',  desc: '24hr worker meals' }
         ]
     },
 
+    /* ── MACHINE: COFFEE ─────────────────────────────
+       URL: machine.html?type=coffee
+       ─────────────────────────────────────────────── */
     coffee: {
-        name: 'Coffee Vending Machine',
-        tag: 'Hot Beverages',
+        name:        'Coffee Vending Machine',
+        tag:         'Hot Beverages',
         description: 'Freshly brewed coffee on demand. Bring cafe-quality beverages to offices, hospitals, and campuses without needing a barista. Multiple drink options in one machine.',
-        image: '../assets/images/machine/coffee_vending_machine.png',
-        productId: 3,
+        image:       '../assets/images/machine/coffee_vending_machine.png',
         specs: [
-            { label: 'Varieties',    value: '#+ coffee types' },
+            { label: 'Varieties',    value: '8+ coffee types' },
             { label: 'Payment',      value: 'QR / Card / Cash' },
             { label: 'Temperature',  value: 'Hot and cold' },
-            { label: 'Screen',       value: '# inch touchscreen' },
-            { label: 'Capacity',     value: '### cups per refill' },
+            { label: 'Screen',       value: '7 inch touchscreen' },
+            { label: 'Capacity',     value: '200 cups per refill' },
             { label: 'Connectivity', value: 'WiFi monitoring' }
         ],
         useCases: [
@@ -274,74 +307,130 @@ const machines = {
         ]
     },
 
+    /* ── MACHINE: SOFT DRINK ─────────────────────────
+       URL: machine.html?type=softdrink
+       ─────────────────────────────────────────────── */
     softdrink: {
-        name: 'Soft Drink Vending Machine',
-        tag: 'Cold Drinks',
+        name:        'Soft Drink Vending Machine',
+        tag:         'Cold Drinks',
         description: 'Keep drinks cold and accessible around the clock. Designed for high-traffic locations across Nepal. Supports all major digital payment methods including eSewa, Khalti, and FonePay.',
-        image: '../assets/images/machine/soft_drink_vending_machine.png',
-        productId: 2,
+        image:       '../assets/images/machine/soft_drink_vending_machine.png',
         specs: [
-            { label: 'Capacity',     value: 'Up to ## bottles' },
+            { label: 'Capacity',     value: 'Up to 60 bottles' },
             { label: 'Payment',      value: 'QR / Card / Cash' },
-            { label: 'Temperature',  value: '#°C to ##°C cooling' },
-            { label: 'Screen',       value: '# inch touchscreen' },
-            { label: 'Power',        value: '###V AC standard' },
-            { label: 'Connectivity', value: '4G + WiFi ' }
+            { label: 'Temperature',  value: '3°C to 10°C cooling' },
+            { label: 'Screen',       value: '7 inch touchscreen' },
+            { label: 'Power',        value: '220V AC standard' },
+            { label: 'Connectivity', value: '4G + WiFi' }
         ],
         useCases: [
-            { place: 'Schools',     desc: 'Student refreshments' },
-            { place: 'Gyms',        desc: 'Post-workout drinks' },
-            { place: 'Events',      desc: 'Crowd refreshments' },
-            { place: 'Offices',     desc: 'All-day cold drinks' }
+            { place: 'Schools',  desc: 'Student refreshments' },
+            { place: 'Gyms',     desc: 'Post-workout drinks' },
+            { place: 'Events',   desc: 'Crowd refreshments' },
+            { place: 'Offices',  desc: 'All-day cold drinks' }
         ]
-    }
+    },
+
+    /* ── MACHINE: SANITARY PAD ───────────────────────
+       URL: machine.html?type=sanitarypad
+       ─────────────────────────────────────────────── */
+    sanitarypad: {
+        name:        'Sanitary Pad Vending Machine',
+        tag:         'Health & Hygiene',
+        description: 'Hygienic and discreet sanitary pad dispensing for schools, colleges, hospitals, and public spaces across Nepal. Supports cashless payment and remote monitoring.',
+        image:       '../assets/images/category/Easy_to_use.png',
+        specs: [
+            { label: 'Capacity',     value: 'Up to 100 pads' },
+            { label: 'Payment',      value: 'QR / Card / Cash' },
+            { label: 'Design',       value: 'Discreet dispensing' },
+            { label: 'Screen',       value: '5 inch touchscreen' },
+            { label: 'Power',        value: '220V AC standard' },
+            { label: 'Connectivity', value: 'WiFi monitoring' }
+        ],
+        useCases: [
+            { place: 'Schools',    desc: 'Accessible for students' },
+            { place: 'Colleges',   desc: 'Campus hygiene support' },
+            { place: 'Hospitals',  desc: 'Patient convenience' },
+            { place: 'Offices',    desc: 'Workplace wellness' }
+        ]
+    },
+
+    /* ── ADD NEW MACHINE HERE ───────────────────────
+       Copy the block below, remove the comment marks,
+       and fill in your details:
+
+    yourmachinekey: {
+        name:        'Your Machine Name',
+        tag:         'Category Label',
+        description: 'Your machine description here.',
+        image:       '../assets/images/machine/your-machine.png',
+        specs: [
+            { label: 'Capacity',     value: 'X items' },
+            { label: 'Payment',      value: 'QR / Card / Cash' },
+            { label: 'Screen',       value: 'X inch touchscreen' },
+            { label: 'Power',        value: '220V AC' },
+            { label: 'Connectivity', value: 'WiFi + 4G' },
+            { label: 'Custom Spec',  value: 'Value here' }
+        ],
+        useCases: [
+            { place: 'Location 1', desc: 'Use case description' },
+            { place: 'Location 2', desc: 'Use case description' },
+            { place: 'Location 3', desc: 'Use case description' },
+            { place: 'Location 4', desc: 'Use case description' }
+        ]
+    },
+    ─────────────────────────────────────────────────── */
+
 };
 
-// ── READ URL PARAMETER ────────────────────────────
+/* ══════════════════════════════════════════════════
+   ▲▲▲  END OF MACHINE DATA  ▲▲▲
+   ══════════════════════════════════════════════════ */
+
+
+/* ── READ MACHINE TYPE FROM URL ─── */
 function getMachineType() {
     const params = new URLSearchParams(window.location.search);
     return params.get('type') || 'fastfood';
 }
 
-// ── BUILD THE PAGE ────────────────────────────────
+/* ── BUILD THE PAGE ─── */
 function renderMachine() {
-    const type = getMachineType();
-    const m = machines[type];
+    const type    = getMachineType();
+    const machine = MACHINES[type];
 
-    if (!m) {
+    if (!machine) {
         document.getElementById('machineContent').innerHTML =
-            '<p style="text-align:center;padding:80px;">Machine not found.</p>';
+            '<p style="text-align:center;padding:80px;color:#999;">Machine not found.</p>';
         return;
     }
 
-    // Update page title
-    document.title = m.name + ' | Jigu Store';
+    document.title = machine.name + ' | Jigu Store';
 
     document.getElementById('machineContent').innerHTML = `
 
         <!-- HERO -->
-        <div class="machine-page">
+        <div class="machine-hero-wrap">
             <div class="machine-hero">
                 <div>
-                    <span class="machine-tag">${m.tag}</span>
-                    <h1>${m.name}</h1>
-                    <p>${m.description}</p>
-                    <button class="machine-btn"
-                        onclick="window.location.href='product.html?id=${m.productId}'">
-                        View Pricing and Buy
+                    <span class="machine-tag">${machine.tag}</span>
+                    <h1>${machine.name}</h1>
+                    <p>${machine.description}</p>
+                    <button class="machine-btn" onclick="window.location.href='../index.html#contact'">
+                        Request a Demo
                     </button>
                 </div>
                 <div class="machine-hero-img">
-                    <img src="${m.image}" alt="${m.name}">
+                    <img src="${machine.image}" alt="${machine.name}">
                 </div>
             </div>
         </div>
 
-        <!-- SPECS -->
+        <!-- SPECIFICATIONS -->
         <div class="specs-section">
             <h2>Specifications</h2>
             <div class="specs-grid">
-                ${m.specs.map(s => `
+                ${machine.specs.map(s => `
                     <div class="spec-card">
                         <h3>${s.label}</h3>
                         <p>${s.value}</p>
@@ -349,11 +438,11 @@ function renderMachine() {
                 `).join('')}
             </div>
 
-            <!-- USE CASES -->
+            <!-- WHERE IT WORKS BEST -->
             <div class="use-cases">
                 <h2>Where It Works Best</h2>
                 <div class="use-cases-grid">
-                    ${m.useCases.map(u => `
+                    ${machine.useCases.map(u => `
                         <div class="use-case-item">
                             <h4>${u.place}</h4>
                             <p>${u.desc}</p>
@@ -363,18 +452,18 @@ function renderMachine() {
             </div>
         </div>
 
-         <!-- CTA -->
+        <!-- CALL TO ACTION -->
         <div class="cta-section">
-            <h2>Interested in the ${m.name}?</h2>
-            <p>Contact us for pricing, installation, and demo in Nepal.</p>
-            <button class="cta-btn"
-                onclick="window.location.href='../index.html#contact'">
+            <h2>Interested in the ${machine.name}?</h2>
+            <p>Contact us for pricing, installation, and a live demo in Nepal.</p>
+            <button class="cta-btn" onclick="window.location.href='../index.html#contact'">
                 Contact Us
             </button>
         </div>
     `;
 }
 
+/* ── INIT ─── */
 renderMachine();
 </script>
 </body>

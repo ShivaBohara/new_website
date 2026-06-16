@@ -106,3 +106,11 @@ function loadWishlistState() {
 loadWishlistState();
    
 
+function goToWishlist() {
+    const user = JSON.parse(localStorage.getItem('jiguUser') || 'null');
+    if (user) {
+        window.location.href = 'pages/profile.html'; // goes to profile where wishlist tab is
+    } else {
+        window.location.href = 'pages/auth.html'; // not logged in → login first
+    }
+}

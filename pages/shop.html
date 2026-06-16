@@ -1,4 +1,14 @@
-<!-- shop.html -->
+<!-- ============================================================
+     shop.html  — PRODUCT LISTING / SHOP PAGE
+     ============================================================
+     HOW TO ADD A NEW PRODUCT CARD HERE:
+     1. Copy one <article class="product-item"> block below
+     2. Change the data-category to match your filter button
+     3. Update the image src, name, and price text
+     4. Update the onclick id number to match the new product
+        you added in product.html (e.g. id=5)
+     5. Add a matching filter button if it's a new category
+     ============================================================ -->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -10,27 +20,32 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="../css/shop.css">
-<style>
-.shop-hero {
-    background: linear-gradient(135deg, #1a1a1a 0%, #2d0000 100%);
-    color: white;
-    text-align: center;
-    padding: 80px 20px;
-}
-.shop-hero h1 {
-    color: white;
-    text-transform: uppercase;
-    font-size: 2.5rem;
-    font-weight: 900;
-}
-.shop-hero p {
-    color: rgba(255, 255, 255, 0.7);
-}
-</style>
+    <style>
+        /* ── HERO BANNER ── */
+        .shop-hero {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d0000 100%);
+            color: white;
+            text-align: center;
+            padding: 80px 20px;
+        }
+        .shop-hero h1 {
+            color: white;
+            text-transform: uppercase;
+            font-size: 2.5rem;
+            font-weight: 900;
+            margin-bottom: 12px;
+        }
+        .shop-hero p {
+            color: rgba(255,255,255,0.65);
+            font-size: 1rem;
+        }
+    </style>
 </head>
 <body>
 
-<!-- HEADER — same as homepage -->
+<!-- ════════════════════════════════════════════════
+     HEADER
+     ════════════════════════════════════════════════ -->
 <header class="site-header">
     <div class="nav-top-row">
         <button class="icon-btn" id="searchToggle" aria-label="Search">
@@ -50,14 +65,12 @@
                     <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
                 </svg>
             </button>
-        <button class="icon-btn" aria-label="Sign In"
-        onclick="window.location.href='pages/auth.html'">
-    <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
-        <circle cx="12" cy="7" r="4"/>
-    </svg>
-</button>
-            <!-- Cart icon with count badge -->
+            <button class="icon-btn" aria-label="Sign In" onclick="window.location.href='auth.html'">
+                <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                    <circle cx="12" cy="7" r="4"/>
+                </svg>
+            </button>
             <button class="icon-btn cart-icon-btn" aria-label="Cart" onclick="window.location.href='cart.html'">
                 <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                     <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
@@ -70,121 +83,238 @@
     <nav class="site-nav">
         <a href="../index.html">Home</a>
         <a href="shop.html" class="active">Shop</a>
-     <div class="nav-item has-dropdown">
-
-    <a href="#">Machines</a>
-    <div class="dropdown-panel">
-        <a href="machine.html?type=fastfood">Fast Food Vending Machine</a>
-        <a href="machine.html?type=coffee">Coffee Vending Machine</a>
-        <a href="machine.html?type=softdrink">Soft Drink Vending Machine</a>
-    </div>
-</div>
+        <!-- Machines dropdown — keep in sync with machine.html nav -->
+        <div class="nav-item has-dropdown">
+            <a href="#">Machines</a>
+            <div class="dropdown-panel">
+                <!-- ▼ ADD NEW MACHINE LINK HERE (also add in machine.html and index.html) ▼ -->
+                <a href="machine.html?type=fastfood">Fast Food Vending Machine</a>
+                <a href="machine.html?type=coffee">Coffee Vending Machine</a>
+                <a href="machine.html?type=softdrink">Soft Drink Vending Machine</a>
+                <a href="machine.html?type=sanitarypad">Sanitary Pad Vending Machine</a>
+                <!-- ▲ ADD NEW MACHINE LINK HERE ▲ -->
+            </div>
+        </div>
         <a href="../index.html#contact">Contact</a>
     </nav>
 </header>
 
-<!-- PAGE TITLE -->
+<!-- ════════════════════════════════════════════════
+     PAGE HERO
+     ════════════════════════════════════════════════ -->
 <section class="shop-hero">
     <h1>Our Products</h1>
-    <p>#diffrent type of kits and Gadgets</p>
+    <p>STEM kits, prototype drones, science kits, and project materials</p>
 </section>
 
-<!-- FILTER + PRODUCTS -->
+<!-- ════════════════════════════════════════════════
+     FILTER BUTTONS
+     TO ADD A NEW CATEGORY FILTER:
+     Copy a <button> below, change data-filter to your
+     category slug, and update the label text.
+     Also add data-category="yourslug" to the matching
+     product card in the grid below.
+     ════════════════════════════════════════════════ -->
 <section class="shop-section">
-
-    <!-- Filter buttons -->
     <div class="shop-filters">
+        <!-- ▼ ADD NEW FILTER BUTTON HERE ▼ -->
         <button class="filter-btn active" data-filter="all">All</button>
-        <button class="filter-btn" data-filter="snacks">Prototype Drones</button>
-        <button class="filter-btn" data-filter="drinks">Stem</button>
-        <button class="filter-btn" data-filter="coffee">Science</button>
-        <button class="filter-btn" data-filter="Project Material">Project Material</button>
+        <button class="filter-btn" data-filter="stem">STEM Kits</button>
+        <button class="filter-btn" data-filter="drones">Prototype Drones</button>
+        <button class="filter-btn" data-filter="science">Science Kits</button>
+        <button class="filter-btn" data-filter="material">Project Material</button>
+        <!-- ▲ ADD NEW FILTER BUTTON HERE ▲ -->
     </div>
 
-    <!-- Product grid -->
+    <!-- ════════════════════════════════════════════
+         PRODUCT GRID
+         ════════════════════════════════════════════
+         TO ADD A NEW PRODUCT CARD:
+         ──────────────────────────
+         Copy the <article> block below and paste after
+         the last product. Update:
+           • data-category  → must match a filter button's data-filter
+           • img src        → path to your product image
+           • img alt        → product name
+           • onclick IDs    → match the id in product.html PRODUCTS object
+           • category tag   → displayed label
+           • h3             → product name
+           • price text     → NPR amount or "Reveal Soon"
+           • href           → product.html?id=<YOUR_ID>
+         ════════════════════════════════════════════ -->
     <div class="shop-grid" id="shopGrid">
 
-        <!-- PRODUCT 1 -->
-        <article class="product-item" data-category="snacks">
+        <!-- ── PRODUCT 1: STEM Kits ── -->
+        <article class="product-item" data-category="stem">
             <div class="product-item-img">
-                <img src="../assets/images/product/STEM Science Kits.jpeg" alt="Stem Kits">
-                <button class="quick-add-btn" onclick="addToCart(1, 'Stem Kits', 0, '../assets/images/product/STEM Science Kits.jpeg' )">
+                <img src="../assets/images/product/STEM Science Kits.jpeg" alt="STEM Science Kit">
+                <button class="quick-add-btn"
+                    onclick="addToCart(1, 'STEM Science Kit', 0, '../assets/images/product/STEM Science Kits.jpeg')">
                     + Add to Cart
                 </button>
             </div>
             <div class="product-item-body">
                 <span class="product-category-tag">STEM Kits</span>
-                <h3>Stem Kits</h3>
+                <h3>STEM Science Kit</h3>
                 <div class="product-price-row">
-                    <span class="product-price">NPR Not define yet</span>
+                    <span class="product-price">NPR Reveal Soon</span>
                     <a href="product.html?id=1" class="product-view-btn">View</a>
                 </div>
             </div>
         </article>
 
-        <!-- PRODUCT 2 -->
-        <article class="product-item" data-category="drinks">
+        <!-- ── PRODUCT 2: Prototype Drones ── -->
+        <article class="product-item" data-category="drones">
             <div class="product-item-img">
-                <img src="../assets/images/product/Prototype_drone_kits.jpeg" alt="Prototype Drones">
-                <button class="quick-add-btn" onclick="addToCart(2, 'Prototype Drones',  0, '../assets/images/product/Prototype_drone_kits.jpeg')">
+                <img src="../assets/images/product/Prototype_drone_kits.jpeg" alt="Prototype Drone Kit">
+                <button class="quick-add-btn"
+                    onclick="addToCart(2, 'Prototype Drone Kit', 0, '../assets/images/product/Prototype_drone_kits.jpeg')">
                     + Add to Cart
                 </button>
             </div>
             <div class="product-item-body">
                 <span class="product-category-tag">Prototype Drones</span>
-                <h3>Prototype Drones Kits</h3>
+                <h3>Prototype Drone Kit</h3>
                 <div class="product-price-row">
-                    <span class="product-price">NPR Revel soon</span>
+                    <span class="product-price">NPR Reveal Soon</span>
                     <a href="product.html?id=2" class="product-view-btn">View</a>
                 </div>
             </div>
         </article>
 
-        <!-- PRODUCT 3 -->
-        <article class="product-item" data-category="coffee">
+        <!-- ── PRODUCT 3: Science Kits ── -->
+        <article class="product-item" data-category="science">
             <div class="product-item-img">
-                <img src="../assets/images/product/Science_Project_kits.jpeg" alt="Science Kits">
-                <button class="quick-add-btn" onclick="addToCart(3, 'Science Kits',  0, '../assets/images/product/Science_Project_kits.jpeg')">
+                <img src="../assets/images/product/Science_Project_kits.jpeg" alt="Science Project Kit">
+                <button class="quick-add-btn"
+                    onclick="addToCart(3, 'Science Project Kit', 0, '../assets/images/product/Science_Project_kits.jpeg')">
                     + Add to Cart
                 </button>
             </div>
             <div class="product-item-body">
                 <span class="product-category-tag">Science Kits</span>
-                <h3>Science Project Kits</h3>
+                <h3>Science Project Kit</h3>
                 <div class="product-price-row">
-                    <span class="product-price">NPR Revel soon</span>
+                    <span class="product-price">NPR Reveal Soon</span>
                     <a href="product.html?id=3" class="product-view-btn">View</a>
                 </div>
             </div>
         </article>
 
-        <!-- PRODUCT 4 -->
-        <article class="product-item" data-category="food">
+        <!-- ── PRODUCT 4: Project Material ── -->
+        <article class="product-item" data-category="material">
             <div class="product-item-img">
-                <img src="../assets/images/product/Project_Material.jpeg" alt="Project Material">
-                <button class="quick-add-btn" onclick="addToCart(4, 'Project Material',  0, '../assets/images/product/Science_Project_kits.jpeg')">
+                <img src="../assets/images/product/Project_Material.jpeg" alt="Project Material Bundle">
+                <button class="quick-add-btn"
+                    onclick="addToCart(4, 'Project Material Bundle', 0, '../assets/images/product/Project_Material.jpeg')">
                     + Add to Cart
                 </button>
             </div>
             <div class="product-item-body">
                 <span class="product-category-tag">Project Material</span>
-                <h3>Project Material </h3>
+                <h3>Project Material Bundle</h3>
                 <div class="product-price-row">
-                    <span class="product-price">NPR Revel Soon</span>
+                    <span class="product-price">NPR Reveal Soon</span>
                     <a href="product.html?id=4" class="product-view-btn">View</a>
                 </div>
             </div>
         </article>
 
+        <!-- ▼▼▼ ADD NEW PRODUCT CARDS BELOW THIS LINE ▼▼▼
+
+        <article class="product-item" data-category="stem">
+            <div class="product-item-img">
+                <img src="../assets/images/product/your-image.jpg" alt="Your Product Name">
+                <button class="quick-add-btn"
+                    onclick="addToCart(5, 'Your Product Name', 1500, '../assets/images/product/your-image.jpg')">
+                    + Add to Cart
+                </button>
+            </div>
+            <div class="product-item-body">
+                <span class="product-category-tag">STEM Kits</span>
+                <h3>Your Product Name</h3>
+                <div class="product-price-row">
+                    <span class="product-price">NPR 1,500</span>
+                    <a href="product.html?id=5" class="product-view-btn">View</a>
+                </div>
+            </div>
+        </article>
+
+        ▲▲▲ ADD NEW PRODUCT CARDS ABOVE THIS LINE ▲▲▲ -->
+
     </div>
 </section>
 
-<!-- CART TOAST NOTIFICATION -->
+<!-- ════════════════════════════════════════════════
+     CART TOAST NOTIFICATION
+     ════════════════════════════════════════════════ -->
 <div class="cart-toast" id="cartToast">
     Item added to cart!
 </div>
 
+<!-- ════════════════════════════════════════════════
+     JAVASCRIPT
+     ════════════════════════════════════════════════ -->
+<script>
 
+/* ── FILTER BUTTONS ─── */
+const filterBtns = document.querySelectorAll('.filter-btn');
+const productItems = document.querySelectorAll('.product-item');
+
+filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+        // Remove active from all buttons
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        const filter = btn.dataset.filter;
+
+        productItems.forEach(item => {
+            // Show all if "all", else match category
+            if (filter === 'all' || item.dataset.category === filter) {
+                item.style.display = '';
+            } else {
+                item.style.display = 'none';
+            }
+        });
+    });
+});
+
+/* ── CART ─── */
+let cart = JSON.parse(localStorage.getItem('jiguCart')) || [];
+
+function updateCartCount() {
+    const count = cart.reduce((t, i) => t + i.quantity, 0);
+    const badge = document.getElementById('cartCount');
+    if (badge) {
+        badge.textContent = count;
+        badge.style.display = count > 0 ? 'flex' : 'none';
+    }
+}
+
+function addToCart(id, name, price, image) {
+    const existing = cart.find(i => i.id === id);
+    if (existing) {
+        existing.quantity += 1;
+    } else {
+        cart.push({ id, name, price, image, quantity: 1 });
+    }
+    localStorage.setItem('jiguCart', JSON.stringify(cart));
+    updateCartCount();
+
+    // Show toast notification
+    const toast = document.getElementById('cartToast');
+    if (toast) {
+        toast.classList.add('show');
+        setTimeout(() => toast.classList.remove('show'), 2500);
+    }
+}
+
+/* ── INIT ─── */
+updateCartCount();
+</script>
+
+<!-- External shop JS (keep if it has other functionality) -->
 <script src="../js/shop.js"></script>
 </body>
 </html>
