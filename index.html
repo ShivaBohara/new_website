@@ -23,13 +23,25 @@
     <!-- LOGO ROW: Search icon LEFT — Logo CENTER — NPR/icons RIGHT -->
     <div class="nav-top-row">
 
-        <!-- Left: Search icon (same position as Yangda) -->
-        <button class="icon-btn" id="searchToggle" aria-label="Search">
-            <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                <circle cx="11" cy="11" r="7"/>
-                <line x1="16.5" y1="16.5" x2="22" y2="22"/>
-            </svg>
-        </button>
+        <div style="display:flex;align-items:center;">
+
+            <!-- Hamburger menu button — only visible on mobile (see CSS) -->
+            <button class="icon-btn hamburger-btn" id="hamburgerToggle" aria-label="Menu">
+                <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <line x1="3" y1="6" x2="21" y2="6"/>
+                    <line x1="3" y1="12" x2="21" y2="12"/>
+                    <line x1="3" y1="18" x2="21" y2="18"/>
+                </svg>
+            </button>
+
+            <button class="icon-btn" id="searchToggle" aria-label="Search">
+                <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <circle cx="11" cy="11" r="7"/>
+                    <line x1="16.5" y1="16.5" x2="22" y2="22"/>
+                </svg>
+            </button>
+
+        </div>
 
         <!-- Center: Logo + Brand name (centered jigu store logo) -->
         <a href="#home" class="brand">
@@ -66,6 +78,8 @@
     </div>
 
     <!-- NAV ROW: All nav links centered on their own row -->
+    <!-- This row is HIDDEN on mobile (see CSS) and replaced by the
+         hamburger + slide-out menu below -->
    <nav class="site-nav">
     <a href="#home">Home</a>
 
@@ -118,6 +132,32 @@
     <button id="searchClose">✕</button>
 </div>
 
+<!-- ════════════════════════════════════════════════
+     MOBILE SLIDE-OUT MENU
+     This is the panel that slides in from the left
+     when the hamburger (3-line) icon is tapped on mobile.
+     It is HIDDEN on desktop (CSS keeps it off-screen and
+     only the hamburger JS below moves it into view).
+     The dark "overlay" div dims the rest of the page and
+     closes the menu when tapped.
+     ════════════════════════════════════════════════ -->
+<div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
+<div class="mobile-menu" id="mobileMenu">
+    <button class="mobile-menu-close" id="mobileMenuClose" aria-label="Close menu">✕</button>
+    <a href="#home">Home</a>
+    <a href="pages/shop.html">Products</a>
+
+    <div class="mobile-menu-group">
+        <span class="mobile-menu-label">Machines</span>
+        <a href="pages/machine.html?type=fastfood">Fast Food Vending Machine</a>
+        <a href="pages/machine.html?type=coffee">Coffee Vending Machine</a>
+        <a href="pages/machine.html?type=softdrink">Soft Drink Vending Machine</a>
+    </div>
+
+    <a href="#applications">Events</a>
+    <a href="#about">About Us</a>
+    <a href="#contact">Contact</a>
+</div>
 
 </header>
 <!-- END HEADER -->

@@ -955,3 +955,171 @@ button {
     border-color: #cc0000;
     color: white;
 }
+
+/* ============================================================
+   MOBILE HAMBURGER MENU
+   ============================================================ */
+
+/* Hide hamburger on desktop, show the row nav instead */
+.hamburger-btn {
+    display: none;
+}
+
+.mobile-menu-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: 998;
+}
+.mobile-menu-overlay.is-open {
+    display: block;
+}
+
+.mobile-menu {
+    position: fixed;
+    top: 0;
+    left: -300px;       /* hidden off-screen by default */
+    width: 280px;
+    height: 100%;
+    background: white;
+    z-index: 999;
+    padding: 70px 24px 24px;
+    transition: left 280ms ease;
+    overflow-y: auto;
+}
+.mobile-menu.is-open {
+    left: 0;
+}
+
+.mobile-menu-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: none;
+    border: none;
+    font-size: 1.4rem;
+    cursor: pointer;
+    color: #333;
+}
+
+.mobile-menu a {
+    display: block;
+    padding: 14px 0;
+    font-size: 0.95rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #222;
+    border-bottom: 1px solid #f0f0f0;
+}
+.mobile-menu a:hover {
+    color: var(--red);
+}
+
+.mobile-menu-label {
+    display: block;
+    padding-top: 14px;
+    font-size: 0.78rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #999;
+}
+.mobile-menu-group a {
+    padding-left: 12px;
+    font-size: 0.85rem;
+    text-transform: none;
+    letter-spacing: 0.02em;
+    border-bottom: none;
+}
+
+
+/* ============================================================
+   MOBILE HAMBURGER MENU
+   ============================================================ */
+
+/* Hide hamburger on desktop, show the row nav instead */
+.hamburger-btn {
+    display: none;
+}
+
+.mobile-menu-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: 998;
+}
+.mobile-menu-overlay.is-open {
+    display: block;
+}
+
+.mobile-menu {
+    position: fixed;
+    top: 0;
+    left: -300px;       /* hidden off-screen by default */
+    width: 280px;
+    height: 100%;
+    background: white;
+    z-index: 999;
+    padding: 70px 24px 24px;
+    transition: left 280ms ease;
+    overflow-y: auto;
+}
+.mobile-menu.is-open {
+    left: 0;
+}
+
+.mobile-menu-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: none;
+    border: none;
+    font-size: 1.4rem;
+    cursor: pointer;
+    color: #333;
+}
+
+.mobile-menu a {
+    display: block;
+    padding: 14px 0;
+    font-size: 0.95rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #222;
+    border-bottom: 1px solid #f0f0f0;
+}
+.mobile-menu a:hover {
+    color: var(--red);
+}
+
+.mobile-menu-label {
+    display: block;
+    padding-top: 14px;
+    font-size: 0.78rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #999;
+}
+.mobile-menu-group a {
+    padding-left: 12px;
+    font-size: 0.85rem;
+    text-transform: none;
+    letter-spacing: 0.02em;
+    border-bottom: none;
+}
+
+/* On mobile: show hamburger, hide the normal row nav */
+@media (max-width: 768px) {
+    .hamburger-btn {
+        display: flex;
+    }
+    .site-nav {
+        display: none;
+    }
+}
+

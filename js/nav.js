@@ -8,3 +8,21 @@
         });
     });
 
+// ── MOBILE HAMBURGER MENU ─────────────────────────
+const hamburgerBtn   = document.getElementById('hamburgerToggle');
+const mobileMenu      = document.getElementById('mobileMenu');
+const mobileOverlay   = document.getElementById('mobileMenuOverlay');
+const mobileMenuClose = document.getElementById('mobileMenuClose');
+
+function openMobileMenu() {
+    mobileMenu.classList.add('is-open');
+    mobileOverlay.classList.add('is-open');
+}
+function closeMobileMenu() {
+    mobileMenu.classList.remove('is-open');
+    mobileOverlay.classList.remove('is-open');
+}
+
+if (hamburgerBtn) hamburgerBtn.addEventListener('click', openMobileMenu);
+if (mobileMenuClose) mobileMenuClose.addEventListener('click', closeMobileMenu);
+if (mobileOverlay) mobileOverlay.addEventListener('click', closeMobileMenu);
